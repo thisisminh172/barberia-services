@@ -30,7 +30,7 @@ public class FeedbackService {
     }
 
     // UPDATE FEEDBACK
-    public void save(Feedback feedback){
-        feedbackRepository.save(feedback);
+    public Feedback save(Feedback feedback){
+        return feedbackRepository.save(feedback);
     }
 }

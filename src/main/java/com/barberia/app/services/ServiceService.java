@@ -28,7 +28,7 @@ public class ServiceService {
     }
 
     // UPDATE AND ADD
-    public void save(com.barberia.app.models.Service service){
-        serviceRepository.save(service);
+    public com.barberia.app.models.Service save(com.barberia.app.models.Service service){
+        return serviceRepository.save(service);
     }
 }

@@ -29,7 +29,7 @@ public class BookingService {
     }
 
     //UPDATE BOOKING
-    public void save(Booking booking){
-        bookingRepository.save(booking);
+    public Booking save(Booking booking){
+        return bookingRepository.save(booking);
     }
 }

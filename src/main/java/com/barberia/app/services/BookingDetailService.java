@@ -29,8 +29,8 @@ public class BookingDetailService {
     }
 
     // UPDATE BOOKING DETAILS
-    public void save(BookingDetail bookingDetail){
-        bookingDetailRepository.save(bookingDetail);
+    public BookingDetail save(BookingDetail bookingDetail){
+        return bookingDetailRepository.save(bookingDetail);
     }
 
 }

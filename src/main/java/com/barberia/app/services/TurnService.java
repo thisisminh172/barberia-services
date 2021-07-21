@@ -25,12 +25,12 @@ public class TurnService {
     }
 
     // DELETE
-    public void detete(Long id){
+    public void delete(Long id){
         turnRepository.deleteById(id);
     }
 
     // UPDATE AND ADD
-    public void save(Turn turn){
-        turnRepository.save(turn);
+    public Turn save(Turn turn){
+        return turnRepository.save(turn);
     }
 }

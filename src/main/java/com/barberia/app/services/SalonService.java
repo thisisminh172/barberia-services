@@ -30,7 +30,7 @@ public class SalonService {
     }
 
     // UPDATE AND ADD
-    public void save(Salon salon){
-        salonRepository.save(salon);
+    public Salon save(Salon salon){
+        return salonRepository.save(salon);
     }
 }

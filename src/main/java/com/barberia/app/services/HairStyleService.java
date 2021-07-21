@@ -30,7 +30,7 @@ public class HairStyleService {
     }
 
     // UPDATE AND ADD
-    public void save(HairStyle hairStyle){
-        hairStyleRepository.save(hairStyle);
+    public HairStyle save(HairStyle hairStyle){
+        return hairStyleRepository.save(hairStyle);
     }
 }
