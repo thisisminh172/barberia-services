@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/client-layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt hẹn</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="all-page-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="title title-1 text-center">
+                                <div class="much">
+                                    <img src="uploads/mustache.png" alt=""/>
+                                </div>
+
+                                <div class="title--heading">
+                                    <h1>Đặt hẹn</h1>
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <ol class="breadcrumb">
+                                    <li><a th:href="@{/home}">HOME</a></li>
+                                    <li class="active">Appointment</li>
+                                </ol>
+                            </div>
+                            <!-- .title end -->
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end all-page-bar -->
+
+            <div id="appointment" class="section wb">
+                <div class="container">
+                    <div class="section-title row text-center">
+                        <div class="col-md-8 offset-md-2">
+                            <small>ĐẶT LỊCH GIỮ CHỖ CHỈ 30 GIÂY</small>
+                            <h3>Đặt ngay</h3>
+                        </div>
+                    </div><!-- end title -->
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="contact_form">
+                                <div id="message"></div>
+                                <form id="contactform" class="" action="contact.php" name="contactform" method="post">
+                                    <fieldset class="row row-fluid">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone">
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <select id="basic" class="form-control">
+                                                <option value="selecttime">Select Time</option>
+                                                <option value="Weekdays">Weekdays</option>
+                                                <option value="Weekend">Weekend</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <textarea class="form-control" name="comments" id="comments" rows="6" placeholder="Give us more details.."></textarea>
+                                        </div>
+                                        <div class="form-btn text-center">
+                                            <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Hoàn Tất</button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </div><!-- end section -->
+
+<!--            <div id="testimonials" class="parallax section db parallax-inner-bg">-->
+<!--                <div class="container">-->
+<!--                    <div class="section-title row text-center">-->
+<!--                        <div class="col-md-8 offset-md-2">-->
+<!--                            <small>LET'S SEE OUR TESTIMONIALS</small>-->
+<!--                            <h3>HAPPY TESTIMONIALS</h3>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; end title &ndash;&gt;-->
+
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-12 col-sm-12">-->
+<!--                            <div class="testi-carousel owl-carousel owl-theme">-->
+<!--                                <div class="testimonial clearfix">-->
+<!--                                    <div class="testi-meta">-->
+<!--                                        <i class="fa fa-quote-right"></i>-->
+<!--                                        <img src="uploads/testi_01.png" alt="" class="img-responsive alignright">-->
+<!--                                        <h4>James Fernando <small>- Manager of Racer</small></h4>-->
+<!--                                    </div>-->
+<!--                                    <div class="desc">-->
+<!--                                        <h3>Wonderful Support!</h3>-->
+<!--                                        <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>-->
+<!--                                    </div>-->
+<!--                                    &lt;!&ndash; end testi-meta &ndash;&gt;-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; end testimonial &ndash;&gt;-->
+<!--                                <div class="testimonial clearfix">-->
+<!--                                    <div class="testi-meta">-->
+<!--                                        <i class="fa fa-quote-right"></i>-->
+<!--                                        <img src="uploads/testi_02.png" alt="" class="img-responsive alignright">-->
+<!--                                        <h4>Jacques Philips <small>- Designer</small></h4>-->
+<!--                                    </div>-->
+<!--                                    <div class="desc">-->
+<!--                                        <h3>Awesome Services!</h3>-->
+<!--                                        <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>-->
+<!--                                    </div>-->
+<!--                                    &lt;!&ndash; end testi-meta &ndash;&gt;-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; end testimonial &ndash;&gt;-->
+<!--                                <div class="testimonial clearfix">-->
+<!--                                    <div class="testi-meta">-->
+<!--                                        <i class="fa fa-quote-right"></i>-->
+<!--                                        <img src="uploads/testi_03.png" alt="" class="img-responsive alignright">-->
+<!--                                        <h4>Venanda Mercy <small>- Newyork City</small></h4>-->
+<!--                                    </div>-->
+<!--                                    <div class="desc">-->
+<!--                                        <h3>Great & Talented Team!</h3>-->
+<!--                                        <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>-->
+<!--                                    </div>-->
+<!--                                    &lt;!&ndash; end testi-meta &ndash;&gt;-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; end testimonial &ndash;&gt;-->
+<!--                                <div class="testimonial clearfix">-->
+<!--                                    <div class="testi-meta">-->
+<!--                                        <i class="fa fa-quote-right"></i>-->
+<!--                                        <img src="uploads/testi_03.png" alt="" class="img-responsive alignright">-->
+<!--                                        <h4>Venanda Mercy <small>- Newyork City</small></h4>-->
+<!--                                    </div>-->
+<!--                                    <div class="desc">-->
+<!--                                        <h3> Great & Talented Team!</h3>-->
+<!--                                        <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>-->
+<!--                                    </div>-->
+<!--                                    &lt;!&ndash; end testi-meta &ndash;&gt;-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; end testimonial &ndash;&gt;-->
+<!--                            </div>&lt;!&ndash; end carousel &ndash;&gt;-->
+<!--                        </div>&lt;!&ndash; end col &ndash;&gt;-->
+<!--                    </div>&lt;!&ndash; end row &ndash;&gt;-->
+<!--                </div>&lt;!&ndash; end container &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; end section &ndash;&gt;-->
+
+            <div class="copyrights">
+                <div class="container">
+                    <div class="footer-distributed">
+                        <div class="footer-left">
+                            <p class="footer-links">
+                                <a th:href="@{/home}">Trang chủ</a>
+                                <a th:href="@{/service}">Dịch vụ</a>
+                                <a th:href="@{/contact}">Liên hệ</a>
+                                <a th:href="@{/booking}">Đặt lịch</a>
+                            </p>
+                            <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">StyleBarber</a> Design By : <a href="https://html.design/">html design</a></p>
+                        </div>
+                    </div>
+                </div><!-- end container -->
+            </div><!-- end copyrights -->
+        </div>
+    </div>
+</body>
+</html>

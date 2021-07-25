@@ -29,7 +29,8 @@ public class Employee {
     private String role;
     @Column(name = "gender")
     private boolean gender;
-//    private byte[] thumbnail;
+    @Column(name = "thumbnail_url", length = 200)
+    private String thumbnailUrl;
     @Column(name = "is_active")
     private boolean isActive;
     @Column(name = "email", length = 255)
@@ -50,7 +51,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String nickName, String phoneNumber, String password, String firstName, String lastName, String role, boolean gender, boolean isActive, String email, String homeAddress, Date dateOfBirth, boolean isOnlineBookingAvailable, Salon salon, List<Booking> bookings) {
+    public Employee(Long id, String nickName, String phoneNumber, String password, String firstName, String lastName, String role, boolean gender, boolean isActive,String thumbnailUrl, String email, String homeAddress, Date dateOfBirth, boolean isOnlineBookingAvailable, Salon salon, List<Booking> bookings) {
         this.id = id;
         this.nickName = nickName;
         this.phoneNumber = phoneNumber;
@@ -60,6 +61,7 @@ public class Employee {
         this.role = role;
         this.gender = gender;
         this.isActive = isActive;
+        this.thumbnailUrl = thumbnailUrl;
         this.email = email;
         this.homeAddress = homeAddress;
         this.dateOfBirth = dateOfBirth;
@@ -186,5 +188,13 @@ public class Employee {
 
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 }

@@ -41,6 +41,7 @@ public class SalonController {
         salon.setSalonName(salonDetails.getSalonName());
         salon.setAddress(salonDetails.getAddress());
         salon.setEmail(salonDetails.getEmail());
+        salon.setThumbnailUrl(salonDetails.getThumbnailUrl());
         salon.setPhoneNumber(salonDetails.getPhoneNumber());
         salon.setOpeningHour(salonDetails.getOpeningHour());
         salon.setMinuteInOneTimeSlot(salonDetails.getMinuteInOneTimeSlot());

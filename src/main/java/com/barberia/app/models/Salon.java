@@ -21,7 +21,8 @@ public class Salon {
     private String address;
     @Column(name = "email", length = 200)
     private String email;
-//    private byte[] thumbnail;
+    @Column(name = "thumbnail_url", length = 200)
+    private String thumbnailUrl;
     @Column(name = "phone_number", length = 100)
     private String phoneNumber;
     @Column(name = "opening_hour")
@@ -45,11 +46,12 @@ public class Salon {
     public Salon() {
     }
 
-    public Salon(Long id, String salonName, String address, String email, String phoneNumber, Time openingHour, int minuteInOneTimeSlot, boolean isAvailableForOnlineBooking, int numberOfTurnInOneTimeSlot, boolean isOpened, boolean isCarParkingAvailable, List<Employee> employees, List<Booking> bookings) {
+    public Salon(Long id, String salonName, String address, String email,String thumbnailUrl, String phoneNumber, Time openingHour, int minuteInOneTimeSlot, boolean isAvailableForOnlineBooking, int numberOfTurnInOneTimeSlot, boolean isOpened, boolean isCarParkingAvailable, List<Employee> employees, List<Booking> bookings) {
         this.id = id;
         this.salonName = salonName;
         this.address = address;
         this.email = email;
+        this.thumbnailUrl = thumbnailUrl;
         this.phoneNumber = phoneNumber;
         this.openingHour = openingHour;
         this.minuteInOneTimeSlot = minuteInOneTimeSlot;
@@ -163,5 +165,13 @@ public class Salon {
 
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 }
