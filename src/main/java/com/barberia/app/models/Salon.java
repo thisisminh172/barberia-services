@@ -25,8 +25,10 @@ public class Salon {
     private String thumbnailUrl;
     @Column(name = "phone_number", length = 100)
     private String phoneNumber;
-    @Column(name = "opening_hour")
-    private Time openingHour;
+    @Column(name = "opened_hour")
+    private Time openedHour;
+    @Column(name = "closed_hour")
+    private Time closedHour;
     @Column(name = "minute_in_one_time_slot")
     private int minuteInOneTimeSlot;
     @Column(name = "is_available_for_online_booking")
@@ -46,14 +48,15 @@ public class Salon {
     public Salon() {
     }
 
-    public Salon(Long id, String salonName, String address, String email,String thumbnailUrl, String phoneNumber, Time openingHour, int minuteInOneTimeSlot, boolean isAvailableForOnlineBooking, int numberOfTurnInOneTimeSlot, boolean isOpened, boolean isCarParkingAvailable, List<Employee> employees, List<Booking> bookings) {
+    public Salon(Long id, String salonName, String address, String email,String thumbnailUrl, String phoneNumber, Time openedHour, Time closedHour, int minuteInOneTimeSlot, boolean isAvailableForOnlineBooking, int numberOfTurnInOneTimeSlot, boolean isOpened, boolean isCarParkingAvailable, List<Employee> employees, List<Booking> bookings) {
         this.id = id;
         this.salonName = salonName;
         this.address = address;
         this.email = email;
         this.thumbnailUrl = thumbnailUrl;
         this.phoneNumber = phoneNumber;
-        this.openingHour = openingHour;
+        this.openedHour = openedHour;
+        this.closedHour = closedHour;
         this.minuteInOneTimeSlot = minuteInOneTimeSlot;
         this.isAvailableForOnlineBooking = isAvailableForOnlineBooking;
         this.numberOfTurnInOneTimeSlot = numberOfTurnInOneTimeSlot;
@@ -103,12 +106,20 @@ public class Salon {
         this.phoneNumber = phoneNumber;
     }
 
-    public Time getOpeningHour() {
-        return openingHour;
+    public Time getOpenedHour() {
+        return openedHour;
     }
 
-    public void setOpeningHour(Time openingHour) {
-        this.openingHour = openingHour;
+    public void setOpenedHour(Time openedHour) {
+        this.openedHour = openedHour;
+    }
+
+    public Time getClosedHour() {
+        return closedHour;
+    }
+
+    public void setClosedHour(Time closedHour) {
+        this.closedHour = closedHour;
     }
 
     public int getMinuteInOneTimeSlot() {

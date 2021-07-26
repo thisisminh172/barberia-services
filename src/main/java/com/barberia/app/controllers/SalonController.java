@@ -43,7 +43,8 @@ public class SalonController {
         salon.setEmail(salonDetails.getEmail());
         salon.setThumbnailUrl(salonDetails.getThumbnailUrl());
         salon.setPhoneNumber(salonDetails.getPhoneNumber());
-        salon.setOpeningHour(salonDetails.getOpeningHour());
+        salon.setOpenedHour(salonDetails.getOpenedHour());
+        salon.setClosedHour(salonDetails.getClosedHour());
         salon.setMinuteInOneTimeSlot(salonDetails.getMinuteInOneTimeSlot());
         salon.setAvailableForOnlineBooking(salonDetails.isAvailableForOnlineBooking());
         salon.setNumberOfTurnInOneTimeSlot(salonDetails.getNumberOfTurnInOneTimeSlot());

@@ -38,6 +38,8 @@ public class BookingController {
         Booking booking = bookingService.findById(id).get();
         booking.setChosenTimeSlot(bookingUpdate.getChosenTimeSlot());
         booking.setDescription(bookingUpdate.getDescription());
+        booking.setOnlineBooking(bookingUpdate.isOnlineBooking());
+        booking.setStatus(bookingUpdate.getStatus());
         booking.setEmployee(bookingUpdate.getEmployee());
         booking.setSalon(bookingUpdate.getSalon());
         return bookingService.save(booking);

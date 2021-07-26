@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layouts/admin-layout">
 <head>
@@ -8,7 +9,154 @@
 </head>
 <body>
     <div layout:fragment="content">
-        salon info
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header"><i class="fa fa-file-text-o"></i> Form elements</h3>
+                        <ol class="breadcrumb">
+                            <li><i class="fa fa-home"></i><a th:href="@{/admin/home}">Home</a></li>
+                            <li><i class="icon_document_alt"></i>Details</li>
+
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                Thông tin SALON
+                            </header>
+                            <div class="panel-body">
+                                <form class="form-horizontal " method="get">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label font-weight-bold">Tên Salon</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static" th:text="${salon.salonName}">BARBERIA</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Địa chỉ</label>
+                                        <div class="col-lg-10">
+                                            <p class="form-control-static" th:text="${salon.address}">address</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Email</label>
+                                        <div class="col-lg-10">
+                                            <p class="form-control-static" th:text="${salon.email}">email@example.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Số điện thoại</label>
+                                        <div class="col-lg-10">
+                                            <p class="form-control-static" th:text="${salon.phoneNumber}">email@example.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Mở cửa lúc</label>
+                                        <div class="col-lg-10">
+                                            <p class="form-control-static" th:text="${salon.openedHour}">email@example.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Đóng cửa lúc</label>
+                                        <div class="col-lg-10">
+                                            <p class="form-control-static" th:text="${salon.closedHour}">email@example.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Số phút cho một time-slot</label>
+                                        <div class="col-lg-10">
+                                            <p class="form-control-static" th:text="${salon.minuteInOneTimeSlot}">email@example.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Số lượt trong một time-slot</label>
+                                        <div class="col-lg-10">
+                                            <p class="form-control-static" th:text="${salon.numberOfTurnInOneTimeSlot}">email@example.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Mở đặt lịch online</label>
+                                        <div class="col-lg-10">
+                                            <p class="form-control-static btn btn-success btn-lg" th:if="${salon.isAvailableForOnlineBooking}">ĐƯỢC ĐẶT HẸN ONLINE</p>
+                                            <p class="form-control-static btn btn-danger btn-lg" th:if="${!salon.isAvailableForOnlineBooking}">ĐANG TẮT ĐẶT HẸN ONLINE</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Mở cửa</label>
+                                        <div class="col-lg-10">
+                                            <p class="form-control-static btn btn-success btn-lg" th:if="${salon.isOpened}">ĐANG MỞ CỬA</p>
+                                            <p class="form-control-static btn btn-danger btn-lg" th:if="${!salon.isOpened}">ĐANG ĐÓNG CỬA</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Đậu xe hơi</label>
+                                        <div class="col-lg-10">
+                                            <p class="form-control-static btn btn-success btn-lg" th:if="${salon.isCarParkingAvailable}">ĐƯỢC ĐẬU XE HƠI</p>
+                                            <p class="form-control-static btn btn-danger btn-lg" th:if="${!salon.isCarParkingAvailable}">KHÔNG ĐƯỢC ĐẬU</p>
+                                        </div>
+                                    </div>
+
+
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-sm-2 control-label">Help text</label>-->
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <input type="text" class="form-control">-->
+<!--                                            <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-sm-2 control-label">Rounder</label>-->
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <input type="text" class="form-control round-input">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-sm-2 control-label">Input focus</label>-->
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <input class="form-control" id="focusedInput" type="text" value="This is focused...">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-sm-2 control-label">Disabled</label>-->
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-sm-2 control-label">Placeholder</label>-->
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <input type="text" class="form-control" placeholder="placeholder">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-sm-2 control-label">Password</label>-->
+<!--                                        <div class="col-sm-10">-->
+<!--                                            <input type="password" class="form-control" placeholder="">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label class="col-lg-2 control-label">Static control</label>-->
+<!--                                        <div class="col-lg-10">-->
+<!--                                            <p class="form-control-static">email@example.com</p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <a class="btn btn-primary" th:href="@{/admin/salon/update-form}">Cập nhật mới</a>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        </section>
     </div>
 </body>
 </html>

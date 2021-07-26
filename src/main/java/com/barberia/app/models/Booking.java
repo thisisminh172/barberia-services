@@ -19,9 +19,12 @@ public class Booking {
     @Column(name = "chosen_time_slot")
     private Timestamp  chosenTimeSlot;
     //Customer can provide number of person come to shop
-    @Column(name = "description")
+    @Column(name = "description", length = 299)
     private String description;
-
+    @Column(name = "is_online_booking")
+    private boolean isOnlineBooking;
+    @Column(name="status", length = 50)
+    private String status;
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
@@ -43,10 +46,12 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(Long id, Timestamp chosenTimeSlot, String description, Employee employee, Customer customer, Salon salon, List<BookingDetail> bookingDetails, Turn turn) {
+    public Booking(Long id, Timestamp chosenTimeSlot, String description, boolean isOnlineBooking,String status, Employee employee, Customer customer, Salon salon, List<BookingDetail> bookingDetails, Turn turn) {
         this.id = id;
         this.chosenTimeSlot = chosenTimeSlot;
         this.description = description;
+        this.isOnlineBooking = isOnlineBooking;
+        this.status = status;
         this.employee = employee;
         this.customer = customer;
         this.salon = salon;
@@ -76,6 +81,22 @@ public class Booking {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isOnlineBooking() {
+        return isOnlineBooking;
+    }
+
+    public void setOnlineBooking(boolean onlineBooking) {
+        isOnlineBooking = onlineBooking;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Employee getEmployee() {
