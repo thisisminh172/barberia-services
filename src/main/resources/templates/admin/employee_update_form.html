@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/admin-layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Cập nhật thông tin nhân viên</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa-file-text-o"></i> Form elements</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a th:href="@{/admin/home}">Home</a></li>
+                        <li><i class="icon_document_alt"></i>Details</li>
+                        <li><i class="fa fa-file-text-o"></i>Update</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Cập nhật thông tin nhân viên
+                        </header>
+                        <div class="panel-body">
+                            <form class="form-horizontal" th:action="@{/admin/employees/update}" method="put">
+                                <input type="hidden" name="id" th:value="${employee.id}" class="form-control">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Tên gọi</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" th:value="${employee.nickName}" name="nickName" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Họ</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="firstName" th:value="${employee.firstName}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Tên</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="lastName" th:value="${employee.lastName}" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Số điện thoại</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="phoneNumber" th:value="${employee.phoneNumber}" >
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Chức vụ</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" th:value="${employee.role}" name="role">
+                                            <option th:each="r:${roleList}" th:value="${r}" th:text="${r}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="email" th:value="${employee.email}">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Mật khẩu</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="password" th:value="${employee.password}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Địa chỉ nhà</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="homeAddress" th:value="${employee.homeAddress}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Ngày sinh</label>
+                                    <div class="col-sm-10">
+
+                                        <input type="date" class="form-control" name="dateOfBirth" th:value="${employee.dateOfBirth}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Đang hoạt động</label>
+                                    <div class="col-sm-10">
+
+                                        <input style="width: 20px" type="checkbox" class="checkbox form-control" th:checked="${employee.isActive()}" name="active">
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Nhận online booking</label>
+                                    <div class="col-sm-10">
+
+                                        <input style="width: 20px" type="checkbox" class="checkbox form-control" th:checked="${employee.isOnlineBookingAvailable()}" name="onlineBookingAvailable">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Giới tính</label>
+                                    <div class="col-sm-10">
+
+                                        <div class="radios">
+                                            <label class="label_radio" for="radio-01">
+                                                <input name="gender" th:checked="${employee.getGender()}=='male'" value="male" id="radio-01" type="radio"/> Nam
+                                            </label>
+                                            <label class="label_radio" for="radio-02">
+                                                <input name="gender" th:checked="${employee.getGender()}=='female'" value="female" id="radio-02" type="radio"/> Nữ
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button class="btn btn-primary" type="submit">CẬP NHẬT</button>
+                                        <a class="btn btn-default" th:href="@{/admin/employees}">HỦY</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+</body>
+</html>

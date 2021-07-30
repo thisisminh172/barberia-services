@@ -21,8 +21,8 @@ public class Booking {
     //Customer can provide number of person come to shop
     @Column(name = "description", length = 299)
     private String description;
-    @Column(name = "is_online_booking")
-    private boolean isOnlineBooking;
+    @Column(name = "online_booking")
+    private boolean onlineBooking;
     @Column(name="status", length = 50)
     private String status;
     @ManyToOne
@@ -46,11 +46,11 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(Long id, Timestamp chosenTimeSlot, String description, boolean isOnlineBooking,String status, Employee employee, Customer customer, Salon salon, List<BookingDetail> bookingDetails, Turn turn) {
+    public Booking(Long id, Timestamp chosenTimeSlot, String description, boolean onlineBooking,String status, Employee employee, Customer customer, Salon salon, List<BookingDetail> bookingDetails, Turn turn) {
         this.id = id;
         this.chosenTimeSlot = chosenTimeSlot;
         this.description = description;
-        this.isOnlineBooking = isOnlineBooking;
+        this.onlineBooking = onlineBooking;
         this.status = status;
         this.employee = employee;
         this.customer = customer;
@@ -84,11 +84,11 @@ public class Booking {
     }
 
     public boolean isOnlineBooking() {
-        return isOnlineBooking;
+        return onlineBooking;
     }
 
     public void setOnlineBooking(boolean onlineBooking) {
-        isOnlineBooking = onlineBooking;
+        this.onlineBooking = onlineBooking;
     }
 
     public String getStatus() {

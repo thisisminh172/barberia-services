@@ -1,0 +1,39 @@
+
+.input-phone-number-form-wrapper{
+    padding: 15px 20px;
+    background-color: red;
+    position: absolute;
+    top: 470px;
+    left: 470px;
+    z-index: 1000;
+    margin: 0 auto;
+    background: linear-gradient(180deg,#81274d,#c71155);
+    border-radius: 8px;
+    max-width: 545px;
+}
+
+.input-phone-number-form-wrapper .slogan{
+    font-size: 26px;
+}
+.input-phone-number-form-wrapper .text{
+    font-size: 16px;
+}
+.input-phone-number-form-wrapper .slogan,
+.input-phone-number-form-wrapper .text{
+    color: #fff;
+}
+
+.input-form-box{
+    padding-left: 15px;
+    height: 54px;
+    font-size: 20px;
+    border-radius: 6px;
+}
+.btn-input-phone-number{
+    border-radius: 6px;
+    padding: 0 5px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #fc3;
+    color: #000;
+}

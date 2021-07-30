@@ -28,35 +28,37 @@
                             Cập nhật SALON
                         </header>
                         <div class="panel-body">
-                            <form class="form-horizontal " method="get">
+                            <form class="form-horizontal" th:action="@{/admin/salon/update}" method="put"  th:object="${salon}">
+                                <input type="hidden" th:field="*{id}" class="form-control">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Tên Salon</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" th:field="*{salonName}"  class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Địa chỉ</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" th:field="*{address}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" th:field="*{email}" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Số điện thoại</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" th:field="*{phoneNumber}" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Mở cửa lúc</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control">
+                                        <select class="form-control" th:field="*{openedHour}" name="openedHour">
+                                            <option th:value="${salon.openedHour}" th:text="${salon.openedHour}" selected></option>
                                             <option value="08:00:00">08:00:00</option>
                                             <option value="09:00:00">09:00:00</option>
                                             <option value="10:00:00">10:00:00</option>
@@ -69,7 +71,8 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Đóng cửa lúc</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control">
+                                        <select class="form-control" th:field="*{closedHour}" name="closedHour">
+                                            <option th:value="${salon.closedHour}" th:text="${salon.closedHour}" selected></option>
                                             <option value="15:00:00">15:00:00</option>
                                             <option value="16:00:00">16:00:00</option>
                                             <option value="17:00:00">17:00:00</option>
@@ -84,42 +87,69 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Số phút cho một time-slot</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" th:field="*{minuteInOneTimeSlot}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Số lượt trong một time-slot</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" th:field="*{numberOfTurnInOneTimeSlot}">
                                         <span class="help-block text-danger">Không được vượt quá số lượng nhân viên</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Mở đặt lịch online</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option value="">Tắt đặt lịch online</option>
-                                            <option value="1">Mở đặt lịch online</option>
+<!--                                        <select class="form-control" th:field="*{isAvailableForOnlineBooking}">-->
+<!--                                            <option th:value="${salon.isAvailableForOnlineBooking?1:0}" selected th:text="${salon.isAvailableForOnlineBooking ? 'Mở đặt lịch online' : 'Tắt đặt lịch online'}"></option>-->
+<!--                                            <option th:value="0">Tắt đặt lịch online</option>-->
+<!--                                            <option th:value="1">Mở đặt lịch online</option>-->
 
-                                        </select>
+<!--                                        </select>-->
+                                        <div class="radios">
+                                            <label class="label_radio" for="radio-01">
+                                                <input name="isAvailableForOnlineBooking" value="false" id="radio-01" type="radio" th:checked="${!salon.isAvailableForOnlineBooking}" /> TẮT ĐẶT LỊCH ONLINE
+                                            </label>
+                                            <label class="label_radio" for="radio-02">
+                                                <input name="isAvailableForOnlineBooking"  value="true" id="radio-02" type="radio" th:checked="${salon.isAvailableForOnlineBooking}" /> MỞ ĐẶT LỊCH ONLINE
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Mở cửa</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option value="0">ĐÓNG CỬA</option>
-                                            <option value="1">MỞ CỬA</option>
-                                        </select>
+<!--                                        <select class="form-control" th:field="*{isOpened}">-->
+<!--                                            <option th:value="${salon.isOpened?1:0}" selected th:text="${salon.isOpened ? 'MỞ CỬA' : 'ĐÓNG CỬA'}"></option>-->
+<!--                                            <option th:value="0">ĐÓNG CỬA</option>-->
+<!--                                            <option th:value="1">MỞ CỬA</option>-->
+<!--                                        </select>-->
+                                        <div class="radios">
+                                            <label class="label_radio" for="radio-011">
+                                                <input id="radio-011" name="isOpened" value="false" type="radio" th:checked="${!salon.isOpened}" /> ĐÓNG CỬA
+                                            </label>
+                                            <label class="label_radio" for="radio-021">
+                                                <input id="radio-021" name="isOpened" value="true" type="radio" th:checked="${salon.isOpened}" /> MỞ CỬA
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Đậu xe hơi</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control">
-                                            <option value="0">Không được đậu xe hơi</option>
-                                            <option value="1">Được đậu xe hơi</option>
-                                        </select>
+<!--                                        <select class="form-control" th:field="*{isCarParkingAvailable}">-->
+<!--                                            <option th:value="${salon.isCarParkingAvailable?1:0}" selected th:text="${salon.isCarParkingAvailable ? 'Được đậu xe hơi' : 'Không được đậu xe hơi'}"></option>-->
+<!--                                            <option value="0">Không được đậu xe hơi</option>-->
+<!--                                            <option value="1">Được đậu xe hơi</option>-->
+<!--                                        </select>-->
+                                        <div class="radios">
+                                            <label class="label_radio" for="radio-012">
+                                                <input id="radio-012" name="isCarParkingAvailable" value="false" th:checked="${!salon.isCarParkingAvailable}" type="radio" /> Không được đậu xe hơi
+                                            </label>
+                                            <label class="label_radio" for="radio-022">
+                                                <input id="radio-022" name="isCarParkingAvailable" value="true" th:checked="${salon.isCarParkingAvailable}" type="radio" /> Được đậu xe hơi
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
 <!--                                <div class="form-group">-->
@@ -165,6 +195,12 @@
 <!--                                        <p class="form-control-static">email@example.com</p>-->
 <!--                                    </div>-->
 <!--                                </div>-->
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button class="btn btn-primary" type="submit">CẬP NHẬT</button>
+                                        <a class="btn btn-default" th:href="@{/admin/salon}">HỦY</a>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </section>

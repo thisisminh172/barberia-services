@@ -1,60 +1,31 @@
-package com.barberia.app.models;
+package com.barberia.app.dto;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import org.springframework.format.annotation.DateTimeFormat;
+import com.barberia.app.models.Salon;
 
 import javax.persistence.*;
+import java.sql.Date;
 
-import java.util.Date;
-import java.util.List;
-
-@Entity
-@Table(name = "employee")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Employee {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EmployeeDto {
     private Long id;
-    @Column(name = "nick_name",length = 100)
     private String nickName;
-    @Column(name = "phone_number", length = 100)
     private String phoneNumber;
-    @Column(name = "password", length = 255)
     private String password;
-    @Column(name = "first_name", length = 100)
     private String firstName;
-    @Column(name = "last_name", length = 100)
     private String lastName;
-    @Column(name = "role", length = 100)
     private String role;
-    @Column(name = "gender", length = 50)
     private String gender;
-    @Column(name = "thumbnail_url", length = 200)
     private String thumbnailUrl;
-    @Column(name = "active")
-    private boolean active;
-    @Column(name = "email", length = 255)
+    private String isActive;
     private String email;
-    @Column(name = "home_address", length = 200)
     private String homeAddress;
-    @Column(name = "date_of_birth")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
-    @Column(name = "online_booking_available")
-    private boolean onlineBookingAvailable;
-    @ManyToOne
-    @JoinColumn(name = "salon_id", referencedColumnName = "id")
+    private String isOnlineBookingAvailable;
     private Salon salon;
 
-    @OneToMany(mappedBy = "employee")
-    private List<Booking> bookings;
-
-    public Employee() {
+    public EmployeeDto() {
     }
 
-    public Employee(Long id, String nickName, String phoneNumber, String password, String firstName, String lastName, String role, String gender, boolean active,String thumbnailUrl, String email, String homeAddress, Date dateOfBirth, boolean onlineBookingAvailable, Salon salon, List<Booking> bookings) {
+    public EmployeeDto(Long id, String nickName, String phoneNumber, String password, String firstName, String lastName, String role, String gender, String thumbnailUrl, String isActive, String email, String homeAddress, Date dateOfBirth, String isOnlineBookingAvailable, Salon salon) {
         this.id = id;
         this.nickName = nickName;
         this.phoneNumber = phoneNumber;
@@ -63,14 +34,13 @@ public class Employee {
         this.lastName = lastName;
         this.role = role;
         this.gender = gender;
-        this.active = active;
         this.thumbnailUrl = thumbnailUrl;
+        this.isActive = isActive;
         this.email = email;
         this.homeAddress = homeAddress;
         this.dateOfBirth = dateOfBirth;
-        this.onlineBookingAvailable = onlineBookingAvailable;
+        this.isOnlineBookingAvailable = isOnlineBookingAvailable;
         this.salon = salon;
-        this.bookings = bookings;
     }
 
     public Long getId() {
@@ -137,7 +107,21 @@ public class Employee {
         this.gender = gender;
     }
 
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
 
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
+    }
+
+    public String getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(String isActive) {
+        this.isActive = isActive;
+    }
 
     public String getEmail() {
         return email;
@@ -163,20 +147,12 @@ public class Employee {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public boolean isActive() {
-        return active;
+    public String getIsOnlineBookingAvailable() {
+        return isOnlineBookingAvailable;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public boolean isOnlineBookingAvailable() {
-        return onlineBookingAvailable;
-    }
-
-    public void setOnlineBookingAvailable(boolean onlineBookingAvailable) {
-        this.onlineBookingAvailable = onlineBookingAvailable;
+    public void setIsOnlineBookingAvailable(String isOnlineBookingAvailable) {
+        this.isOnlineBookingAvailable = isOnlineBookingAvailable;
     }
 
     public Salon getSalon() {
@@ -185,21 +161,5 @@ public class Employee {
 
     public void setSalon(Salon salon) {
         this.salon = salon;
-    }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
-
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
-    }
-
-    public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
     }
 }

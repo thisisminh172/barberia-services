@@ -30,6 +30,7 @@ body {
     font-size: 15px;
     font-family: 'Titillium Web', sans-serif;
     line-height: 1.80857;
+    position: relative;
 }
 
 html, body{

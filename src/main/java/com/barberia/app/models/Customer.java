@@ -22,8 +22,8 @@ public class Customer {
     private String nickName;
     @Column(name = "email", length = 255)
     private String email;
-    @Column(name = "is_membership")
-    private boolean isMembership;
+    @Column(name = "membership")
+    private boolean membership;
     @Column(name = "membership_name", length = 100)
     private String membershipName;
 
@@ -33,13 +33,13 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Long id, String phoneNumber, String password, String nickName, String email, boolean isMembership, String membershipName, List<Booking> bookings) {
+    public Customer(Long id, String phoneNumber, String password, String nickName, String email, boolean membership, String membershipName, List<Booking> bookings) {
         this.id = id;
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.nickName = nickName;
         this.email = email;
-        this.isMembership = isMembership;
+        this.membership = membership;
         this.membershipName = membershipName;
         this.bookings = bookings;
     }
@@ -85,11 +85,11 @@ public class Customer {
     }
 
     public boolean isMembership() {
-        return isMembership;
+        return membership;
     }
 
     public void setMembership(boolean membership) {
-        isMembership = membership;
+        this.membership = membership;
     }
 
     public String getMembershipName() {

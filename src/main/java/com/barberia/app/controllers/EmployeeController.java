@@ -24,7 +24,7 @@ public class EmployeeController {
 
     // GET EMPLOYEE BY ID
     @GetMapping("employees/{id}")
-    public Optional<Employee> findById(@PathVariable Long id){
+    public Employee findById(@PathVariable Long id){
         return employeeService.findById(id);
     }
     // CREATE EMPLOYEE
@@ -35,14 +35,14 @@ public class EmployeeController {
     // UPDATE EMPLOYEE
     @PutMapping("employees/{id}")
     public Employee updateEmployee(@PathVariable Long id, @RequestBody Employee employeeUpdate){
-        Employee employee = employeeService.findById(id).get();
+        Employee employee = employeeService.findById(id);
         employee.setNickName(employeeUpdate.getNickName());
         employee.setPhoneNumber(employeeUpdate.getPhoneNumber());
         employee.setPassword(employeeUpdate.getPassword());
         employee.setFirstName(employeeUpdate.getFirstName());
         employee.setLastName(employeeUpdate.getLastName());
         employee.setRole(employeeUpdate.getRole());
-        employee.setGender(employeeUpdate.isGender());
+        employee.setGender(employeeUpdate.getGender());
         employee.setActive(employeeUpdate.isActive());
         employee.setEmail(employeeUpdate.getEmail());
         employee.setHomeAddress(employeeUpdate.getHomeAddress());

@@ -19,8 +19,8 @@ public class EmployeeService {
     }
 
     // GET EMPLOYEE BY ID
-    public Optional<Employee> findById(Long id){
-        return employeeRepository.findById(id);
+    public Employee findById(Long id){
+        return employeeRepository.findById(id).get();
     }
 
     // DELETE EMPLOYEE

@@ -20,11 +20,13 @@ public class Service {
     private double originalPrice;
     @Column(name = "discount_price")
     private double discountPrice;
-    @Column(name = "is_discount")
-    private boolean isDiscount;
+    @Column(name = "discount")
+    private boolean discount;
+    @Column(name = "available")
+    private boolean available;
     @Column(name = "time_consume")
     private int timeConsume;
-    @Column(name = "description", length = 300)
+    @Column(name = "description", length = 5000)
     private String description;
 
     @OneToMany(mappedBy = "service")
@@ -33,15 +35,17 @@ public class Service {
     public Service() {
     }
 
-    public Service(Long id, String serviceName, double originalPrice, double discountPrice, boolean isDiscount, int timeConsume, String description, List<BookingDetail> bookingDetails) {
+    public Service(Long id, String serviceName, double originalPrice, double discountPrice, boolean discount, boolean available, int timeConsume, String description, List<BookingDetail> bookingDetails) {
         this.id = id;
         this.serviceName = serviceName;
         this.originalPrice = originalPrice;
         this.discountPrice = discountPrice;
-        this.isDiscount = isDiscount;
+        this.discount = discount;
+        this.available = available;
         this.timeConsume = timeConsume;
         this.description = description;
         this.bookingDetails = bookingDetails;
+
     }
 
     public Long getId() {
@@ -77,11 +81,19 @@ public class Service {
     }
 
     public boolean isDiscount() {
-        return isDiscount;
+        return discount;
     }
 
     public void setDiscount(boolean discount) {
-        isDiscount = discount;
+        this.discount = discount;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public int getTimeConsume() {
