@@ -80,23 +80,23 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label">Mở đặt lịch online</label>
                                         <div class="col-lg-10">
-                                            <p class="form-control-static btn btn-success btn-lg" th:if="${salon.isAvailableForOnlineBooking}=='true'">ĐƯỢC ĐẶT HẸN ONLINE</p>
-                                            <p class="form-control-static btn btn-danger btn-lg" th:if="${salon.isAvailableForOnlineBooking}=='false'">ĐANG TẮT ĐẶT HẸN ONLINE</p>
+                                            <p class="form-control-static btn btn-success btn-lg" th:if="${salon.availableForOnlineBooking}==true">ĐƯỢC ĐẶT HẸN ONLINE</p>
+                                            <p class="form-control-static btn btn-danger btn-lg" th:if="${salon.availableForOnlineBooking}==false">ĐANG TẮT ĐẶT HẸN ONLINE</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label">Mở cửa</label>
                                         <div class="col-lg-10">
-                                            <p class="form-control-static btn btn-success btn-lg" th:if="${salon.isOpened}=='true'">ĐANG MỞ CỬA</p>
-                                            <p class="form-control-static btn btn-danger btn-lg" th:if="${salon.isOpened}=='false'">ĐANG ĐÓNG CỬA</p>
+                                            <p class="form-control-static btn btn-success btn-lg" th:if="${salon.opened}==true">ĐANG MỞ CỬA</p>
+                                            <p class="form-control-static btn btn-danger btn-lg" th:if="${salon.opened}==false">ĐANG ĐÓNG CỬA</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label">Đậu xe hơi</label>
                                         <div class="col-lg-10">
-                                            <p class="form-control-static btn btn-success btn-lg" th:if="${salon.isCarParkingAvailable}=='true'">ĐƯỢC ĐẬU XE HƠI</p>
-                                            <p class="form-control-static btn btn-danger btn-lg" th:if="${salon.isCarParkingAvailable}=='false'">KHÔNG ĐƯỢC ĐẬU</p>
+                                            <p class="form-control-static btn btn-success btn-lg" th:if="${salon.carParkingAvailable}==true">ĐƯỢC ĐẬU XE HƠI</p>
+                                            <p class="form-control-static btn btn-danger btn-lg" th:if="${salon.carParkingAvailable}==false">KHÔNG ĐƯỢC ĐẬU</p>
                                         </div>
                                     </div>
 

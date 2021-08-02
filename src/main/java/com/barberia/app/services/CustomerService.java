@@ -32,4 +32,8 @@ public class CustomerService {
     public Customer save(Customer customer){
         return customerRepository.save(customer);
     }
+
+    public Customer findByPhoneNumber(String phoneNumber){
+        return customerRepository.findByPhoneNumber(phoneNumber);
+    }
 }

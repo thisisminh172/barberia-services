@@ -1,13 +1,23 @@
 package com.barberia.app.clientControllers;
 
+import com.barberia.app.models.Booking;
+import com.barberia.app.services.BookingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.awt.print.Book;
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Controller
 public class ClientHomeController {
+    @Autowired
+    private BookingService bookingService;
 
     @RequestMapping(path = {"/home", "/"})
     public String index() {
+
         return "client/home";
     }
 
@@ -31,10 +41,6 @@ public class ClientHomeController {
         return "client/service";
     }
 
-    @RequestMapping("/booking")
-    public String showBooking() {
-        return "client/booking";
-    }
 
     @RequestMapping("/hair-style")
     public String showHairStyle() {

@@ -2,9 +2,11 @@ package com.barberia.app.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -26,19 +28,19 @@ public class Salon {
     @Column(name = "phone_number", length = 100)
     private String phoneNumber;
     @Column(name = "opened_hour")
-    private Time openedHour;
+    private LocalTime openedHour;
     @Column(name = "closed_hour")
-    private Time closedHour;
+    private LocalTime closedHour;
     @Column(name = "minute_in_one_time_slot")
     private int minuteInOneTimeSlot;
-    @Column(name = "is_available_for_online_booking")
-    private boolean isAvailableForOnlineBooking;
+    @Column(name = "available_for_online_booking")
+    private boolean availableForOnlineBooking;
     @Column(name = "number_of_turn_in_one_time_slot")
     private int numberOfTurnInOneTimeSlot;
-    @Column(name = "is_opened")
-    private boolean isOpened;
-    @Column(name = "is_car_parking_available")
-    private boolean isCarParkingAvailable;
+    @Column(name = "opened")
+    private boolean opened;
+    @Column(name = "car_parking_available")
+    private boolean carParkingAvailable;
     @OneToMany(mappedBy = "salon")
     private List<Employee> employees;
 
@@ -48,7 +50,7 @@ public class Salon {
     public Salon() {
     }
 
-    public Salon(Long id, String salonName, String address, String email,String thumbnailUrl, String phoneNumber, Time openedHour, Time closedHour, int minuteInOneTimeSlot, boolean isAvailableForOnlineBooking, int numberOfTurnInOneTimeSlot, boolean isOpened, boolean isCarParkingAvailable, List<Employee> employees, List<Booking> bookings) {
+    public Salon(Long id, String salonName, String address, String email,String thumbnailUrl, String phoneNumber, LocalTime openedHour, LocalTime closedHour, int minuteInOneTimeSlot, boolean availableForOnlineBooking, int numberOfTurnInOneTimeSlot, boolean opened, boolean carParkingAvailable, List<Employee> employees, List<Booking> bookings) {
         this.id = id;
         this.salonName = salonName;
         this.address = address;
@@ -58,10 +60,10 @@ public class Salon {
         this.openedHour = openedHour;
         this.closedHour = closedHour;
         this.minuteInOneTimeSlot = minuteInOneTimeSlot;
-        this.isAvailableForOnlineBooking = isAvailableForOnlineBooking;
+        this.availableForOnlineBooking = availableForOnlineBooking;
         this.numberOfTurnInOneTimeSlot = numberOfTurnInOneTimeSlot;
-        this.isOpened = isOpened;
-        this.isCarParkingAvailable = isCarParkingAvailable;
+        this.opened = opened;
+        this.carParkingAvailable = carParkingAvailable;
         this.employees = employees;
         this.bookings = bookings;
     }
@@ -106,19 +108,19 @@ public class Salon {
         this.phoneNumber = phoneNumber;
     }
 
-    public Time getOpenedHour() {
+    public LocalTime getOpenedHour() {
         return openedHour;
     }
 
-    public void setOpenedHour(Time openedHour) {
+    public void setOpenedHour(LocalTime openedHour) {
         this.openedHour = openedHour;
     }
 
-    public Time getClosedHour() {
+    public LocalTime getClosedHour() {
         return closedHour;
     }
 
-    public void setClosedHour(Time closedHour) {
+    public void setClosedHour(LocalTime closedHour) {
         this.closedHour = closedHour;
     }
 
@@ -131,11 +133,11 @@ public class Salon {
     }
 
     public boolean isAvailableForOnlineBooking() {
-        return isAvailableForOnlineBooking;
+        return availableForOnlineBooking;
     }
 
     public void setAvailableForOnlineBooking(boolean availableForOnlineBooking) {
-        isAvailableForOnlineBooking = availableForOnlineBooking;
+        this.availableForOnlineBooking = availableForOnlineBooking;
     }
 
     public int getNumberOfTurnInOneTimeSlot() {
@@ -147,19 +149,19 @@ public class Salon {
     }
 
     public boolean isOpened() {
-        return isOpened;
+        return opened;
     }
 
     public void setOpened(boolean opened) {
-        isOpened = opened;
+        this.opened = opened;
     }
 
     public boolean isCarParkingAvailable() {
-        return isCarParkingAvailable;
+        return carParkingAvailable;
     }
 
     public void setCarParkingAvailable(boolean carParkingAvailable) {
-        isCarParkingAvailable = carParkingAvailable;
+        this.carParkingAvailable = carParkingAvailable;
     }
 
     public List<Employee> getEmployees() {

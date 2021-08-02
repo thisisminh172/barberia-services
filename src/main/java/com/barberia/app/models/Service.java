@@ -119,4 +119,8 @@ public class Service {
     public void setBookingDetails(List<BookingDetail> bookingDetails) {
         this.bookingDetails = bookingDetails;
     }
+
+    public int getPriceFormat() {
+        return (int) originalPrice;
+    }
 }

@@ -1,10 +1,12 @@
 package com.barberia.app.services;
 
 import com.barberia.app.models.Booking;
+import com.barberia.app.models.Salon;
 import com.barberia.app.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +14,8 @@ import java.util.Optional;
 public class BookingService {
     @Autowired
     private BookingRepository bookingRepository;
+    @Autowired
+    private SalonService salonService;
 
     // GET ALL BOOKINGs
     public List<Booking> findAll(){
@@ -32,4 +36,12 @@ public class BookingService {
     public Booking save(Booking booking){
         return bookingRepository.save(booking);
     }
+
+    public List<Booking> findOnlineBooking(){
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+        return bookingRepository.findByStatusAndChosenTimeSlotAfter("online",yesterday);
+    }
+
+
+
 }

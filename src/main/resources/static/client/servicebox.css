@@ -1,0 +1,31 @@
+.overflow-box{
+    overflow: auto;
+    border-radius: 5px;
+    height: 250px;
+    color: #000;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 14px rgb(0 0 0 / 20%);
+    font-size:20px;
+}
+.overflow-box .services-container{
+    margin: 1.5rem;
+}
+
+.big-checkbox{
+    width: 30px;
+    height: 30px;
+}
+.big-radio{
+    width: 20px;
+    height: 20px;
+}
+.time-table{
+    box-shadow: 0 5px 14px rgb(0 0 0 / 20%);
+}
+
+.hover-text:hover{
+    color: #ec2f47;
+    transition: 0.3s;
+    font-weight: bold;
+}

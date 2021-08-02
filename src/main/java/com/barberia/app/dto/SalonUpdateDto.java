@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Time;
+import java.time.LocalTime;
 
 public class SalonUpdateDto {
     private Long id;
@@ -13,8 +14,8 @@ public class SalonUpdateDto {
     private String email;
     private String thumbnailUrl;
     private String phoneNumber;
-    private Time openedHour;
-    private Time closedHour;
+    private LocalTime openedHour;
+    private LocalTime closedHour;
     private int minuteInOneTimeSlot;
     private String isAvailableForOnlineBooking;
     private int numberOfTurnInOneTimeSlot;
@@ -24,7 +25,7 @@ public class SalonUpdateDto {
     public SalonUpdateDto() {
     }
 
-    public SalonUpdateDto(Long id, String salonName, String address, String email, String thumbnailUrl, String phoneNumber, Time openedHour, Time closedHour, int minuteInOneTimeSlot, String isAvailableForOnlineBooking, int numberOfTurnInOneTimeSlot, String isOpened, String isCarParkingAvailable) {
+    public SalonUpdateDto(Long id, String salonName, String address, String email, String thumbnailUrl, String phoneNumber, LocalTime openedHour, LocalTime closedHour, int minuteInOneTimeSlot, String isAvailableForOnlineBooking, int numberOfTurnInOneTimeSlot, String isOpened, String isCarParkingAvailable) {
         this.id = id;
         this.salonName = salonName;
         this.address = address;
@@ -88,19 +89,19 @@ public class SalonUpdateDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public Time getOpenedHour() {
+    public LocalTime getOpenedHour() {
         return openedHour;
     }
 
-    public void setOpenedHour(Time openedHour) {
+    public void setOpenedHour(LocalTime openedHour) {
         this.openedHour = openedHour;
     }
 
-    public Time getClosedHour() {
+    public LocalTime getClosedHour() {
         return closedHour;
     }
 
-    public void setClosedHour(Time closedHour) {
+    public void setClosedHour(LocalTime closedHour) {
         this.closedHour = closedHour;
     }
 

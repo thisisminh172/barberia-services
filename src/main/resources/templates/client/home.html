@@ -45,13 +45,13 @@
     </div><!-- end section -->
 
     <div class="input-phone-number-form-wrapper">
-        <form action="" method="post">
+        <form th:action="@{/booking/get-customer}" method="post">
             <div class="form-title">
                 <div class="slogan">ĐẶT LỊCH GIỮ CHỖ CHỈ 30 GIÂY</div>
                 <div class="text">Cắt xong trả tiền, hủy lịch không sao</div>
             </div>
             <div class="input-form">
-                <input type="text" class="input-form-box" name="phoneNumber" placeholder="Nhập SDT để đặt lịch">
+                <input type="text" class="input-form-box" required name="phoneNumber" placeholder="Nhập SDT để đặt lịch">
                 <input type="submit" class="btn-input-phone-number" value="ĐẶT LỊCH NGAY">
             </div>
         </form>

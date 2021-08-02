@@ -57,31 +57,22 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Mở cửa lúc</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" th:field="*{openedHour}" name="openedHour">
-                                            <option th:value="${salon.openedHour}" th:text="${salon.openedHour}" selected></option>
-                                            <option value="08:00:00">08:00:00</option>
-                                            <option value="09:00:00">09:00:00</option>
-                                            <option value="10:00:00">10:00:00</option>
-                                            <option value="11:00:00">11:00:00</option>
-                                            <option value="12:00:00">12:00:00</option>
-
-                                        </select>
+<!--                                        <select class="form-control" th:field="*{openedHour}">-->
+<!--                                            <option th:value="${salon.openedHour}" th:text="${salon.openedHour}" selected></option>-->
+<!--                                            <option th:value="${openTimeList.get(0)}" th:text="${openTimeList.get(0)}"></option>-->
+<!--                                        </select>-->
+                                        <input type="text" class="form-control" th:field="*{openedHour}" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Đóng cửa lúc</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" th:field="*{closedHour}" name="closedHour">
-                                            <option th:value="${salon.closedHour}" th:text="${salon.closedHour}" selected></option>
-                                            <option value="15:00:00">15:00:00</option>
-                                            <option value="16:00:00">16:00:00</option>
-                                            <option value="17:00:00">17:00:00</option>
-                                            <option value="18:00:00">18:00:00</option>
-                                            <option value="19:00:00">19:00:00</option>
-                                            <option value="20:00:00">20:00:00</option>
-                                            <option value="21:00:00">21:00:00</option>
+<!--                                        <select class="form-control" th:field="*{closedHour}">-->
+<!--                                            <option th:value="${salon.closedHour}" th:text="${salon.closedHour}" selected></option>-->
+<!--                                            <option th:each="t: ${closeTimeList}" th:value="${t}" th:text="${t}"></option>-->
 
-                                        </select>
+<!--                                        </select>-->
+                                        <input type="text" class="form-control" th:field="*{closedHour}" >
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -100,56 +91,19 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Mở đặt lịch online</label>
                                     <div class="col-sm-10">
-<!--                                        <select class="form-control" th:field="*{isAvailableForOnlineBooking}">-->
-<!--                                            <option th:value="${salon.isAvailableForOnlineBooking?1:0}" selected th:text="${salon.isAvailableForOnlineBooking ? 'Mở đặt lịch online' : 'Tắt đặt lịch online'}"></option>-->
-<!--                                            <option th:value="0">Tắt đặt lịch online</option>-->
-<!--                                            <option th:value="1">Mở đặt lịch online</option>-->
-
-<!--                                        </select>-->
-                                        <div class="radios">
-                                            <label class="label_radio" for="radio-01">
-                                                <input name="isAvailableForOnlineBooking" value="false" id="radio-01" type="radio" th:checked="${!salon.isAvailableForOnlineBooking}" /> TẮT ĐẶT LỊCH ONLINE
-                                            </label>
-                                            <label class="label_radio" for="radio-02">
-                                                <input name="isAvailableForOnlineBooking"  value="true" id="radio-02" type="radio" th:checked="${salon.isAvailableForOnlineBooking}" /> MỞ ĐẶT LỊCH ONLINE
-                                            </label>
-                                        </div>
+                                        <input style="width: 20px" type="checkbox" class="checkbox form-control" th:checked="${salon.isAvailableForOnlineBooking()}" th:field="*{availableForOnlineBooking}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Mở cửa</label>
+                                    <label class="col-sm-2 control-label">MỞ CỬA</label>
                                     <div class="col-sm-10">
-<!--                                        <select class="form-control" th:field="*{isOpened}">-->
-<!--                                            <option th:value="${salon.isOpened?1:0}" selected th:text="${salon.isOpened ? 'MỞ CỬA' : 'ĐÓNG CỬA'}"></option>-->
-<!--                                            <option th:value="0">ĐÓNG CỬA</option>-->
-<!--                                            <option th:value="1">MỞ CỬA</option>-->
-<!--                                        </select>-->
-                                        <div class="radios">
-                                            <label class="label_radio" for="radio-011">
-                                                <input id="radio-011" name="isOpened" value="false" type="radio" th:checked="${!salon.isOpened}" /> ĐÓNG CỬA
-                                            </label>
-                                            <label class="label_radio" for="radio-021">
-                                                <input id="radio-021" name="isOpened" value="true" type="radio" th:checked="${salon.isOpened}" /> MỞ CỬA
-                                            </label>
-                                        </div>
+                                        <input style="width: 20px" type="checkbox" class="checkbox form-control" th:checked="${salon.isOpened()}" th:field="*{opened}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Đậu xe hơi</label>
                                     <div class="col-sm-10">
-<!--                                        <select class="form-control" th:field="*{isCarParkingAvailable}">-->
-<!--                                            <option th:value="${salon.isCarParkingAvailable?1:0}" selected th:text="${salon.isCarParkingAvailable ? 'Được đậu xe hơi' : 'Không được đậu xe hơi'}"></option>-->
-<!--                                            <option value="0">Không được đậu xe hơi</option>-->
-<!--                                            <option value="1">Được đậu xe hơi</option>-->
-<!--                                        </select>-->
-                                        <div class="radios">
-                                            <label class="label_radio" for="radio-012">
-                                                <input id="radio-012" name="isCarParkingAvailable" value="false" th:checked="${!salon.isCarParkingAvailable}" type="radio" /> Không được đậu xe hơi
-                                            </label>
-                                            <label class="label_radio" for="radio-022">
-                                                <input id="radio-022" name="isCarParkingAvailable" value="true" th:checked="${salon.isCarParkingAvailable}" type="radio" /> Được đậu xe hơi
-                                            </label>
-                                        </div>
+                                        <input style="width: 20px" type="checkbox" class="checkbox form-control" th:checked="${salon.isCarParkingAvailable()}" th:field="*{carParkingAvailable}">
                                     </div>
                                 </div>
 <!--                                <div class="form-group">-->

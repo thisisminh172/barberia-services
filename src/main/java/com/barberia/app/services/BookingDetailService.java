@@ -1,5 +1,6 @@
 package com.barberia.app.services;
 
+import com.barberia.app.models.Booking;
 import com.barberia.app.models.BookingDetail;
 import com.barberia.app.repositories.BookingDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +34,7 @@ public class BookingDetailService {
         return bookingDetailRepository.save(bookingDetail);
     }
 
+    public List<BookingDetail> findByBookingId(Long bookingId){
+        return bookingDetailRepository.findByBookingId(bookingId);
+    }
 }

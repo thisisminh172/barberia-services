@@ -29,22 +29,8 @@ public class AdminHomeController {
     @GetMapping("/admin/salon")
     public String goSalonDetail(Model model){
         Salon salonDetails = salonService.findById(1l).get();
-        SalonUpdateDto salonUpdateDto = new SalonUpdateDto();
 
-        salonUpdateDto.setId(salonDetails.getId());
-        salonUpdateDto.setSalonName(salonDetails.getSalonName());
-        salonUpdateDto.setAddress(salonDetails.getAddress());
-        salonUpdateDto.setEmail(salonDetails.getEmail());
-        salonUpdateDto.setThumbnailUrl(salonDetails.getThumbnailUrl());
-        salonUpdateDto.setPhoneNumber(salonDetails.getPhoneNumber());
-        salonUpdateDto.setOpenedHour(salonDetails.getOpenedHour());
-        salonUpdateDto.setClosedHour(salonDetails.getClosedHour());
-        salonUpdateDto.setMinuteInOneTimeSlot(salonDetails.getMinuteInOneTimeSlot());
-        salonUpdateDto.setIsAvailableForOnlineBooking(salonDetails.isAvailableForOnlineBooking()==true?"true":"false");
-        salonUpdateDto.setNumberOfTurnInOneTimeSlot(salonDetails.getNumberOfTurnInOneTimeSlot());
-        salonUpdateDto.setIsOpened(salonDetails.isOpened()==true?"true":"false");
-        salonUpdateDto.setIsCarParkingAvailable(salonDetails.isCarParkingAvailable()==true?"true":"false");
-        model.addAttribute("salon", salonUpdateDto);
+        model.addAttribute("salon", salonDetails);
         return "admin/salon";
     }
 

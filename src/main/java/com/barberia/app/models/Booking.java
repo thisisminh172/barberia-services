@@ -2,9 +2,11 @@ package com.barberia.app.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -17,7 +19,7 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "chosen_time_slot")
-    private Timestamp  chosenTimeSlot;
+    private LocalDateTime chosenTimeSlot;
     //Customer can provide number of person come to shop
     @Column(name = "description", length = 299)
     private String description;
@@ -46,7 +48,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(Long id, Timestamp chosenTimeSlot, String description, boolean onlineBooking,String status, Employee employee, Customer customer, Salon salon, List<BookingDetail> bookingDetails, Turn turn) {
+    public Booking(Long id, LocalDateTime chosenTimeSlot, String description, boolean onlineBooking, String status, Employee employee, Customer customer, Salon salon, List<BookingDetail> bookingDetails, Turn turn) {
         this.id = id;
         this.chosenTimeSlot = chosenTimeSlot;
         this.description = description;
@@ -67,11 +69,11 @@ public class Booking {
         this.id = id;
     }
 
-    public Timestamp getChosenTimeSlot() {
+    public LocalDateTime getChosenTimeSlot() {
         return chosenTimeSlot;
     }
 
-    public void setChosenTimeSlot(Timestamp chosenTimeSlot) {
+    public void setChosenTimeSlot(LocalDateTime chosenTimeSlot) {
         this.chosenTimeSlot = chosenTimeSlot;
     }
 
