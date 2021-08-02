@@ -58,6 +58,7 @@ public class ClientBookingController {
         // LỌC những time đã full
         List<Booking> onlineBookings = bookingService.findOnlineBooking();
 
+        List<LocalDateTime> listTimeIsFull = MyFunction.getBookingsThatHaveMoreThanNumberOfBookingInOneTimeSlot(onlineBookings, salon.getNumberOfTurnInOneTimeSlot());
 
         for (int i = 0; i < 5; i++) {
             LocalDate nextDay = today.plusDays(1);
@@ -65,7 +66,11 @@ public class ClientBookingController {
             List<MyLocalDateTime> listOfDateTime = new ArrayList<MyLocalDateTime>();
             LocalTime tempTime = startTime;
             for(int k = 0; k< totalTimeSlot; k++){
-                listOfDateTime.add(new MyLocalDateTime(today.atTime(tempTime),true));
+                MyLocalDateTime newMyLocalDateTime = new MyLocalDateTime();
+                newMyLocalDateTime.setChosenTime(today.atTime(tempTime));
+                newMyLocalDateTime.setFull(false);
+                listOfDateTime.add(newMyLocalDateTime);
+
                 tempTime = tempTime.plusMinutes(minuteInOneTimeSlot);
             }
             PairDateAndDateTime pair = new PairDateAndDateTime();
@@ -73,6 +78,41 @@ public class ClientBookingController {
             pair.setValue(listOfDateTime);
             listPair.add(pair);
             today = today.plusDays(1);
+        }
+
+        for(PairDateAndDateTime p : listPair){
+            for(MyLocalDateTime d : p.getValue()){
+                for (int k = 0;k< listTimeIsFull.size();k++){
+                    if(d.getChosenTime().isEqual(listTimeIsFull.get(k))){
+                        d.setFull(true);
+                    }
+                }
+            }
+        }
+
+        System.out.println(listTimeIsFull.get(0) +"  dfsaf");
+        System.out.println(listTimeIsFull.get(1) + " fasdfsa ");
+
+
+
+
+//        for(int i = 0; i< listPair.size();i++){
+//            for(int j = 0; j<listPair.get(i).getValue().size(); j++){
+//                for (int k = 0;k< listTimeIsFull.size();k++){
+//                    if(listPair.get(i).getValue().get(j).getChosenTime().isEqual(listTimeIsFull.get(k))){
+//                        listPair.get(i).getValue().get(j).setFull(true);
+//                    }
+//                }
+//            }
+//        }
+
+        for(PairDateAndDateTime p : listPair){
+            System.out.println(p.getKey());
+            for(MyLocalDateTime t: p.getValue()){
+
+                System.out.println(t.getChosenTime() + " "+ t.isFull());
+
+            }
         }
 
 

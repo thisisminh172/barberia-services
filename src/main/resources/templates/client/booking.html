@@ -95,10 +95,18 @@
                                                     <ul>
                                                         <li th:each="t:${p.getValue()}">
                                                             <div class="form-check">
-                                                                <input type="radio" th:id="${t.getChosenTime()}" class="big-radio" name="chosenTimeSlot"
-                                                                       th:value="${t.getChosenTime()}">&nbsp;
-                                                                <label th:for="${t.getChosenTime()}" class="hover-text"
-                                                                       th:text="${#temporals.hour(t.getChosenTime())} +' giờ '+ ${#temporals.minute(t.getChosenTime())}+' phút'"></label>
+                                                                <div th:if="${t.full}==true">
+                                                                    <span style="color:red;" class="font-weight-bold">(Full) </span>
+                                                                    <label th:for="${t.getChosenTime()}" class="hover-text"
+                                                                           th:text="${#temporals.hour(t.getChosenTime())} +' giờ '+ ${#temporals.minute(t.getChosenTime())}+' phút'"></label>
+                                                                </div>
+                                                                <div th:if="${t.full}==false">
+                                                                    <input type="radio" th:id="${t.getChosenTime()}" class="big-radio" name="chosenTimeSlot"
+                                                                           th:value="${t.getChosenTime()}">&nbsp;
+                                                                    <label th:for="${t.getChosenTime()}" class="hover-text"
+                                                                           th:text="${#temporals.hour(t.getChosenTime())} +' giờ '+ ${#temporals.minute(t.getChosenTime())}+' phút'"></label>
+                                                                </div>
+
                                                             </div>
                                                         </li>
                                                     </ul>

@@ -1,5 +1,6 @@
 package com.barberia.app.clientControllers;
 
+import com.barberia.app.HelperFunction.MyFunction;
 import com.barberia.app.models.Booking;
 import com.barberia.app.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
