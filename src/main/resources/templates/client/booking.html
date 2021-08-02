@@ -97,7 +97,7 @@
                                                             <div class="form-check">
                                                                 <div th:if="${t.full}==true">
                                                                     <span style="color:red;" class="font-weight-bold">(Full) </span>
-                                                                    <label th:for="${t.getChosenTime()}" class="hover-text"
+                                                                    <label th:for="${t.getChosenTime()}" class="text-secondary"
                                                                            th:text="${#temporals.hour(t.getChosenTime())} +' giờ '+ ${#temporals.minute(t.getChosenTime())}+' phút'"></label>
                                                                 </div>
                                                                 <div th:if="${t.full}==false">
