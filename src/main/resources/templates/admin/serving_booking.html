@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/admin-layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Đang phục vụ</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Danh sách khách hàng đang được phục vụ
+                        </header>
+
+                        <table class="table table-striped table-advance table-hover">
+                            <tbody>
+                            <tr>
+                                <th><i class=""></i> Mã số lượt</th>
+                                <th><i class=""></i> Mã lịch hẹn</th>
+                                <th><i class="icon_mobile"></i> Số điện thoại khách hàng</th>
+                                <th><i class=""></i> Thời gian đặt hẹn</th>
+                                <th><i class=""></i> Nhân viên phụ trách</th>
+                                <th><i class=""></i> Trạng thái thanh toán</th>
+                                <th><i class="icon_cogs"></i> Tác vụ</th>
+                            </tr>
+                            <tr th:each="turn:${turns}">
+                                <td th:text="${turn.id}"></td>
+                                <td th:text="${turn.booking.id}"></td>
+                                <td th:text="${turn.booking.customer.phoneNumber}"></td>
+                                <td th:text="${#temporals.format(turn.booking.chosenTimeSlot, 'dd-MM-yyyy')}  +', '+${#temporals.hour(turn.booking.chosenTimeSlot)} +' giờ '+ ${#temporals.minute(turn.booking.chosenTimeSlot)}+' phút'"></td>
+
+                                <td th:text="${turn.employee.lastName}+' '+${turn.employee.firstName}"></td>
+                                <td th:text="${turn.status}=='notyet'?'Chưa thanh toán':'Đã thanh toán'"></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" th:href="@{/admin/payment-page/(id=${turn.id})}"><i class="icon_plus_alt2"></i>Thực hiện thanh toán</a>
+                                        <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i>Hủy</a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+</body>
+</html>

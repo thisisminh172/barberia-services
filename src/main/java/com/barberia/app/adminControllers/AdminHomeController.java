@@ -21,10 +21,7 @@ public class AdminHomeController {
     }
 
 
-    @GetMapping("/admin/bookings")
-    public String goBooking(){
-        return "admin/booking";
-    }
+
 
     @GetMapping("/admin/salon")
     public String goSalonDetail(Model model){

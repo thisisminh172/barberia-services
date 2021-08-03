@@ -14,6 +14,9 @@ public class Turn {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "status", length = 10)
+    private String status;
+
     @ManyToOne
     @JoinColumn(name = "employee_id",referencedColumnName = "id")
     private Employee employee;
@@ -22,18 +25,17 @@ public class Turn {
     @JoinColumn(name = "booking_id", referencedColumnName = "id")
     private Booking booking;
 
-    @OneToOne(mappedBy = "turn")
-    private Payment payment;
 
 
     public Turn() {
     }
 
-    public Turn(Long id, Employee employee, Booking booking, Payment payment) {
+    public Turn(Long id,String status, Employee employee, Booking booking) {
         this.id = id;
+        this.status = status;
         this.employee = employee;
         this.booking = booking;
-        this.payment = payment;
+
     }
 
     public Long getId() {
@@ -60,11 +62,13 @@ public class Turn {
         this.booking = booking;
     }
 
-    public Payment getPayment() {
-        return payment;
+
+
+    public String getStatus() {
+        return status;
     }
 
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

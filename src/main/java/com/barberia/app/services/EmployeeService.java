@@ -32,4 +32,8 @@ public class EmployeeService {
     public Employee save(Employee employee){
         return employeeRepository.save(employee);
     }
+
+    public List<Employee> findStaff(){
+        return employeeRepository.findByRole("ROLE_STAFF");
+    }
 }

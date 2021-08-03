@@ -33,4 +33,8 @@ public class TurnService {
     public Turn save(Turn turn){
         return turnRepository.save(turn);
     }
+
+    public List<Turn> findAllNotYetPaymentTurn(){
+        return turnRepository.findAllByStatus("notyet");
+    }
 }

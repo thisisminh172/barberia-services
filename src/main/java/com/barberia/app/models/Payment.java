@@ -18,8 +18,8 @@ public class Payment {
     @Column(name = "payment_method", length = 100)
     private String paymentMethod;
 
-    @OneToOne
-    @JoinColumn(name = "turn_id", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY, targetEntity = Turn.class)
+    @JoinColumn(name = "turn_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Turn turn;
 
     public Payment() {

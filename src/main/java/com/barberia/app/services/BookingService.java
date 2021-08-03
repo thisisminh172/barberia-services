@@ -6,6 +6,7 @@ import com.barberia.app.repositories.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +41,16 @@ public class BookingService {
     public List<Booking> findOnlineBooking(){
         LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
         return bookingRepository.findByStatusAndChosenTimeSlotAfter("online",yesterday);
+    }
+
+    public List<Booking> findOnlineBookingAfterSpecificTime(){
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+        return bookingRepository.findAllByStatusAndChosenTimeSlotAfterOrderByChosenTimeSlotAsc("online",yesterday);
+    }
+
+    public List<Booking> findCheckInBookingAfterSpecificTime(){
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+        return bookingRepository.findAllByStatusAndChosenTimeSlotAfterOrderByChosenTimeSlotAsc("check-in",yesterday);
     }
 
 

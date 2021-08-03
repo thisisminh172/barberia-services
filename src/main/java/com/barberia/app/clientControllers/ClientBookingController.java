@@ -90,8 +90,6 @@ public class ClientBookingController {
             }
         }
 
-        System.out.println(listTimeIsFull.get(0) +"  dfsaf");
-        System.out.println(listTimeIsFull.get(1) + " fasdfsa ");
 
 
 

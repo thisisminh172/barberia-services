@@ -13,4 +13,6 @@ import java.util.List;
 public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findByStatusAndChosenTimeSlotAfter(String status, LocalDateTime yesterday);
 
+    List<Booking> findAllByStatusAndChosenTimeSlotAfterOrderByChosenTimeSlotAsc(String status, LocalDateTime yesterday);
+
 }
