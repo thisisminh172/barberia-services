@@ -81,5 +81,11 @@ public class AdminBookingController {
         return "admin/serving_booking";
     }
 
+    @GetMapping("/admin/check-out-page/")
+    public String goCheckOutPage(long id){
+        System.out.println(id);
+        return "admin/check_out";
+    }
+
 
 }
