@@ -5,7 +5,7 @@
       layout:decorate="layouts/client-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Dịch vụ</title>
+    <title>Dịch vụ của chúng tôi</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -46,59 +46,75 @@
                         <p class="lead"></p>
                     </div>
                 </div><!-- end title -->
-
+                <div class="input-phone-number-form-wrapper">
+                    <form th:action="@{/booking/get-customer}" method="post">
+                        <div class="form-title">
+                            <div class="slogan">ĐẶT LỊCH GIỮ CHỖ CHỈ 30 GIÂY</div>
+                            <div class="text">Cắt xong trả tiền, hủy lịch không sao</div>
+                        </div>
+                        <div class="input-form">
+                            <input type="text" class="input-form-box" required name="phoneNumber" placeholder="Nhập SDT để đặt lịch">
+                            <input type="submit" class="btn-input-phone-number" value="ĐẶT LỊCH NGAY">
+                        </div>
+                    </form>
+                </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6" th:each="s:${services}">
                         <div class="service-wrap text-center clearfix">
                             <div class="uptop">
-                                <img src="uploads/barber_service_01.jpg" alt="" class="img-responsive img-rounded alignleft">
+                                <img th:src="${s.thumbnail}" alt="" class="img-responsive img-rounded alignleft">
                             </div>
-                            <h4>beard, mustache care</h4>
-                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
+                            <h4 th:text="${s.serviceName}+'  '"></h4><span style="color:#ed2128; font-size:20px;" th:text="${#numbers.formatDecimal(s.originalPrice,0,'COMMA',0,'POINT')}+'K'"></span>
+<!--                            <p th:text="${#strings.abbreviate(s.description,25)}"></p>-->
+                            <p th:text="${s.description}"></p>
                         </div><!-- end issue -->
+                    </div>
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="service-wrap text-center clearfix">-->
+<!--                            <div class="uptop">-->
+<!--                                <img src="uploads/barber_service_02.jpg" alt="" class="img-responsive img-rounded alignleft">-->
+<!--                            </div>-->
+<!--                            <h4>detailed feather cleaning</h4>-->
+<!--                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>-->
+<!--                        </div>&lt;!&ndash; end issue &ndash;&gt;-->
+<!--                    </div>-->
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="service-wrap text-center lastchild clearfix">-->
+<!--                            <div class="uptop">-->
+<!--                                <img src="uploads/barber_service_03.jpg" alt="" class="img-responsive img-rounded alignleft">-->
+<!--                            </div>-->
+<!--                            <h4>facial and skin care</h4>-->
+<!--                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>-->
+<!--                        </div>&lt;!&ndash; end issue &ndash;&gt;-->
+<!--                    </div>&lt;!&ndash; end col &ndash;&gt;-->
 
-                        <div class="service-wrap text-center clearfix">
-                            <div class="uptop">
-                                <img src="uploads/barber_service_02.jpg" alt="" class="img-responsive img-rounded alignleft">
-                            </div>
-                            <h4>detailed feather cleaning</h4>
-                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                        </div><!-- end issue -->
-
-                        <div class="service-wrap text-center lastchild clearfix">
-                            <div class="uptop">
-                                <img src="uploads/barber_service_03.jpg" alt="" class="img-responsive img-rounded alignleft">
-                            </div>
-                            <h4>facial and skin care</h4>
-                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                        </div><!-- end issue -->
-                    </div><!-- end col -->
-
-                    <div class="col-md-6">
-                        <div class="service-wrap text-center clearfix">
-                            <div class="uptop">
-                                <img src="uploads/barber_service_04.jpg" alt="" class="img-responsive img-rounded alignleft">
-                            </div>
-                            <h4>studio shots</h4>
-                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                        </div><!-- end issue -->
-
-                        <div class="service-wrap text-center clearfix">
-                            <div class="uptop">
-                                <img src="uploads/barber_service_05.jpg" alt="" class="img-responsive img-rounded alignleft">
-                            </div>
-                            <h4>forming the beard</h4>
-                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                        </div><!-- end issue -->
-
-                        <div class="service-wrap text-center lastchild clearfix">
-                            <div class="uptop">
-                                <img src="uploads/barber_service_06.jpg" alt="" class="img-responsive img-rounded alignleft">
-                            </div>
-                            <h4>hair wash</h4>
-                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                        </div><!-- end issue -->
-                    </div><!-- end col -->
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="service-wrap text-center clearfix">-->
+<!--                            <div class="uptop">-->
+<!--                                <img src="uploads/barber_service_04.jpg" alt="" class="img-responsive img-rounded alignleft">-->
+<!--                            </div>-->
+<!--                            <h4>studio shots</h4>-->
+<!--                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>-->
+<!--                        </div>&lt;!&ndash; end issue &ndash;&gt;-->
+<!--                    </div>-->
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="service-wrap text-center clearfix">-->
+<!--                            <div class="uptop">-->
+<!--                                <img src="uploads/barber_service_05.jpg" alt="" class="img-responsive img-rounded alignleft">-->
+<!--                            </div>-->
+<!--                            <h4>forming the beard</h4>-->
+<!--                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>-->
+<!--                        </div>&lt;!&ndash; end issue &ndash;&gt;-->
+<!--                    </div>-->
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="service-wrap text-center lastchild clearfix">-->
+<!--                            <div class="uptop">-->
+<!--                                <img src="uploads/barber_service_06.jpg" alt="" class="img-responsive img-rounded alignleft">-->
+<!--                            </div>-->
+<!--                            <h4>hair wash</h4>-->
+<!--                            <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>-->
+<!--                        </div>&lt;!&ndash; end issue &ndash;&gt;-->
+<!--                    </div>&lt;!&ndash; end col &ndash;&gt;-->
                 </div>
             </div><!-- end container -->
         </div><!-- end section -->

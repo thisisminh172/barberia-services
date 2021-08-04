@@ -25,7 +25,8 @@ public class Turn {
     @JoinColumn(name = "booking_id", referencedColumnName = "id")
     private Booking booking;
 
-
+    @OneToOne(mappedBy = "turn")
+    private Payment payment;
 
     public Turn() {
     }

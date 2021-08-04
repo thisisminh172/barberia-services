@@ -1,11 +1,7 @@
 package com.barberia.app.adminControllers;
 
-import com.barberia.app.models.Booking;
-import com.barberia.app.models.Employee;
-import com.barberia.app.models.Turn;
-import com.barberia.app.services.BookingService;
-import com.barberia.app.services.EmployeeService;
-import com.barberia.app.services.TurnService;
+import com.barberia.app.models.*;
+import com.barberia.app.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +17,13 @@ public class AdminBookingController {
     @Autowired
     private BookingService bookingService;
     @Autowired
+    private BookingDetailService bookingDetailService;
+    @Autowired
     private EmployeeService employeeService;
     @Autowired
     private TurnService turnService;
+    @Autowired
+    private PaymentService paymentService;
 
     @GetMapping("/admin/online-bookings")
     public String goBooking(Model model){
@@ -74,6 +74,7 @@ public class AdminBookingController {
         return "redirect:/admin/serving-page";
     }
 
+    // HIỂN THỊ NHỮNG BOOKING ĐANG ĐƯỢC PHỤC VỤ
     @GetMapping("/admin/serving-page")
     public String goServingPage(Model model){
         List<Turn> turns = turnService.findAllNotYetPaymentTurn();
@@ -81,11 +82,77 @@ public class AdminBookingController {
         return "admin/serving_booking";
     }
 
+    // KHI NHÂN VIÊN NHẤN VÁO NÚT TIẾN HÀNH THANH TOÁN TRÊN 1 LƯỢT
     @GetMapping("/admin/check-out-page/")
-    public String goCheckOutPage(long id){
-        System.out.println(id);
+    public String goCheckOutPage(long id, Model model){
+        Turn turn = turnService.findById(id).get();
+        Booking booking = turn.getBooking();
+        Employee employee = turn.getEmployee();
+        List<BookingDetail> bookingDetails = bookingDetailService.findByBookingId(booking.getId());
+        double totalPrice =0;
+        for (int i = 0; i< bookingDetails.size();i++){
+            totalPrice += bookingDetails.get(i).getService().getOriginalPrice();
+        }
+        totalPrice = totalPrice*1000;
+        model.addAttribute("turnId", turn.getId());
+        model.addAttribute("booking", booking);
+        model.addAttribute("employee", employee);
+        model.addAttribute("bookingDetails", bookingDetails);
+        model.addAttribute("totalPrice", totalPrice);
         return "admin/check_out";
     }
+
+    @PostMapping("/admin/confirm-check-out-page")
+    public String goConfirmCheckOutPage(@RequestParam("turnId") long turnId, @RequestParam("totalPrice") double totalPrice, @RequestParam("paymentMethod") String paymentMethod, Model model){
+        Turn turn = turnService.findById(turnId).get();
+        Booking booking = turn.getBooking();
+        Employee employee = turn.getEmployee();
+
+        model.addAttribute("turnId", turn.getId());
+        model.addAttribute("booking", booking);
+        model.addAttribute("employee", employee);
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("paymentMethod", paymentMethod);
+        System.out.println(paymentMethod + " "+turnId);
+        switch (paymentMethod){
+            case "cash":
+                return "admin/confirm_check_out_cash";
+            default:
+                return "admin/confirm_check_out_momo";
+        }
+
+    }
+
+    @PostMapping("/admin/check-out/finish")
+    public String finishPayment(@RequestParam("turnId") long turnId, @RequestParam("totalPrice") double totalPrice, @RequestParam("paymentMethod") String paymentMethod, Model model){
+        Payment payment = new Payment();
+        Turn turn = turnService.findById(turnId).get();
+        turn.setStatus("done");
+        turnService.save(turn);
+
+        payment.setTurn(turn);
+        payment.setPaymentMethod(paymentMethod);
+        payment.setTotalPrice(totalPrice);
+
+        paymentService.save(payment);
+
+        return "redirect:/admin/serving-page";
+    }
+
+    @GetMapping("/admin/payment-list")
+    public String goPaymentList(Model model){
+        List<Payment> payments = paymentService.findAll();
+        double totalAllPayment = 0;
+        for(int i = 0; i< payments.size(); i++){
+            totalAllPayment += payments.get(i).getTotalPrice();
+        }
+        model.addAttribute("payments",payments);
+        model.addAttribute("totalAllPayment", totalAllPayment);
+        return "admin/payment_list";
+
+    }
+
+
 
 
 }

@@ -93,27 +93,6 @@ public class ClientBookingController {
 
 
 
-
-//        for(int i = 0; i< listPair.size();i++){
-//            for(int j = 0; j<listPair.get(i).getValue().size(); j++){
-//                for (int k = 0;k< listTimeIsFull.size();k++){
-//                    if(listPair.get(i).getValue().get(j).getChosenTime().isEqual(listTimeIsFull.get(k))){
-//                        listPair.get(i).getValue().get(j).setFull(true);
-//                    }
-//                }
-//            }
-//        }
-
-        for(PairDateAndDateTime p : listPair){
-            System.out.println(p.getKey());
-            for(MyLocalDateTime t: p.getValue()){
-
-                System.out.println(t.getChosenTime() + " "+ t.isFull());
-
-            }
-        }
-
-
         model.addAttribute("salon", salon);
         model.addAttribute("customer", customer);
         model.addAttribute("services", services);

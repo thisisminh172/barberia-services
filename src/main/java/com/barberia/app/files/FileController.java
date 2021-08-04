@@ -19,22 +19,22 @@ import java.util.Base64;
 public class FileController {
     @Autowired
     private FileStorageService fileStorageService;
-    @PostMapping
-    public ResponseEntity<FileResponse> uploadFile(@RequestParam("file") String fileInput){
-        MultipartFile file = BASE64DecodedMultipartFile.base64ToMultipart(fileInput);
-        String fileName = fileStorageService.storeFile(file);
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/").path(fileName).toUriString();
-        System.out.println(fileDownloadUri);
-        FileResponse fileResponse = new FileResponse(fileName, fileDownloadUri,file.getContentType(), file.getSize());
-        return new ResponseEntity<>(fileResponse, HttpStatus.OK);
-    }
 //    @PostMapping
-//    public ResponseEntity<FileResponse> uploadFile(@RequestParam("file") MultipartFile file){
+//    public ResponseEntity<FileResponse> uploadFile(@RequestParam("file") String fileInput){
+//        MultipartFile file = BASE64DecodedMultipartFile.base64ToMultipart(fileInput);
 //        String fileName = fileStorageService.storeFile(file);
 //        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/").path(fileName).toUriString();
+//        System.out.println(fileDownloadUri);
 //        FileResponse fileResponse = new FileResponse(fileName, fileDownloadUri,file.getContentType(), file.getSize());
 //        return new ResponseEntity<>(fileResponse, HttpStatus.OK);
 //    }
+    @PostMapping
+    public ResponseEntity<FileResponse> uploadFile(@RequestParam("file") MultipartFile file){
+        String fileName = fileStorageService.storeFile(file);
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/").path(fileName).toUriString();
+        FileResponse fileResponse = new FileResponse(fileName, fileDownloadUri,file.getContentType(), file.getSize());
+        return new ResponseEntity<>(fileResponse, HttpStatus.OK);
+    }
 
     @GetMapping("/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request){

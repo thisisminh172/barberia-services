@@ -8,6 +8,18 @@
 </head>
 <body>
 <div layout:fragment="content">
+    <div class="input-phone-number-form-wrapper">
+        <form th:action="@{/booking/get-customer}" method="post">
+            <div class="form-title">
+                <div class="slogan">ĐẶT LỊCH GIỮ CHỖ CHỈ 30 GIÂY</div>
+                <div class="text">Cắt xong trả tiền, hủy lịch không sao</div>
+            </div>
+            <div class="input-form">
+                <input type="text" class="input-form-box" required name="phoneNumber" placeholder="Nhập SDT để đặt lịch">
+                <input type="submit" class="btn-input-phone-number" value="ĐẶT LỊCH NGAY">
+            </div>
+        </form>
+    </div>
     <div id="home" class="parallax">
         <div id="full-width" class="owl-carousel owl-theme home-hero">
             <div class="text-center item slider-01 display-table overlay">
@@ -44,18 +56,18 @@
         </div>
     </div><!-- end section -->
 
-    <div class="input-phone-number-form-wrapper">
-        <form th:action="@{/booking/get-customer}" method="post">
-            <div class="form-title">
-                <div class="slogan">ĐẶT LỊCH GIỮ CHỖ CHỈ 30 GIÂY</div>
-                <div class="text">Cắt xong trả tiền, hủy lịch không sao</div>
-            </div>
-            <div class="input-form">
-                <input type="text" class="input-form-box" required name="phoneNumber" placeholder="Nhập SDT để đặt lịch">
-                <input type="submit" class="btn-input-phone-number" value="ĐẶT LỊCH NGAY">
-            </div>
-        </form>
-    </div>
+<!--    <div class="input-phone-number-form-wrapper">-->
+<!--        <form th:action="@{/booking/get-customer}" method="post">-->
+<!--            <div class="form-title">-->
+<!--                <div class="slogan">ĐẶT LỊCH GIỮ CHỖ CHỈ 30 GIÂY</div>-->
+<!--                <div class="text">Cắt xong trả tiền, hủy lịch không sao</div>-->
+<!--            </div>-->
+<!--            <div class="input-form">-->
+<!--                <input type="text" class="input-form-box" required name="phoneNumber" placeholder="Nhập SDT để đặt lịch">-->
+<!--                <input type="submit" class="btn-input-phone-number" value="ĐẶT LỊCH NGAY">-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="section wb">

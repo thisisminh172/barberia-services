@@ -37,10 +37,7 @@ public class ClientHomeController {
         return "client/about";
     }
 
-    @RequestMapping("/service")
-    public String showService() {
-        return "client/service";
-    }
+
 
 
     @RequestMapping("/hair-style")

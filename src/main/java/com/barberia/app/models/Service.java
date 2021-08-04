@@ -28,6 +28,8 @@ public class Service {
     private int timeConsume;
     @Column(name = "description", length = 5000)
     private String description;
+    @Column(name="thumbnail", length = 255)
+    private String thumbnail;
 
     @OneToMany(mappedBy = "service")
     private List<BookingDetail> bookingDetails;
@@ -35,7 +37,7 @@ public class Service {
     public Service() {
     }
 
-    public Service(Long id, String serviceName, double originalPrice, double discountPrice, boolean discount, boolean available, int timeConsume, String description, List<BookingDetail> bookingDetails) {
+    public Service(Long id, String serviceName, double originalPrice, double discountPrice, boolean discount, boolean available, int timeConsume, String description, List<BookingDetail> bookingDetails, String thumbnail) {
         this.id = id;
         this.serviceName = serviceName;
         this.originalPrice = originalPrice;
@@ -45,7 +47,7 @@ public class Service {
         this.timeConsume = timeConsume;
         this.description = description;
         this.bookingDetails = bookingDetails;
-
+        this.thumbnail = thumbnail;
     }
 
     public Long getId() {
@@ -122,5 +124,13 @@ public class Service {
 
     public int getPriceFormat() {
         return (int) originalPrice;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }
