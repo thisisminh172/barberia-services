@@ -24,6 +24,12 @@ public class AdminBookingController {
     private TurnService turnService;
     @Autowired
     private PaymentService paymentService;
+    @Autowired
+    private ServiceService serviceService;
+    @Autowired
+    private CustomerService customerService;
+    @Autowired
+    private SalonService salonService;
 
     @GetMapping("/admin/online-bookings")
     public String goBooking(Model model){
@@ -150,6 +156,55 @@ public class AdminBookingController {
         model.addAttribute("totalAllPayment", totalAllPayment);
         return "admin/payment_list";
 
+    }
+
+    @GetMapping("/admin/walk-in")
+    public String goWalkInPage(Model model){
+        List<Service> services = serviceService.findAll();
+        List<Employee> employees = employeeService.findStaff();
+        model.addAttribute("services", services);
+        model.addAttribute("employees", employees);
+        return "admin/walk_in";
+    }
+
+    @PostMapping("/admin/walk-in/update-staff")
+    public String updateStaffForWalkIn(@RequestParam("phoneNumber") String phoneNumber, @RequestParam(required = false,value = "serviceItems") List<Long> serviceItems){
+        Customer findCustomer = customerService.findByPhoneNumber(phoneNumber);
+        Customer temp = null;
+        if(findCustomer == null){
+            Customer newCustomer = new Customer();
+            newCustomer.setPhoneNumber(phoneNumber);
+            newCustomer.setMembership(false);
+            temp = customerService.save(newCustomer);
+        }
+        Salon salon = salonService.findById(1l).get();
+        Booking booking = new Booking();
+        booking.setOnlineBooking(false);
+        booking.setStatus("check-in");
+        booking.setSalon(salon);
+        booking.setChosenTimeSlot(LocalDateTime.now());
+        booking.setDescription("");
+        if(temp != null){
+            booking.setCustomer(temp);
+        }else{
+            booking.setCustomer(findCustomer);
+        }
+
+
+        Booking newBooking = bookingService.save(booking);
+
+        // Set booking details
+        for(int i = 0; i< serviceItems.size();i++){
+            Service chosenService = serviceService.findById(serviceItems.get(i)).get();
+            BookingDetail newBookingDetail = new BookingDetail();
+            newBookingDetail.setBooking(newBooking);
+            newBookingDetail.setService(chosenService);
+            bookingDetailService.save(newBookingDetail);
+            System.out.println("them thanh cong");
+        }
+
+
+        return "redirect:/admin/check-in-bookings";
     }
 
 

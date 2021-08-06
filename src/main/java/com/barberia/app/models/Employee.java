@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class Employee {
     private String homeAddress;
     @Column(name = "date_of_birth")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     @Column(name = "online_booking_available")
     private boolean onlineBookingAvailable;
     @ManyToOne
@@ -54,7 +55,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String nickName, String phoneNumber, String password, String firstName, String lastName, String role, String gender, boolean active,String thumbnailUrl, String email, String homeAddress, Date dateOfBirth, boolean onlineBookingAvailable, Salon salon, List<Booking> bookings) {
+    public Employee(Long id, String nickName, String phoneNumber, String password, String firstName, String lastName, String role, String gender, boolean active,String thumbnailUrl, String email, String homeAddress, LocalDate dateOfBirth, boolean onlineBookingAvailable, Salon salon, List<Booking> bookings) {
         this.id = id;
         this.nickName = nickName;
         this.phoneNumber = phoneNumber;
@@ -155,11 +156,11 @@ public class Employee {
         this.homeAddress = homeAddress;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

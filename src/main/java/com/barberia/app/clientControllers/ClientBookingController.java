@@ -69,6 +69,7 @@ public class ClientBookingController {
                 MyLocalDateTime newMyLocalDateTime = new MyLocalDateTime();
                 newMyLocalDateTime.setChosenTime(today.atTime(tempTime));
                 newMyLocalDateTime.setFull(false);
+                newMyLocalDateTime.setPassed(false);
                 listOfDateTime.add(newMyLocalDateTime);
 
                 tempTime = tempTime.plusMinutes(minuteInOneTimeSlot);
@@ -80,15 +81,34 @@ public class ClientBookingController {
             today = today.plusDays(1);
         }
 
+        int currentHourCustomerBooking = LocalDateTime.now().plusHours(2).getHour();
+
+
+
         for(PairDateAndDateTime p : listPair){
             for(MyLocalDateTime d : p.getValue()){
                 for (int k = 0;k< listTimeIsFull.size();k++){
                     if(d.getChosenTime().isEqual(listTimeIsFull.get(k))){
                         d.setFull(true);
+
                     }
+
                 }
+//                System.out.println(d.getChosenTime().getHour()+" "+d.isPassed()+" "+(d.getChosenTime().getHour() < currentHourCustomerBooking)+" "+currentHourCustomerBooking);
             }
         }
+        for(MyLocalDateTime d : listPair.get(0).getValue()){
+            if(d.getChosenTime().getHour() < currentHourCustomerBooking){
+                d.setPassed(true);
+            }
+
+        }
+//        for(MyLocalDateTime d : listPair.get(0).getValue()){
+//            System.out.println(d.getChosenTime()+" "+d.isPassed());
+//
+//        }
+
+
 
 
 

@@ -53,6 +53,11 @@ public class BookingService {
         return bookingRepository.findAllByStatusAndChosenTimeSlotAfterOrderByChosenTimeSlotAsc("check-in",yesterday);
     }
 
+    public List<Booking> findByCustomerId(long customerId){
+        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+        return bookingRepository.findByCustomerIdAndChosenTimeSlotAfter(customerId,yesterday);
+    }
+
 
 
 }

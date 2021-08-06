@@ -53,7 +53,7 @@
                             <div class="text">Cắt xong trả tiền, hủy lịch không sao</div>
                         </div>
                         <div class="input-form">
-                            <input type="text" class="input-form-box" required name="phoneNumber" placeholder="Nhập SDT để đặt lịch">
+                            <input type="text" class="input-form-box" th:value="${session.PHONENUMBER}" pattern="(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}" title="Vui lòng nhập số điện thoại để đặt lịch" required name="phoneNumber" placeholder="Nhập SDT để đặt lịch">
                             <input type="submit" class="btn-input-phone-number" value="ĐẶT LỊCH NGAY">
                         </div>
                     </form>

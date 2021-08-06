@@ -36,4 +36,7 @@ public class EmployeeService {
     public List<Employee> findStaff(){
         return employeeRepository.findByRole("ROLE_STAFF");
     }
+    public Employee findByEmail(String email){
+        return employeeRepository.findByEmail(email);
+    }
 }

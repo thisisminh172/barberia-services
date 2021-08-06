@@ -10,6 +10,21 @@
 </head>
 <body>
 <div layout:fragment="content">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script th:inline="javascript">
+            $(document).ready(function () {
+    $('#checkBtn').click(function(event) {
+
+      checked = $("input[type=checkbox]:checked").length;
+
+      if(!checked) {
+        alert("Anh/ chị nên chọn ít nhất một dịch vụ để đặt hẹn");
+        return false;
+      }
+
+    });
+});
+        </script>
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="all-page-bar">
@@ -73,7 +88,7 @@
                                             <div class="services-container">
                                                 <h3 class="text-center">Đánh dấu dịch vụ</h3>
                                                 <th:block th:each="s:${services}">
-                                                    <input type="checkbox" name="serviceItems" class="big-checkbox" th:id="${s.id}"  th:value="${s.id}"/>&nbsp;&nbsp;
+                                                    <input type="checkbox" name="serviceItems" title="Chọn ít nhất một dịch vụ để đặt hẹn" class="big-checkbox" th:id="${s.id}"  th:value="${s.id}"/>&nbsp;&nbsp;
                                                     <label th:text="${s.serviceName}+' (-'+${s.getPriceFormat()}+'K-)'" th:for="${s.id}" class="hover-text"></label></br>
                                                 </th:block>
                                             </div>
@@ -102,8 +117,8 @@
                                                                 </div>
                                                                 <div th:if="${t.full}==false">
                                                                     <input type="radio" th:id="${t.getChosenTime()}" class="big-radio" name="chosenTimeSlot"
-                                                                           th:value="${t.getChosenTime()}">&nbsp;
-                                                                    <label th:for="${t.getChosenTime()}" class="hover-text"
+                                                                           th:value="${t.getChosenTime()}" title="Chọn khung thời gian bạn muốn đặt hẹn" required th:disabled="${t.passed}">&nbsp;
+                                                                    <label th:for="${t.getChosenTime()}" class="hover-text" th:style="${t.passed}?'color:#afafaf':''"
                                                                            th:text="${#temporals.hour(t.getChosenTime())} +' giờ '+ ${#temporals.minute(t.getChosenTime())}+' phút'"></label>
                                                                 </div>
 
@@ -129,7 +144,7 @@
                                                   placeholder="VD: Anh đi 3 người/ Anh đi cùng con"></textarea>
                                     </div>
                                     <div class="form-btn text-center">
-                                        <button type="submit" value="SEND" id="submit"
+                                        <button type="submit" value="SEND" id="checkBtn"
                                                 class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Hoàn Tất Đặt Lịch
                                         </button>
                                     </div>
@@ -141,75 +156,6 @@
             </div><!-- end container -->
         </div><!-- end section -->
 
-        <!--            <div id="testimonials" class="parallax section db parallax-inner-bg">-->
-        <!--                <div class="container">-->
-        <!--                    <div class="section-title row text-center">-->
-        <!--                        <div class="col-md-8 offset-md-2">-->
-        <!--                            <small>LET'S SEE OUR TESTIMONIALS</small>-->
-        <!--                            <h3>HAPPY TESTIMONIALS</h3>-->
-        <!--                        </div>-->
-        <!--                    </div>&lt;!&ndash; end title &ndash;&gt;-->
-
-        <!--                    <div class="row">-->
-        <!--                        <div class="col-md-12 col-sm-12">-->
-        <!--                            <div class="testi-carousel owl-carousel owl-theme">-->
-        <!--                                <div class="testimonial clearfix">-->
-        <!--                                    <div class="testi-meta">-->
-        <!--                                        <i class="fa fa-quote-right"></i>-->
-        <!--                                        <img src="uploads/testi_01.png" alt="" class="img-responsive alignright">-->
-        <!--                                        <h4>James Fernando <small>- Manager of Racer</small></h4>-->
-        <!--                                    </div>-->
-        <!--                                    <div class="desc">-->
-        <!--                                        <h3>Wonderful Support!</h3>-->
-        <!--                                        <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>-->
-        <!--                                    </div>-->
-        <!--                                    &lt;!&ndash; end testi-meta &ndash;&gt;-->
-        <!--                                </div>-->
-        <!--                                &lt;!&ndash; end testimonial &ndash;&gt;-->
-        <!--                                <div class="testimonial clearfix">-->
-        <!--                                    <div class="testi-meta">-->
-        <!--                                        <i class="fa fa-quote-right"></i>-->
-        <!--                                        <img src="uploads/testi_02.png" alt="" class="img-responsive alignright">-->
-        <!--                                        <h4>Jacques Philips <small>- Designer</small></h4>-->
-        <!--                                    </div>-->
-        <!--                                    <div class="desc">-->
-        <!--                                        <h3>Awesome Services!</h3>-->
-        <!--                                        <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>-->
-        <!--                                    </div>-->
-        <!--                                    &lt;!&ndash; end testi-meta &ndash;&gt;-->
-        <!--                                </div>-->
-        <!--                                &lt;!&ndash; end testimonial &ndash;&gt;-->
-        <!--                                <div class="testimonial clearfix">-->
-        <!--                                    <div class="testi-meta">-->
-        <!--                                        <i class="fa fa-quote-right"></i>-->
-        <!--                                        <img src="uploads/testi_03.png" alt="" class="img-responsive alignright">-->
-        <!--                                        <h4>Venanda Mercy <small>- Newyork City</small></h4>-->
-        <!--                                    </div>-->
-        <!--                                    <div class="desc">-->
-        <!--                                        <h3>Great & Talented Team!</h3>-->
-        <!--                                        <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>-->
-        <!--                                    </div>-->
-        <!--                                    &lt;!&ndash; end testi-meta &ndash;&gt;-->
-        <!--                                </div>-->
-        <!--                                &lt;!&ndash; end testimonial &ndash;&gt;-->
-        <!--                                <div class="testimonial clearfix">-->
-        <!--                                    <div class="testi-meta">-->
-        <!--                                        <i class="fa fa-quote-right"></i>-->
-        <!--                                        <img src="uploads/testi_03.png" alt="" class="img-responsive alignright">-->
-        <!--                                        <h4>Venanda Mercy <small>- Newyork City</small></h4>-->
-        <!--                                    </div>-->
-        <!--                                    <div class="desc">-->
-        <!--                                        <h3> Great & Talented Team!</h3>-->
-        <!--                                        <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>-->
-        <!--                                    </div>-->
-        <!--                                    &lt;!&ndash; end testi-meta &ndash;&gt;-->
-        <!--                                </div>-->
-        <!--                                &lt;!&ndash; end testimonial &ndash;&gt;-->
-        <!--                            </div>&lt;!&ndash; end carousel &ndash;&gt;-->
-        <!--                        </div>&lt;!&ndash; end col &ndash;&gt;-->
-        <!--                    </div>&lt;!&ndash; end row &ndash;&gt;-->
-        <!--                </div>&lt;!&ndash; end container &ndash;&gt;-->
-        <!--            </div>&lt;!&ndash; end section &ndash;&gt;-->
 
         <div class="copyrights">
             <div class="container">

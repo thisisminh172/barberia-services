@@ -65,7 +65,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="client/images/logo.png" alt="" />
+                <img src="client/images/mylogo22.png" alt="" />
             </a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar top-bar"></span>
@@ -79,11 +79,22 @@
                     <li class="nav-item"><a class="nav-link" th:href="@{/contact}">LIÊN HỆ</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/hair-style}">KIỂU TÓC</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/about}">GIỚI THIỆU</a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/login}">ĐĂNG NHẬP</a></li>
+                    <li class="nav-item" th:if="${session.ISLOGIN}!=true"><a class="nav-link"th:href="@{/login}">ĐĂNG NHẬP</a></li>
+                    <li class="nav-item" th:if="${session.ISLOGIN}==true">
+                        <a style="font-weight:bold;" th:text="${session.PHONENUMBER}" class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" th:href="@{/customer-info/(id=${session.CUSTOMERID})}">Thông tin cá nhân</a>
+                            <a class="dropdown-item" th:href="@{/logout}">Đăng xuất</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+    
 </header>
 <!-- End header -->
 <div layout:fragment="content">
@@ -99,7 +110,7 @@
 
 <script th:inline="javascript">
 
-      /*<![CDATA[*/
+
 
          (function($) {
         "use strict";
@@ -117,7 +128,6 @@
         });
     })(jQuery);
 
-       /*]]>*/
 </script>
 </body>
 </html>

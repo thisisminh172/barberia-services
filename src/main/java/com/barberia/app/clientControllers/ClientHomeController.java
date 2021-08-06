@@ -5,6 +5,7 @@ import com.barberia.app.models.Booking;
 import com.barberia.app.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.awt.print.Book;
@@ -23,14 +24,13 @@ public class ClientHomeController {
     }
 
     @RequestMapping("/contact")
-    public String showContact() {
+    public String showContact(Model model) {
+        boolean message = false;
+        model.addAttribute("message", message);
         return "client/contact";
     }
 
-    @RequestMapping("/login")
-    public String showLogin() {
-        return "client/login";
-    }
+
 
     @RequestMapping("/about")
     public String showAbout() {

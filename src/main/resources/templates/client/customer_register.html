@@ -5,7 +5,7 @@
       layout:decorate="layouts/client-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Đăng nhập</title>
+    <title>Đăng ký tài khoản</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -21,7 +21,7 @@
                             </div>
 
                             <div class="title--heading">
-                                <h1>Đăng nhập</h1>
+                                <h1>Đăng ký</h1>
                             </div>
                             <div class="clearfix"></div>
 
@@ -37,8 +37,8 @@
             <div class="container">
                 <div class="section-title row text-center">
                     <div class="col-md-8 offset-md-2">
-                        <small>Đăng nhập để kiểm tra lịch hẹn của bạn</small>
-                        <h3>ĐĂNG NHẬP</h3>
+
+                        <h3>Nhập thông tin</h3>
                     </div>
                 </div><!-- end title -->
 
@@ -46,30 +46,34 @@
                     <div class="col-md-8 offset-md-2">
                         <div class="contact_form">
                             <div id="message"></div>
-                            <form class="row" th:action="@{/check-login}" method="post">
+                            <form class="row" th:action="@{/customer-register}" th:object="${customer}" method="post">
+
                                 <fieldset class="row row-fluid">
                                     <div th:if="${error}" class="alert alert-danger" role="alert">
-                                        <span th:text="${loginError}"></span>
+                                        <span th:text="${errorMessage}"></span>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <label>(<span style="color:red;">*</span>) Số điện thoại</label>
-                                        <input type="text" name="phoneNumber" id="phoneNumber" pattern="(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}" title="Không được để trống số điện thoại" required class="form-control" placeholder="Số điện thoại của bạn">
+                                        <input type="text" th:field="*{phoneNumber}" pattern="(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}" title="Không được để trống số điện thoại" required class="form-control" placeholder="Số điện thoại của bạn">
                                     </div>
 
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <label>(<span style="color:red;">*</span>) Mật khẩu</label>
-                                        <span style="color:red;">*</span><input type="password" name="password" id="password" pattern="[0-9]{6}" class="form-control" minlength="6" maxlength="6" title="Nhập mật khẩu (6 chữ số)" required placeholder="Mật khẩu...(6 chữ số)">
+                                        <input type="password"  th:field="*{password}" pattern="[0-9]{6}" class="form-control" minlength="6" maxlength="6" title="Nhập mật khẩu (6 chữ số)" required placeholder="Mật khẩu...(6 chữ số)">
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                                        <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Đăng nhập</button>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label>Tên gọi của bạn (tùy chọn)</label>
+                                        <input type="text" th:field="*{nickName}" class="form-control" placeholder="Tên gọi của bạn...">
+                                        <small>Việc nhập tên gọi giúp nhân viên biết bạn</small>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                                        <a th:href="@{/customer-new}" class="btn btn-light btn-radius btn-brd grd1 btn-block btn-primary" style="background-color: #3498db;">Đăng ký</a>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label>Địa chỉ email (tùy chọn)</label>
+                                        <input type="text" th:field="*{email}" class="form-control" placeholder="địa chỉ email....">
+                                        <small>Cung cấp địa chỉ email để giúp cho việc liên lạc hiệu quả hơn</small>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                                        <a href="" class="">Quên mật khẩu?</a>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                        <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Đăng ký</button>
                                     </div>
-
                                 </fieldset>
                             </form>
 
@@ -80,7 +84,7 @@
         </div><!-- end section -->
 
         <div class="map-box">
-            <div class="container-fluid">
+            <div class="container">
                 <div id="map"></div>
             </div><!-- end container -->
         </div><!-- end section -->

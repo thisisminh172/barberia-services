@@ -14,11 +14,10 @@
         <section class="wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Nhân viên Barberia</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-                        <li><i class="fa fa-bars"></i>Pages</li>
-                        <li><i class="fa fa-square-o"></i>Pages</li>
+                        <li><i class="fa fa-bars"></i>Danh sách nhân viên</li>
                     </ol>
                 </div>
             </div>
@@ -38,6 +37,7 @@
                     <th>Điện Thoại</th>
                     <th>Địa chỉ</th>
                     <th>Email</th>
+                    <th>Chức vụ</th>
                     <th>Hoạt động</th>
                     <th>Tác vụ</th>
                 </tr>
@@ -51,14 +51,18 @@
                     <td th:text="${employee.phoneNumber}"></td>
                     <td th:text="${employee.homeAddress}"></td>
                     <td th:text="${employee.email}"></td>
-                    <td th:text="${employee.isActive}?'ĐANG HOẠT ĐỘNG':'NGƯNG HOẠT ĐỘNG'"></td>
+                    <td th:if="${employee.role}=='ROLE_ADMIN'"><span style="color:#e74c3c;font-weight:bold;">ADMIN</span></td>
+                    <td th:if="${employee.role}=='ROLE_STAFF'"><span style="color:#2ecc71;font-weight:bold;">Nhân viên</span></td>
+                    <td th:if="${employee.role}=='ROLE_MANAGER'"><span style="color:#2980b9;font-weight:bold;">Quản lý</span></td>
+                    <td th:if="${employee.role}=='ROLE_VISITOR'"><span style="color:#9b59b6;font-weight:bold;">Chưa xác nhận</span></td>
+                    <td th:text="${employee.isActive}?'ĐANG HOẠT ĐỘNG':'NGƯNG LÀM'"></td>
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-primary" th:href="@{/admin/employees/findById/(id=${employee.id})}"
-                               id="editButton"><i class="icon_pencil-edit"></i></a>
-                            <a class="btn btn-info" id="detailsButton"><i class="icon_document_alt"></i></a>
+                               id="editButton" title="Cập nhật nhân viên"><i class="icon_pencil-edit"></i></a>
+<!--                            <a class="btn btn-info" title="Chi tiết nhân viên" id="detailsButton"><i class="icon_document_alt"></i></a>-->
                             <a class="btn btn-danger" th:href="@{/admin/employees/deactive/(id=${employee.id})}"
-                               id="deactiveButton"><i class="icon_close_alt2"></i></a>
+                               id="deactiveButton" title="Ngưng làm việc"><i class="icon_close_alt2"></i></a>
                         </div>
                     </td>
                 </tr>
@@ -69,17 +73,17 @@
         </section>
     </section>
     <!--main content end-->
-    <div class="text-right">
-        <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-            -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </div>
+<!--    <div class="text-right">-->
+<!--        <div class="credits">-->
+<!--            &lt;!&ndash;-->
+<!--              All the links in the footer should remain intact.-->
+<!--              You can delete the links only if you purchased the pro version.-->
+<!--              Licensing information: https://bootstrapmade.com/license/-->
+<!--              Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin-->
+<!--            &ndash;&gt;-->
+<!--            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
+<!--        </div>-->
+<!--    </div>-->
     </section>
     <!-- container section end -->
     <!-- add modal -->
@@ -97,43 +101,47 @@
                     <form th:action="@{/admin/employees/addNew}" method="post" th:object="${employee}">
 
                         <div class="form-group">
-                            <label class="col-form-label">Tên gọi:</label>
-                            <input type="text" class="form-control" th:field="*{nickName}">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Tên gọi:</label>
+                            <input type="text" class="form-control" title="Không được để trống" th:field="*{nickName}" required>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Họ:</label>
-                            <input type="text" class="form-control" th:field="*{firstName}">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Họ:</label>
+                            <input type="text" class="form-control" title="Không được để trống" th:field="*{lastName}" required>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Tên:</label>
-                            <input type="text" class="form-control" th:field="*{lastName}">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Tên:</label>
+                            <input type="text" class="form-control" title="Không được để trống" th:field="*{firstName}" required>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Số điện thoại :</label>
-                            <input type="text" class="form-control" th:field="*{phoneNumber}">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Số điện thoại :</label>
+                            <input type="text" class="form-control" pattern="(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}" required title="Số điện thoại không đúng định dạng" th:field="*{phoneNumber}">
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Chức vụ:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Chức vụ:</label>
 
                             <select class="form-control" th:field="*{role}">
                                 <option th:each="r:${roleList}" th:value="${r}" th:text="${r}"></option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" th:field="*{email}">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Email:</label>
+                            <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required title="Email không đúng định dạng" th:field="*{email}">
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Mật khẩu:</label>
-                            <input type="password" class="form-control" th:field="*{password}">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Mật khẩu:</label>
+                            <input type="password" class="form-control" required title="Chứa ít nhất một số thứ tự, một chữ viết hoa và một chữ viết thường, ít nhất 8 ký tự" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" th:field="*{password}">
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Địa chỉ nhà:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Xác nhận mật khẩu:</label>
+                            <input type="password" class="form-control" required title="Chứa ít nhất một số thứ tự, một chữ viết hoa và một chữ viết thường, ít nhất 8 ký tự" name="confirmedPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Địa chỉ nhà:</label>
                             <input type="text" class="form-control" th:field="*{homeAddress}">
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Ngày sinh:</label>
-                            <input type="date" class="form-control" th:field="*{dateOfBirth}">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Ngày sinh:</label>
+                            <input type="date" class="form-control" th:field="*{dateOfBirth}" required>
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Hoạt động:</label>
@@ -147,8 +155,8 @@
 
                         <div class="form-group">
                             <label class="col-form-label">Giới tính:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" class="form-check-input" checked th:field="*{gender}" value="male"> Nam&nbsp;
-                            <input type="radio" class="form-check-input" th:field="*{gender}" value="female"> Nữ
+                            <input type="radio" class="form-check-input" required checked="checked" th:field="*{gender}" value="male"> Nam&nbsp;
+                            <input type="radio" class="form-check-input" required th:field="*{gender}" value="female"> Nữ
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Thêm mới</button>

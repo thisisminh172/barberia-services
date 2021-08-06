@@ -18,7 +18,7 @@ public class AdminEmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    private List<String> roleList = Arrays.asList("ROLE_ADMIN","ROLE_STAFF","ROLE_MANAGER");
+    private List<String> roleList = Arrays.asList("ROLE_ADMIN","ROLE_STAFF","ROLE_MANAGER","ROLE_VISITOR");
 
     @GetMapping("/admin/employees")
     public String goEmployees(Model model){

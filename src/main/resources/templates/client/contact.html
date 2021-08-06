@@ -37,8 +37,8 @@
                 <div class="container">
                     <div class="section-title row text-center">
                         <div class="col-md-8 offset-md-2">
-                            <small>LET'S MAKE AN CONTACT FOR YOUR LIFE</small>
-                            <h3>Contact</h3>
+                            <small>BẠN CÓ THỂ GỬI THẮC MẮC ĐẾN CHÚNG TÔI</small>
+                            <h3>LIÊN HỆ VỚI CHÚNG TÔI</h3>
                         </div>
                     </div><!-- end title -->
 
@@ -47,27 +47,29 @@
                             <div class="contact_form">
                                 <div id="message"></div>
                                 <form id="contactform" class="row" action="contact.php" name="contactform" method="post">
+                                    <div th:if="${message}" class="alert alert-success">
+                                        <strong>Thành công!</strong> Tin nhắn của bạn đã được gửi đi thành công, chúng tôi sẽ hồi âm sớm nhất.
+                                    </div>
                                     <fieldset class="row row-fluid">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <span style="color:red;">*</span><input type="text" name="fullName" id="fullName" title="Không được để trống" required class="form-control" placeholder="Họ và Tên đầy đủ">
+                                        </div>
+
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
+                                            <span style="color:red;">*</span><input type="email" name="email" id="email" class="form-control" title="Không được để trống" required placeholder="Địa chỉ email">
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone">
+                                            <span style="color:red;">*</span><input type="text" name="phoneNumber" id="phoneNumber" title="Không được để trống" required class="form-control" placeholder="Số điện thoại của bạn">
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <textarea class="form-control" name="comments" id="comments" rows="6" placeholder="Give us more details.."></textarea>
+                                            <span style="color:red;">*</span><textarea class="form-control" name="comment" required title="Để lại lời nhắn của bạn" id="comments" rows="6" placeholder="Thắc mắc của bạn"></textarea>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                            <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Submit</button>
+                                            <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Gửi đi</button>
                                         </div>
                                     </fieldset>
                                 </form>
+
                             </div>
                         </div><!-- end col -->
                     </div><!-- end row -->
@@ -75,7 +77,7 @@
             </div><!-- end section -->
 
             <div class="map-box">
-                <div class="container-fluid">
+                <div class="container">
                     <div id="map"></div>
                 </div><!-- end container -->
             </div><!-- end section -->

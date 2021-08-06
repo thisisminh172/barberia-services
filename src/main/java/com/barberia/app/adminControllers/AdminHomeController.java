@@ -31,5 +31,10 @@ public class AdminHomeController {
         return "admin/salon";
     }
 
+    @GetMapping("/admin/login")
+    public String getLogin(){
+        return "admin/login";
+    }
+
 
 }
