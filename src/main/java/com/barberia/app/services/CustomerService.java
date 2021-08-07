@@ -36,4 +36,8 @@ public class CustomerService {
     public Customer findByPhoneNumber(String phoneNumber){
         return customerRepository.findByPhoneNumber(phoneNumber);
     }
+
+    public List<Customer> findByMembershipTrue(){
+        return customerRepository.findByMembershipTrue();
+    }
 }

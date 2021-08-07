@@ -21,11 +21,11 @@
                         <table class="table table-striped table-advance table-hover">
                             <tbody>
                             <tr>
-                                <th><i class="icon_profile"></i> Mã lịch hẹn</th>
+                                <th></i> Mã lịch hẹn</th>
                                 <th><i class="icon_profile"></i> Tên khách hàng</th>
-                                <th><i class="icon_pin_alt"></i> Số điện thoại</th>
+                                <th></i> Số điện thoại</th>
                                 <th><i class="icon_calendar"></i> Thời gian đặt hẹn</th>
-
+                                <th> Dịch vụ</th>
                                 <th><i class="icon_mobile"></i> Trạng thái</th>
                                 <th><i class="icon_cogs"></i> Tác vụ</th>
                             </tr>
@@ -34,7 +34,11 @@
                                 <td th:text="${booking.customer.nickName}"></td>
                                 <td th:text="${booking.customer.phoneNumber}"></td>
                                 <td th:text="${#temporals.format(booking.chosenTimeSlot, 'dd-MM-yyyy')}==${#temporals.format(today, 'dd-MM-yyyy')}?'Hôm nay'+', '+${#temporals.hour(booking.chosenTimeSlot)} +' giờ '+ ${#temporals.minute(booking.chosenTimeSlot)}+' phút':${#temporals.format(booking.chosenTimeSlot, 'dd-MM-yyyy')}  +', '+${#temporals.hour(booking.chosenTimeSlot)} +' giờ '+ ${#temporals.minute(booking.chosenTimeSlot)}+' phút'"></td>
-
+                                <td>
+                                    <ul>
+                                        <li th:each="s:${booking.bookingDetails}" th:text="${s.service.serviceName}"></li>
+                                    </ul>
+                                </td>
                                 <td th:text="${booking.status}=='check-in'?'Đang chờ'"></td>
                                 <td>
                                     <div class="btn-group">

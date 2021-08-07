@@ -81,11 +81,11 @@ public class ClientCustomerController {
     // toi trang dang ky
     @GetMapping("/customer-new")
     public String goRegisterPage(Model model){
-//        MessageDto messageDto = (MessageDto) model.getAttribute("phoneCheckMessage");
-//        if(messageDto!=null){
-//            model.addAttribute("errorMessage", messageDto.getMessage());
-//            model.addAttribute("error", messageDto.isAvailable());
-//        }
+        MessageDto messageDto = (MessageDto) model.getAttribute("phoneCheckMessage");
+        if(messageDto!=null){
+            model.addAttribute("errorMessage", messageDto.getMessage());
+            model.addAttribute("error", messageDto.isAvailable());
+        }
         Customer customer = new Customer();
         model.addAttribute("customer",customer);
         return "client/customer_register";
@@ -94,10 +94,15 @@ public class ClientCustomerController {
     // REGISTER
     @PostMapping("/customer-register")
     public String register(Customer customer, RedirectAttributes redirectAttributes, HttpSession session){
-        if(customerService.findByPhoneNumber(customer.getPhoneNumber())==null){
+        Customer findCustomer = customerService.findByPhoneNumber(customer.getPhoneNumber());
+        if(findCustomer==null || findCustomer.getPassword().length()==0){
             System.out.println("dang ky thanh cong");
-            customer.setMembership(true);
-            Customer newCustomer = customerService.save(customer);
+            findCustomer.setMembership(true);
+            findCustomer.setPassword(customer.getPassword());
+            findCustomer.setEmail(customer.getEmail());
+            findCustomer.setNickName(customer.getNickName());
+            findCustomer.setPhoneNumber(customer.getPhoneNumber());
+            Customer newCustomer = customerService.save(findCustomer);
 
             session.setAttribute("PHONENUMBER", newCustomer.getPhoneNumber());
             session.setAttribute("CUSTOMERID", newCustomer.getId());

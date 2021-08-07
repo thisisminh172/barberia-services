@@ -1,18 +1,23 @@
 package com.barberia.app.adminControllers;
 
 import com.barberia.app.models.*;
+import com.barberia.app.qr.QRCodeGenerator;
 import com.barberia.app.services.*;
+import com.google.zxing.WriterException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
 public class AdminBookingController {
+
+    private static final String QR_CODE_IMAGE_PATH = "/project_4/barberia-services/uploads/QRCode.png";
 
     @Autowired
     private BookingService bookingService;
@@ -109,7 +114,7 @@ public class AdminBookingController {
     }
 
     @PostMapping("/admin/confirm-check-out-page")
-    public String goConfirmCheckOutPage(@RequestParam("turnId") long turnId, @RequestParam("totalPrice") double totalPrice, @RequestParam("paymentMethod") String paymentMethod, Model model){
+    public String goConfirmCheckOutPage(@RequestParam("turnId") long turnId, @RequestParam("totalPrice") double totalPrice, @RequestParam("paymentMethod") String paymentMethod, Model model) throws IOException, WriterException {
         Turn turn = turnService.findById(turnId).get();
         Booking booking = turn.getBooking();
         Employee employee = turn.getEmployee();
@@ -120,6 +125,8 @@ public class AdminBookingController {
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("paymentMethod", paymentMethod);
         System.out.println(paymentMethod + " "+turnId);
+        QRCodeGenerator.generateQRCodeImage("Thanh toán thành công ví điện tử MoMo tổng hóa đơn là "+totalPrice, 350, 350, QR_CODE_IMAGE_PATH);
+        model.addAttribute("qrcode","http://localhost:8080/files/QRcode.png");
         switch (paymentMethod){
             case "cash":
                 return "admin/confirm_check_out_cash";
