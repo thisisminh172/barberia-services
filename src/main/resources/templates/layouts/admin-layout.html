@@ -277,9 +277,7 @@
                 <!-- user login dropdown start-->
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
-                            </span>
+
                         <span class="username"><span sec:authentication="name"></span></span>
                         <b class="caret"></b>
                     </a>
@@ -364,11 +362,18 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="" href="widgets.html">
+                    <a class="" th:href="@{/admin/customer}">
                         <i class="icon_genius"></i>
                         <span>DS khách hàng đăng ký</span>
                     </a>
                 </li>
+                <li>
+                    <a class="" th:href="@{/admin/feedback}">
+                        <i class="icon_genius"></i>
+                        <span>Phản hồi khách hàng</span>
+                    </a>
+                </li>
+
                 <li sec:authorize="hasRole('ADMIN')">
                     <a class="" th:href="@{/admin/services}">
                         <i class="icon_piechart"></i>
@@ -379,7 +384,7 @@
                 </li>
 
                 <li class="" sec:authorize="hasRole('ADMIN')">
-                    <a href="javascript:;" class="">
+                    <a th:href="@{/admin/hair-style}" class="">
                         <i class="icon_table"></i>
                         <span>Kiểu tóc</span>
 

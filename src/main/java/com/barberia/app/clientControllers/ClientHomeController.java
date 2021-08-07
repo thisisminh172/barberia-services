@@ -23,12 +23,7 @@ public class ClientHomeController {
         return "client/home";
     }
 
-    @RequestMapping("/contact")
-    public String showContact(Model model) {
-        boolean message = false;
-        model.addAttribute("message", message);
-        return "client/contact";
-    }
+
 
 
 

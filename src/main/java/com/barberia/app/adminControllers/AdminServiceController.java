@@ -1,5 +1,6 @@
 package com.barberia.app.adminControllers;
 
+import com.barberia.app.files.FileStorageService;
 import com.barberia.app.models.Employee;
 import com.barberia.app.models.Service;
 import com.barberia.app.services.ServiceService;
@@ -7,11 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Controller
 public class AdminServiceController {
     @Autowired
     private ServiceService serviceService;
+    @Autowired
+    private FileStorageService fileStorageService;
 
     @GetMapping("/admin/services")
     public String goServices(Model model){
@@ -22,7 +27,12 @@ public class AdminServiceController {
     }
 
     @PostMapping("/admin/services/addNew")
-    public String addNew(Service service){
+    public String addNew(Service service, @RequestParam(value = "file") MultipartFile file){
+        if(!file.isEmpty()){
+            String fileName = fileStorageService.storeFile(file);
+            String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/").path(fileName).toUriString();
+            service.setThumbnail(fileDownloadUri);
+        }
         serviceService.save(service);
         return "redirect:/admin/services";
     }
@@ -34,8 +44,16 @@ public class AdminServiceController {
         return "/admin/service_update_form";
     }
 
-    @RequestMapping(value = "/admin/services/update", method = {RequestMethod.PUT, RequestMethod.GET})
-    public String updateService(Service service){
+    //update service
+    @RequestMapping(value = "/admin/services/update", method = {RequestMethod.POST, RequestMethod.GET})
+    public String updateService(Service service, @RequestParam(value = "file") MultipartFile file){
+
+
+        if(!file.isEmpty()){
+            String fileName = fileStorageService.storeFile(file);
+            String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/").path(fileName).toUriString();
+            service.setThumbnail(fileDownloadUri);
+        }
 
         serviceService.save(service);
         return "redirect:/admin/services";

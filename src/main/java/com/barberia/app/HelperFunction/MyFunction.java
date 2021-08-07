@@ -1,12 +1,18 @@
 package com.barberia.app.HelperFunction;
 
 import com.barberia.app.dto.TimeAndCountDto;
+import com.barberia.app.files.FileResponse;
+import com.barberia.app.files.FileStorageService;
 import com.barberia.app.models.Booking;
 import com.barberia.app.models.Salon;
 import com.barberia.app.services.BookingService;
 import com.barberia.app.services.SalonService;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.sql.Time;
 import java.time.LocalDate;
@@ -19,6 +25,8 @@ public class MyFunction {
     private BookingService bookingService;
     @Autowired
     private SalonService salonService;
+    @Autowired
+    private FileStorageService fileStorageService;
 
 
     public List<Time> listTimes = new ArrayList<Time>();
@@ -57,5 +65,13 @@ public class MyFunction {
 
         return listTimeIsFull;
 
+    }
+
+    // HAM XU LY FILE
+    public String getFileAndSaveFile(MultipartFile file){
+        String fileName = fileStorageService.storeFile(file);
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/files/").path(fileName).toUriString();
+        FileResponse fileResponse = new FileResponse(fileName, fileDownloadUri,file.getContentType(), file.getSize());
+        return fileDownloadUri;
     }
 }

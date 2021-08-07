@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/admin-layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Phản hồi của khách</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Phản hồi của khách </h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a th:href="@{/admin}">Home</a></li>
+                        <li><i class="fa fa-bars"></i>Phản hồi</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- page start-->
+            <h1>Danh sách feedback</h1>
+            <div th:if="${message}" class="alert alert-success">
+                <strong>Thành công!</strong> Gửi email cho khách hàng thành công.
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên khách hàng</th>
+                    <th>Email khách hàng</th>
+                    <th>Số điện thoại</th>
+                    <th>Comment</th>
+                    <th>Tình trạng</th>
+                    <th>Tác vụ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="fb:${feedbacks}">
+                    <td th:text="${fb.id}"></td>
+                    <td th:text="${fb.fullName}"></td>
+                    <td th:text="${fb.email}"></td>
+                    <td th:text="${fb.phoneNumber}"></td>
+                    <td th:text="${fb.comment}"></td>
+                    <td th:text="${fb.send}?'Đã phản hồi':'Chưa phản hồi'"></td>
+                    <!--                    <p th:text="${#strings.abbreviate(s.description,25)}"></p>-->
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-primary" th:href="@{'/admin/feedback/'+${fb.id}}"
+                               id="editButton" title="Cập nhật kiểu tóc"><i class="icon_pencil-edit"></i>Gửi phản hồi</a>
+                            <!--                            <a class="btn btn-info" title="Chi tiết nhân viên" id="detailsButton"><i class="icon_document_alt"></i></a>-->
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+    <!--    <div class="text-right">-->
+    <!--        <div class="credits">-->
+    <!--            &lt;!&ndash;-->
+    <!--              All the links in the footer should remain intact.-->
+    <!--              You can delete the links only if you purchased the pro version.-->
+    <!--              Licensing information: https://bootstrapmade.com/license/-->
+    <!--              Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin-->
+    <!--            &ndash;&gt;-->
+    <!--            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    </section>
+    <!-- container section end -->
+    <!-- add modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm kiểu tóc Mới</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/admin/hair-style/add}" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Tiêu đề:</label>
+                            <input type="text" class="form-control" title="Không được để trống" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Mô tả:</label>
+                            <textarea type="text" class="form-control" rows="6" title="Không được để trống" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Hình thumbnail:</label>
+                            <input type="file" class="form-control" title="Không được để trống" name="file" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Thêm mới</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--delete modal-->
+    <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ngưng hoạt động</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có muốn cho nhân viên ngưng hoạt động?</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" id="confirmDeleteButton" href="">Có, hoàn tất</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<scriptt src="/admin/myjs/employee.js"></scriptt>
+</body>
+</html>

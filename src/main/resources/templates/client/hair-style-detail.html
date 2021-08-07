@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layouts/client-layout">
 <head>
@@ -8,7 +9,131 @@
 </head>
 <body>
 <div layout:fragment="content">
-    chi tiet kieu toc
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+
+        <div id="barbers" class="section lb">
+            <div class="container">
+                <div class="section-title row text-center">
+                    <div class="col-md-8 offset-md-2">
+                        <h3 th:text="${hairStyle.title}">Phá cách với kiểu tóc nam Side Part vuốt rủ và học cách vuốt trong tích tắc</h3>
+                    </div>
+                </div><!-- end title -->
+
+                <div class="row dev-list text-center" th:utext="${hairStyle.description}">
+
+
+
+<!--                    <div class="content__description">-->
+<!--                        <div>-->
+<!--                            <h2><strong>Side Part vuốt rủ hợp với ai?</strong></h2>-->
+<!--                            <p>Kiểu tóc nam này rất phù hợp cho những bạn yêu thích<strong> </strong><a-->
+<!--                                    href="https://blog.30shine.com/dep-trai-choi-tet-voi-kieu-toc-nam-side-part-uon-xoan-bong-benh-lang-tu/"><strong>phong-->
+<!--                                cách lãng tử Hàn Quốc</strong></a><strong>.</strong> Và nó đặc biệt hợp với-->
+<!--                                những bạn có khuôn mặt hơi vuông và dài hoặc trái xoan. Bởi nó sẽ giúp khuôn mặt trở nên-->
+<!--                                mềm mại hơn. Đối với những bạn tóc mỏng thì còn giúp tóc bạn trông dày dặn hơn.</p>-->
+<!--                            <p>Side Part còn được biết tới với một tên gọi khác đó là tóc rẽ ngôi. Hiện nay có khá nhiều-->
+<!--                                những mẫu tóc Side Part khác nhau. Nhưng tiêu biểu nhất chỉ có những biến thể như: Side-->
+<!--                                Part Classic, Side Part hiện đại, Undercut Side Part, Side Part Pompadour,….</p>-->
+<!--                            <figure class="image"><img-->
+<!--                                    src="https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru3.jpg"-->
+<!--                                    alt="kiểu tóc nam"-->
+<!--                                    srcset="https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru3.jpg 660w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru3-300x186.jpg 300w"-->
+<!--                                    sizes="100vw" width="660"></figure>-->
+<!--                            <p>Trong chủ đề này, 30Shine sẽ không phân loại những kiểu Side Part. Thay vào đó &nbsp;sẽ-->
+<!--                                đi thẳng vào “<i>cách tạo kiểu tóc Side Part vuốt rủ</i>”. Và 30Shine cũng sẽ hướng dẫn-->
+<!--                                các bạn cách vuốt kiểu tóc nam này vô cùng đơn giản. Đảm bảo bạn sẽ đẹp trai ngay trong-->
+<!--                                tích tắc.</p>-->
+<!--                            <h2><strong>Chuẩn bị</strong></h2>-->
+<!--                            <p>Tuy nhiên, trước khi tạo kiểu việc chuẩn bị dụng cụ là vô cùng cần thiết. Nếu thiếu những-->
+<!--                                vật dụng này, các bạn sẽ rất khó tạo kiểu tóc nam này.</p>-->
+<!--                            <figure class="image"><img-->
+<!--                                    src="https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru5.jpg"-->
+<!--                                    alt="kiểu tóc nam"-->
+<!--                                    srcset="https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru5.jpg 600w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru5-150x150.jpg 150w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru5-300x300.jpg 300w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru5-55x55.jpg 55w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru5-65x65.jpg 65w"-->
+<!--                                    sizes="100vw" width="600"></figure>-->
+<!--                            <h3><strong>Các dụng cụ cần có:</strong></h3>-->
+<!--                            <ul>-->
+<!--                                <li>Lược</li>-->
+<!--                                <li>Máy sấy</li>-->
+<!--                                <li>Xịt tạo phồng</li>-->
+<!--                                <li>Sáp tạo kiểu</li>-->
+<!--                                <li>Gôm</li>-->
+<!--                            </ul>-->
+<!--                            <h2><strong>Cách vuốt kiểu tóc nam Side Part rủ</strong></h2>-->
+<!--                            <h3><strong>Bước 1: Gội và dùng Pre-styling tạo độ phồng cho tóc</strong></h3>-->
+<!--                            <p>Khi được gội qua dầu gội thì tóc cũng trở nên mềm hơn. Vì thế sẽ dễ ép side và tạo nếp-->
+<!--                                hơn. Tiếp theo các bạn hãy xịt pre-styling cho mái tóc. Mục đích của việc này là giúp-->
+<!--                                kích thích sự dẻo dai của các sợi tóc, tăng độ phồng tóc để giúp cho kiểu tóc trông hoàn-->
+<!--                                thiện hơn. Ngoài ra Pre-styling cũng giúp tăng độ bám của sáp trên tóc, tăng thời gian-->
+<!--                                giữ nếp.</p>-->
+<!--                            <figure class="image"><img-->
+<!--                                    src="https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru6.jpg"-->
+<!--                                    alt="kiểu tóc nam"-->
+<!--                                    srcset="https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru6.jpg 1170w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru6-300x180.jpg 300w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru6-768x460.jpg 768w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru6-1024x614.jpg 1024w"-->
+<!--                                    sizes="100vw" width="1170"></figure>-->
+<!--                            <h4><strong>Lưu ý:</strong></h4>-->
+<!--                            <ul>-->
+<!--                                <li>Dùng chai xịt Pre-styling và xịt đều lên mái tóc</li>-->
+<!--                                <li>Dùng tay đánh tơi tóc để dung dịch ngấm đều hơn</li>-->
+<!--                                <li>Sử dụng lược để hất nhẹ từng mảng tóc lên cao hơn</li>-->
+<!--                                <li>Dùng máy sấy để “Di” theo từng đừng chải của lược.</li>-->
+<!--                            </ul>-->
+<!--                            <h3><strong>Bước 2: Sử dụng sáp vuốt tóc</strong></h3>-->
+<!--                            <p>Sau khi đã Pre-styling xong và mái tóc đã đạt một độ phồng nhất định, các bạn chuyển sang-->
+<!--                                bước vuốt sáp. Bạn lấy khoảng 1 đốt ngón tay sáp ra tay (có thể chia làm nhiều phần-->
+<!--                                nhỏ). Sau đó đánh thật đều, chú ý xoa mạnh và đều tay để sáp được tan nhanh hơn.-->
+<!--                                &nbsp;Tiếp theo đưa thẳng lên tóc để cho các sợi tóc được cố định bằng chất sáp, đồng-->
+<!--                                thời tạo một lớp màng liên kết giữa chúng.</p>-->
+<!--                            <h3><strong>Bước 3: Vuốt tạo kiểu</strong></h3>-->
+<!--                            <figure class="image"><img-->
+<!--                                    src="https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru4.jpg"-->
+<!--                                    alt="kiểu tóc nam"-->
+<!--                                    srcset="https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru4.jpg 1200w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru4-300x157.jpg 300w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru4-768x402.jpg 768w, https://blog.30shine.com/wp-content/uploads/2019/02/kieu-toc-nam-sp-ru4-1024x536.jpg 1024w"-->
+<!--                                    sizes="100vw" width="1200"></figure>-->
+<!--                            <p>Đây là công đoạn có thể nói là quan trọng nhất. Bởi chỉ cần một chút sai sót thôi là-->
+<!--                                <i>kiểu tóc side part vuốt rủ</i> của bạn sẽ dễ bị chuyển thành tóc dựng thông thường.-->
+<!--                                Khi đã hoàn thành bước 2, các bạn hãy dùng lược thẳng hoặc tay để chia ngôi. Sau đó hãy-->
+<!--                                kẻ một đường dọc từ trước về sau để chia đôi mái tóc theo tỉ lệ 2/8 (hoặc bất cứ tỉ lệ-->
+<!--                                nào mà bạn thích, 3/7 hoặc 4/6….). Tiếp đến dùng lược hoặc tay để ép side (tóc mai),-->
+<!--                                chải gọn những phần tóc phía trước và các phần viền. Cuối cùng là xịt gôm bảo vệ tóc-->
+<!--                                (nếu muốn).</p>-->
+<!--                            <p>Trên đây 30Shine đã hướng dẫn các bạn cách vuốt kiểu tóc nam Side Part rủ vô cùng đơn-->
+<!--                                giản. Với những bước nhanh gọn này chắc chắn các bạn sẽ có một mái tóc như ý. Bạn sẽ đẹp-->
+<!--                                trai ngời ngời như vừa bước ra khỏi 30Shine.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+
+
+
+
+
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </div><!-- end section -->
+
+
+
+        <div class="copyrights">
+            <div class="container">
+                <div class="footer-distributed">
+                    <div class="footer-left">
+                        <p class="footer-links">
+                            <a th:href="@{/home}">Trang chủ</a>
+                            <a th:href="@{/service}">Dịch vụ</a>
+                            <a th:href="@{/contact}">Liên hệ</a>
+                            <a th:href="@{/booking}">Đặt lịch</a>
+
+                        </p>
+                        <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">StyleBarber</a> Design By : <a href="https://html.design/">html design</a></p>
+                    </div>
+                </div>
+            </div><!-- end container -->
+        </div><!-- end copyrights -->
+    </div>
 </div>
 </body>
 </html>

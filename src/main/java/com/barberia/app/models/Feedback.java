@@ -21,16 +21,19 @@ public class Feedback {
     private String phoneNumber;
     @Column(name = "comment", length = 300)
     private String comment;
+    @Column(name = "is_send")
+    private boolean send;
 
     public Feedback() {
     }
 
-    public Feedback(Long id, String fullName, String email, String phoneNumber, String comment) {
+    public Feedback(Long id, String fullName, String email, String phoneNumber, String comment, boolean send) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.comment = comment;
+        this.send = send;
     }
 
     public Long getId() {
@@ -71,5 +74,13 @@ public class Feedback {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public boolean isSend() {
+        return send;
+    }
+
+    public void setSend(boolean send) {
+        this.send = send;
     }
 }

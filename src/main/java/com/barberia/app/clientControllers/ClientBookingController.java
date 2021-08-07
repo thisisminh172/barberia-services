@@ -130,6 +130,7 @@ public class ClientBookingController {
         if(findCustomer == null){
             Customer newCustomer = new Customer();
             newCustomer.setPhoneNumber(phoneNumber);
+            newCustomer.setPassword("");
             newCustomer.setMembership(false);
             customerService.save(newCustomer);
         }

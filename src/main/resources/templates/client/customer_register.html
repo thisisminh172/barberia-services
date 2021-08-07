@@ -49,8 +49,8 @@
                             <form class="row" th:action="@{/customer-register}" th:object="${customer}" method="post">
 
                                 <fieldset class="row row-fluid">
-                                    <div th:if="${error}" class="alert alert-danger" role="alert">
-                                        <span th:text="${errorMessage}"></span>
+                                    <div th:if="${phoneCheckMessage.available}" class="alert alert-danger" role="alert">
+                                        <span th:text="${phoneCheckMessage.message}"></span>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <label>(<span style="color:red;">*</span>) Số điện thoại</label>

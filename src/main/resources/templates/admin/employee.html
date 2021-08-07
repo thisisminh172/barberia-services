@@ -45,7 +45,7 @@
                 <tbody>
                 <tr th:each="employee:${employees}">
                     <td th:text="${employee.id}"></td>
-                    <td th:text="${employee.thumbnailUrl}"></td>
+                    <td><img th:src="${employee.thumbnailUrl}" style="width: 100px;height: 150px;" alt="thumbnail"></td>
                     <td th:text="${employee.lastName}"></td>
                     <td th:text="${employee.firstName}"></td>
                     <td th:text="${employee.phoneNumber}"></td>
@@ -98,7 +98,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form th:action="@{/admin/employees/addNew}" method="post" th:object="${employee}">
+                    <form th:action="@{/admin/employees/addNew}" method="post" th:object="${employee}" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label class="col-form-label">(<span style="color:red;">*</span>)Tên gọi:</label>
@@ -111,6 +111,10 @@
                         <div class="form-group">
                             <label class="col-form-label">(<span style="color:red;">*</span>)Tên:</label>
                             <input type="text" class="form-control" title="Không được để trống" th:field="*{firstName}" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Hình nhân viên:</label>
+                            <input type="file" class="form-control" title="Không được để trống" name="file" required>
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">(<span style="color:red;">*</span>)Số điện thoại :</label>

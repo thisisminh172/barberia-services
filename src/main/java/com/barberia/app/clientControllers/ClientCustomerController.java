@@ -44,19 +44,27 @@ public class ClientCustomerController {
         Customer findCustomer = customerService.findByPhoneNumber(phoneNumber);
         System.out.println(findCustomer.getPhoneNumber());
         if(findCustomer!=null){
-            if(findCustomer.getPassword().equals(password)){
-                System.out.println("login thanh cong");
-                session.setAttribute("PHONENUMBER", findCustomer.getPhoneNumber());
-                session.setAttribute("CUSTOMERID", findCustomer.getId());
-                session.setAttribute("ISLOGIN", true);
-                return "redirect:/";
+            if(findCustomer.getPassword().length()!=0){
+                if(findCustomer.getPassword().equals(password)){
+                    System.out.println("login thanh cong");
+                    session.setAttribute("PHONENUMBER", findCustomer.getPhoneNumber());
+                    session.setAttribute("CUSTOMERID", findCustomer.getId());
+                    session.setAttribute("ISLOGIN", true);
+                    return "redirect:/";
+                }else{
+                    MessageDto messageDto = new MessageDto("Số điện thoại hoặc mật khẩu không chính xác!", true);
+                    redirectAttributes.addFlashAttribute("MessageDto", messageDto);
+                    return "redirect:/login";
+                }
             }else{
-                MessageDto messageDto = new MessageDto("Số điện thoại hoặc mật khẩu không chính xác!", true);
+                MessageDto messageDto = new MessageDto("Số điện thoại chưa được đăng ký!", true);
                 redirectAttributes.addFlashAttribute("MessageDto", messageDto);
                 return "redirect:/login";
             }
+
         }else{
-            redirectAttributes.addFlashAttribute("loginError","Số điện thoại không chính xác!");
+            MessageDto messageDto = new MessageDto("Số điện thoại không chính xác!", true);
+            redirectAttributes.addFlashAttribute("MessageDto", messageDto);
             return "redirect:/login";
         }
     }
@@ -73,11 +81,11 @@ public class ClientCustomerController {
     // toi trang dang ky
     @GetMapping("/customer-new")
     public String goRegisterPage(Model model){
-        MessageDto messageDto = (MessageDto) model.getAttribute("phoneCheckMessage");
-        if(messageDto!=null){
-            model.addAttribute("errorMessage", messageDto.getMessage());
-            model.addAttribute("error", messageDto.isAvailable());
-        }
+//        MessageDto messageDto = (MessageDto) model.getAttribute("phoneCheckMessage");
+//        if(messageDto!=null){
+//            model.addAttribute("errorMessage", messageDto.getMessage());
+//            model.addAttribute("error", messageDto.isAvailable());
+//        }
         Customer customer = new Customer();
         model.addAttribute("customer",customer);
         return "client/customer_register";

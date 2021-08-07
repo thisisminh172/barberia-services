@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/admin-layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Cập nhật kiểu tóc</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa-file-text-o"></i> Cập nhật kiểu tóc</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a th:href="@{/admin/home}">Home</a></li>
+                        <li><i class="icon_document_alt"></i>Cập nhật</li>
+
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Cập nhật kiểu tóc
+                        </header>
+                        <div class="panel-body">
+                            <form class="form-horizontal" th:action="@{/admin/hair-style/update}" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id" th:value="${hairStyle.id}" class="form-control">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Tiêu đề</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" th:value="${hairStyle.title}" name="title" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Bài viết</label>
+                                    <div class="col-sm-10">
+                                        <textarea type="text" class="form-control" name="description" th:value="${hairStyle.description}" th:utext="${hairStyle.description}" required>
+
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Thumbnail</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" name="file" >
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Thumbnail đang sử dụng</label>
+                                    <div class="col-sm-10">
+                                        <img th:src="${hairStyle.thumbnail}" alt="">
+                                        <input type="hidden" name="thumbnail" th:value="${hairStyle.thumbnail}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button class="btn btn-primary" type="submit">CẬP NHẬT</button>
+                                        <a class="btn btn-default" th:href="@{/admin/hair-style}">HỦY</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+</body>
+</html>

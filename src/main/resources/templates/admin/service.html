@@ -30,6 +30,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
+                    <th>Ảnh</th>
                     <th>Tên dịch vụ</th>
                     <th>Giá gốc</th>
                     <th>Giá ưu đãi</th>
@@ -42,7 +43,8 @@
                 <tbody>
                 <tr th:each="service:${services}">
                     <td th:text="${service.id}"></td>
-                    <td th:text="${service.serviceName}"></td>
+                    <td><img th:src="${service.thumbnail}" style="width: 100px;height: 150px;" alt="thumbnail"></td>
+                    <td style="width:150px" th:text="${service.serviceName}"></td>
                     <td th:text="${service.originalPrice}+'K'"></td>
                     <td th:text="${service.discountPrice}+'K'"></td>
                     <td th:text="${service.discount}?'ĐANG KHUYẾN MÃI':'HẾT KHUYẾN MÃI'"></td>
@@ -50,9 +52,9 @@
                     <td th:text="${service.available}?'ĐANG CÓ':'KHÔNG CÓ'"></td>
                     <td>
                         <div class="btn-group">
-                            <a class="btn btn-primary" th:href="@{/admin/services/findById/(id=${service.id})}" id="editButton"><i class="icon_pencil-edit"></i></a>
-                            <a class="btn btn-info" id="detailsButton"><i class="icon_document_alt"></i></a>
-                            <a class="btn btn-danger" th:href="@{/admin/services/deactive/(id=${service.id})}" id="deleteButton"><i class="icon_close_alt2"></i></a>
+                            <a class="btn btn-primary" th:href="@{/admin/services/findById/(id=${service.id})}" id="editButton"><i class="icon_pencil-edit"></i>Cập nhật</a>
+<!--                            <a class="btn btn-info" id="detailsButton"><i class="icon_document_alt"></i></a>-->
+                            <a class="btn btn-danger" th:href="@{/admin/services/deactive/(id=${service.id})}" id="deleteButton"><i class="icon_close_alt2"></i>Hủy bỏ</a>
                         </div>
                     </td>
                 </tr>
@@ -87,7 +89,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form th:action="@{/admin/services/addNew}"  method="post" th:object="${service}">
+                    <form th:action="@{/admin/services/addNew}"  method="post" th:object="${service}" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="" class="col-form-label">Tên dịch vụ:</label>
                             <input type="text" class="form-control" th:field="*{serviceName}">
@@ -107,6 +109,10 @@
                         <div class="form-group">
                             <label for="" class="col-form-label">Mô tả:</label>
                             <input type="text" class="form-control" th:field="*{description}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-form-label">Hình thumbnail:</label>
+                            <input type="file" name="file" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="" class="col-form-label">Giảm giá:</label>
