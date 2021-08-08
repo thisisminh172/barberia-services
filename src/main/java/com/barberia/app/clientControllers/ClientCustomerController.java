@@ -95,7 +95,24 @@ public class ClientCustomerController {
     @PostMapping("/customer-register")
     public String register(Customer customer, RedirectAttributes redirectAttributes, HttpSession session){
         Customer findCustomer = customerService.findByPhoneNumber(customer.getPhoneNumber());
-        if(findCustomer==null || findCustomer.getPassword().length()==0){
+        if(findCustomer==null){
+            System.out.println("dang ky thanh cong");
+            Customer newCustomer = new Customer();
+            newCustomer.setMembership(true);
+            newCustomer.setPassword(customer.getPassword());
+            newCustomer.setEmail(customer.getEmail());
+            newCustomer.setNickName(customer.getNickName());
+            newCustomer.setPhoneNumber(customer.getPhoneNumber());
+            Customer newCustomer1 = customerService.save(newCustomer);
+
+            session.setAttribute("PHONENUMBER", newCustomer1.getPhoneNumber());
+            session.setAttribute("CUSTOMERID", newCustomer1.getId());
+            session.setAttribute("ISLOGIN", true);
+            return "redirect:/";
+
+
+        }
+        if(findCustomer!=null && findCustomer.getPassword().length()==0){
             System.out.println("dang ky thanh cong");
             findCustomer.setMembership(true);
             findCustomer.setPassword(customer.getPassword());
@@ -108,9 +125,7 @@ public class ClientCustomerController {
             session.setAttribute("CUSTOMERID", newCustomer.getId());
             session.setAttribute("ISLOGIN", true);
             return "redirect:/";
-
-
-        }else{
+        } else{
             MessageDto messageDto = new MessageDto("Số điện thoại này đã tồn tại", true);
             redirectAttributes.addFlashAttribute("phoneCheckMessage", messageDto);
             return "redirect:/customer-new";
