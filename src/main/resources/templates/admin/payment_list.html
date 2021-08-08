@@ -53,6 +53,12 @@
                             <h3 class="mb-3"><strong>TỔNG HÓA ĐƠN</strong></h3>
                             <strong class="text-success" style="font-size:20px;" th:text="${#numbers.formatDecimal(totalAllPayment,0,'COMMA',0,'POINT')}+' VND'">120k</strong>
                         </div>
+                        <div class="col-lg-6">
+                            <a th:href="@{/admin/report/html}"><h4 class="mb-3"><strong>Xuất report file HTML</strong></h4></a>
+                        </div>
+                        <div class="col-lg-6">
+                            <a th:href="@{/admin/report/pdf}"><h4 class="mb-3"><strong>Xuất report file PDF</strong></h4></a>
+                        </div>
                     </section>
                 </div>
             </div>
