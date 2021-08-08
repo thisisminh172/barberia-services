@@ -55,7 +55,11 @@ public class BookingService {
 
     public List<Booking> findByCustomerId(long customerId){
         LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
-        return bookingRepository.findByCustomerIdAndChosenTimeSlotAfter(customerId,yesterday);
+        return bookingRepository.findByCustomerIdAndStatusAndChosenTimeSlotAfter(customerId,"online",yesterday);
+    }
+
+    public List<Booking> findByStatus(String status){
+        return bookingRepository.findByStatus(status);
     }
 
 

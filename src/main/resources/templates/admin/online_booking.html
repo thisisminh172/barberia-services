@@ -39,7 +39,7 @@
                                     <td>
                                         <div class="btn-group">
                                             <a class="btn btn-primary" th:href="@{/admin/online-bookings/check-in-status/(id=${booking.id})}"><i class="icon_plus_alt2"></i>Check-in</a>
-                                            <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i>Hủy hẹn</a>
+                                            <a class="btn btn-danger" th:href="@{'/admin/booking/cancel/'+${booking.id}}"><i class="icon_close_alt2"></i>Hủy hẹn</a>
                                         </div>
                                     </td>
                                 </tr>

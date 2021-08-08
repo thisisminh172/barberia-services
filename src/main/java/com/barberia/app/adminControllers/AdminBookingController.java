@@ -214,6 +214,22 @@ public class AdminBookingController {
         return "redirect:/admin/check-in-bookings";
     }
 
+    // HỦY CUỘC HẸN CỦA KHÁCH
+    @RequestMapping("/admin/booking/cancel/{bookingId}")
+    public String cancelBooking(@PathVariable("bookingId") long bookingId){
+        Booking findBooking = bookingService.findById(bookingId).get();
+        findBooking.setStatus("cancel");
+        bookingService.save(findBooking);
+        return "redirect:/admin/online-bookings";
+    }
+
+    @GetMapping("/admin/booking/cancel-list")
+    public String goCancelBookingPage(Model model){
+        List<Booking> bookings = bookingService.findByStatus("cancel");
+        model.addAttribute("bookings",bookings);
+        return "admin/cancel_booking";
+    }
+
 
 
 

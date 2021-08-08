@@ -9,7 +9,81 @@
 </head>
 <body>
 <div layout:fragment="content">
-    hoàn thành đặt hẹn
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+
+        <div id="barbers" class="section lb">
+            <div class="container">
+                <div class="section-title row text-center">
+                    <div class="col-md-8 offset-md-2">
+                        <h3>Hoàn thành đặt hẹn</h3>
+                    </div>
+                </div><!-- end title -->
+
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="contact_form">
+
+                            <form class="row" th:action="@{/contact-send}" method="post">
+                                <div class="alert alert-success" role="alert">
+                                    Bạn đã đặt lịch thành công! Vui lòng đến trước 10 phút lịch hẹn để làm thủ tục giữ chỗ.
+                                </div>
+                                <fieldset class="row row-fluid">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label><strong> Số điện thoại của bạn: </strong></label>
+                                        <p th:text="${phoneNumber}"></p>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <label><strong> Thời gian cuộc hẹn: </strong></label>
+                                        <p th:text="${#temporals.format(chosenTimeSlot, 'dd-MM-yyyy')}  +', '+${#temporals.hour(chosenTimeSlot)} +' giờ '+ ${#temporals.minute(chosenTimeSlot)}+' phút'"></p>
+
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label><strong> Dịch vụ bạn chọn: </strong></label>
+                                        <ul class="list-group">
+                                            <li th:each="s:${services}" class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span th:text="${s.serviceName}"></span>
+                                                <span style="font-size:20px;" class="badge badge-warning badge-pill" th:text="${#numbers.formatDecimal(s.originalPrice,0,'COMMA',0,'POINT')}+',000 VND'">14</span>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label><strong> Số tiền chuẩn bị: </strong></label>
+                                        <p><span style="font-size:20px;" class="badge badge-success" th:text="${#numbers.formatDecimal(total,0,'COMMA',0,'POINT')}+',000 VND'">Success</span></p>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                        <a th:href="@{/}" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Quay lại trang chủ</a>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </div><!-- end section -->
+
+
+
+        <div class="copyrights">
+            <div class="container">
+                <div class="footer-distributed">
+                    <div class="footer-left">
+                        <p class="footer-links">
+                            <a th:href="@{/home}">Trang chủ</a>
+                            <a th:href="@{/service}">Dịch vụ</a>
+                            <a th:href="@{/contact}">Liên hệ</a>
+                            <a th:href="@{/booking}">Đặt lịch</a>
+
+                        </p>
+                        <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">StyleBarber</a> Design By : <a href="https://html.design/">html design</a></p>
+                    </div>
+                </div>
+            </div><!-- end container -->
+        </div><!-- end copyrights -->
+    </div>
 </div>
 </body>
 </html>

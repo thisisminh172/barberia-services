@@ -1,5 +1,6 @@
 package com.barberia.app.adminControllers;
 
+import com.barberia.app.email.SendEmailService;
 import com.barberia.app.models.Feedback;
 import com.barberia.app.services.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ import java.util.List;
 public class AdminFeedbackController {
     @Autowired
     private FeedbackService feedbackService;
+    @Autowired
+    private SendEmailService sendEmailService;
 
     @GetMapping("/admin/feedback")
     public String goFeedbackPage(Model model){
@@ -38,8 +41,10 @@ public class AdminFeedbackController {
         feedback1.setSend(true);
         boolean message = true;
         redirectAttributes.addFlashAttribute("message", message);
-        System.out.println(feedback.getEmail() +" gửi thành công" + content);
+//        System.out.println(feedback.getEmail() +" gửi thành công" + content);
+
         feedbackService.save(feedback1);
+        sendEmailService.sendEmail(feedback.getEmail(),"Phản hồi của khách: '"+feedback1.getComment()+"'---- Phản hồi:"+content+"' ---- Ký tên: quản lý!","BARBERIA - CẮT TÓC NAM");
         return "redirect:/admin/feedback";
     }
 }
