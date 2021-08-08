@@ -125,7 +125,7 @@ public class AdminBookingController {
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("paymentMethod", paymentMethod);
         System.out.println(paymentMethod + " "+turnId);
-        QRCodeGenerator.generateQRCodeImage("Thanh toán thành công ví điện tử MoMo tổng hóa đơn là "+totalPrice, 350, 350, QR_CODE_IMAGE_PATH);
+        QRCodeGenerator.generateQRCodeImage("Thanh toán thành công ví MoMo tổng giá tiền là "+totalPrice, 350, 350, QR_CODE_IMAGE_PATH);
         model.addAttribute("qrcode","http://localhost:8080/files/QRcode.png");
         switch (paymentMethod){
             case "cash":

@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface TurnRepository  extends JpaRepository<Turn, Long> {
     List<Turn> findAllByStatus(String status);
+    List<Turn> findAllByStatusAndEmployeeId(String status, long id);
 }

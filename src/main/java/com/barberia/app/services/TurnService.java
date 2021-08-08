@@ -37,4 +37,10 @@ public class TurnService {
     public List<Turn> findAllNotYetPaymentTurn(){
         return turnRepository.findAllByStatus("notyet");
     }
+    public List<Turn> findAllDonePaymentTurn(){
+        return turnRepository.findAllByStatus("done");
+    }
+    public List<Turn> findAllByStatusAndEmployeeId(String status, long id){
+        return turnRepository.findAllByStatusAndEmployeeId(status,id);
+    }
 }
