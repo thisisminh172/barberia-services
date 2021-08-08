@@ -1,14 +1,18 @@
 package com.barberia.app.adminControllers;
 
+import com.barberia.app.dto.MessageDto;
 import com.barberia.app.models.*;
 import com.barberia.app.qr.QRCodeGenerator;
 import com.barberia.app.services.*;
 import com.google.zxing.WriterException;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -35,6 +39,8 @@ public class AdminBookingController {
     private CustomerService customerService;
     @Autowired
     private SalonService salonService;
+    @Autowired
+    private ReportService reportService;
 
     @GetMapping("/admin/online-bookings")
     public String goBooking(Model model){
@@ -154,6 +160,11 @@ public class AdminBookingController {
 
     @GetMapping("/admin/payment-list")
     public String goPaymentList(Model model){
+        MessageDto messageDto =(MessageDto) model.getAttribute("messageDto");
+        if(messageDto != null){
+            model.addAttribute("message", messageDto.getMessage());
+            model.addAttribute("available", messageDto.isAvailable());
+        }
         List<Payment> payments = paymentService.findAll();
         double totalAllPayment = 0;
         for(int i = 0; i< payments.size(); i++){
@@ -228,6 +239,17 @@ public class AdminBookingController {
         List<Booking> bookings = bookingService.findByStatus("cancel");
         model.addAttribute("bookings",bookings);
         return "admin/cancel_booking";
+    }
+
+    @GetMapping("/admin/report/{format}")
+    public String generateReport(@PathVariable String format, RedirectAttributes redirectAttributes) throws FileNotFoundException, JRException {
+//        return reportService.exportReport(format);
+        String path = reportService.exportReport(format);
+        MessageDto messageDto = new MessageDto();
+        messageDto.setMessage("Đã tạo thành công report: "+path);
+        messageDto.setAvailable(true);
+        redirectAttributes.addFlashAttribute("messageDto",messageDto);
+        return "redirect:/admin/payment-list";
     }
 
 
