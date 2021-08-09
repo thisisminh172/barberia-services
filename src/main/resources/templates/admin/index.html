@@ -199,7 +199,7 @@
                                     <th>Tên nhân viên</th>
                                     <th>Số điện thoại</th>
                                     <th>Số lượt đã phụ trách</th>
-
+                                    <th>Gửi email cho nhân viên</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -208,6 +208,11 @@
                                     <td th:text="${e.employee.lastName}+' '+${e.employee.firstName}"></td>
                                     <td th:text="${e.employee.phoneNumber}"></td>
                                     <td th:text="${e.numberOfTurns}"></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a class="btn btn-info" th:href="@{'/admin/employees/sendmail/'+${e.employee.id}}" title="Gửi email nhân viên" id="detailsButton"><i class="icon_document_alt"></i>Gửi email</a>
+                                        </div>
+                                    </td>
                                 </tr>
 
                                 </tbody>

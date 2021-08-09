@@ -28,7 +28,7 @@ public class AdminHairStyleController {
         return "admin/hair_style";
     }
 
-    @PostMapping("/admin/hair-style/add")
+    @PostMapping("/admin/hair-style")
     public String addNewHairStyle(@RequestParam(value = "title") String title, @RequestParam(value = "description") String description, @RequestParam(value = "file") MultipartFile file){
         HairStyle hairStyle = new HairStyle();
         hairStyle.setTitle(title);
@@ -65,6 +65,14 @@ public class AdminHairStyleController {
         }
 
         hairStyleService.save(hairStyleUpdate);
+        return "redirect:/admin/hair-style";
+    }
+
+
+    @RequestMapping(value = "/admin/hair-style/delete/{hairStyleId}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    public String deleteHairStyle(@PathVariable("hairStyleId") long hairStyleId){
+//        HairStyle hairStyle = hairStyleService.findById(hairStyleId).get();
+        hairStyleService.delete(hairStyleId);
         return "redirect:/admin/hair-style";
     }
 }

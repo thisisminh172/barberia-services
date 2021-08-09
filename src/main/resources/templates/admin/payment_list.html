@@ -30,7 +30,7 @@
                                 <th><i class=""></i> Thời gian lịch hẹn</th>
                                 <th><i class=""></i> Phương thức thanh toán</th>
                                 <th><i class=""></i> Hóa đơn</th>
-<!--                                <th><i class=""></i> Tác vụ</th>-->
+                                <th><i class=""></i> Tác vụ</th>
                             </tr>
                             <tr th:each="payment:${payments}">
                                 <td th:text="${payment.id}"></td>
@@ -41,11 +41,11 @@
                                 <td th:text="${payment.paymentMethod}=='cash'?'Tiền mặt':'Ví điện tử MoMo'"></td>
                                 <td th:text="${#numbers.formatDecimal(payment.totalPrice,0,'COMMA',0,'POINT')}+' VND'"></td>
 
-<!--                                <td>-->
-<!--                                    <div class="btn-group">-->
-<!--                                        <a class="btn btn-primary" th:href="@{/admin/payment-details/(id=${payment.id})}">Chi tiết</a>-->
-<!--                                    </div>-->
-<!--                                </td>-->
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" th:href="@{'/admin/payment-list/'+${payment.id}}">Chi tiết</a>
+                                    </div>
+                                </td>
                             </tr>
 
                             </tbody>

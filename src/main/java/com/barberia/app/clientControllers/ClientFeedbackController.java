@@ -22,7 +22,7 @@ public class ClientFeedbackController {
         return "client/contact";
     }
 
-    @PostMapping("/contact-send")
+    @PostMapping("/contact")
     public String sendFeedback(@RequestParam(value = "fullName") String fullName, @RequestParam(value = "email") String email, @RequestParam(value = "phoneNumber") String phoneNumber, @RequestParam(value = "comment") String comment, Model model){
         Feedback feedback = new Feedback();
         feedback.setSend(false);

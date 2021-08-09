@@ -26,7 +26,9 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
                     data-whatever="@mdo">Thêm nhân viên mới
             </button>
-
+            <div th:if="${message}" class="alert alert-success">
+                <strong>Thành công!</strong> Gửi email cho nhân viên.
+            </div>
             <table class="table">
                 <thead>
                 <tr>
@@ -59,8 +61,8 @@
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-primary" th:href="@{/admin/employees/findById/(id=${employee.id})}"
-                               id="editButton" title="Cập nhật nhân viên"><i class="icon_pencil-edit"></i></a>
-<!--                            <a class="btn btn-info" title="Chi tiết nhân viên" id="detailsButton"><i class="icon_document_alt"></i></a>-->
+                               id="editButton" title="Cập nhật nhân viên"><i class="icon_pencil-edit"></i>Chỉnh sửa</a>
+                            <a class="btn btn-info" th:href="@{'/admin/employees/sendmail/'+${employee.id}}" title="Gửi email nhân viên" id="detailsButton"><i class="icon_document_alt"></i>Gửi email</a>
                             <a class="btn btn-danger" th:href="@{/admin/employees/deactive/(id=${employee.id})}"
                                id="deactiveButton" title="Ngưng làm việc"><i class="icon_close_alt2"></i></a>
                         </div>
@@ -98,7 +100,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form th:action="@{/admin/employees/addNew}" method="post" th:object="${employee}" enctype="multipart/form-data">
+                    <form th:action="@{/admin/employees}" method="post" th:object="${employee}" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label class="col-form-label">(<span style="color:red;">*</span>)Tên gọi:</label>
