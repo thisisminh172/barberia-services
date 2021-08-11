@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/admin-layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Hairdresser</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Hairdresser of Barberia</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+                        <li><i class="fa fa-bars"></i>List</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- page start-->
+            <h1>Hairdresser list</h1>
+
+            <!--            <div th:if="${message}" class="alert alert-success">-->
+            <!--                <strong>Thành công!</strong> Gửi email cho nhân viên.-->
+            <!--            </div>-->
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Staff name</th>
+                    <th>Phone number</th>
+                    <th>Number of turns</th>
+                    <th>Choose the month</th>
+                    <th>Calculate the salary</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="e:${employeeAndTurnDtos}">
+                    <form th:action="@{/admin/employees/salary/calculate}" method="post">
+                        <input type="hidden" name="id" th:value="${e.employee.id}">
+                        <td th:text="${e.employee.id}"></td>
+                        <td th:text="${e.employee.lastName}+' '+${e.employee.firstName}"></td>
+                        <td th:text="${e.employee.phoneNumber}"></td>
+                        <td th:text="${e.numberOfTurns}"></td>
+                        <td>
+                            <select name="month">
+                                <option value="" disabled>Choose the month</option>
+                                <option th:each="m:${localDateTimeList}" th:value="${m}"
+                                        th:text="${#temporals.format(m,'MM-yyyy')}">Volvo
+                                </option>
+
+                            </select>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <input type="submit" class="btn btn-primary"
+                                       id="editButton" value="Calculate" title="Check the salary"/>
+                                <!--                            <a class="btn btn-info" th:href="@{'/admin/employees/sendmail/'+${employee.id}}" title="Gửi email nhân viên" id="detailsButton"><i class="icon_document_alt"></i>Gửi email</a>-->
+                                <!--                            <a class="btn btn-danger" th:href="@{/admin/employees/deactive/(id=${employee.id})}"-->
+                                <!--                               id="deactiveButton" title="Ngưng làm việc"><i class="icon_close_alt2"></i></a>-->
+                            </div>
+                        </td>
+                    </form>
+                </tr>
+
+                </tbody>
+            </table>
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+    <!--    <div class="text-right">-->
+    <!--        <div class="credits">-->
+    <!--            &lt;!&ndash;-->
+    <!--              All the links in the footer should remain intact.-->
+    <!--              You can delete the links only if you purchased the pro version.-->
+    <!--              Licensing information: https://bootstrapmade.com/license/-->
+    <!--              Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin-->
+    <!--            &ndash;&gt;-->
+    <!--            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    </section>
+    <!-- container section end -->
+
+
+    <!--delete modal-->
+    <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ngưng hoạt động</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có muốn cho nhân viên ngưng hoạt động?</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" id="confirmDeleteButton" href="">Có, hoàn tất</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<scriptt src="/admin/myjs/employee.js"></scriptt>
+</body>
+</html>

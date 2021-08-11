@@ -12,7 +12,7 @@
     </field>
     <field name="paymentMethod" class="java.lang.String">
     </field>
-    <field name="totalPrice" class="java.lang.Double">
+    <field name="totalPrice" class="java.lang.String">
     </field>
     <background>
         <band/>

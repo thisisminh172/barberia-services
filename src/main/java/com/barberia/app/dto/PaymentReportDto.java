@@ -7,13 +7,13 @@ public class PaymentReportDto {
     private String employeeName;
     private String datetime;
     private String paymentMethod;
-    private double totalPrice;
+    private String totalPrice;
 
 
     public PaymentReportDto() {
     }
 
-    public PaymentReportDto(long id, String employeeName, String datetime, String paymentMethod, double totalPrice) {
+    public PaymentReportDto(long id, String employeeName, String datetime, String paymentMethod, String totalPrice) {
         this.id = id;
         this.employeeName = employeeName;
         this.datetime = datetime;
@@ -53,11 +53,11 @@ public class PaymentReportDto {
         this.paymentMethod = paymentMethod;
     }
 
-    public double getTotalPrice() {
+    public String getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
     }
 }

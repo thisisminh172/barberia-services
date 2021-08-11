@@ -29,12 +29,15 @@ public class ReportService {
         List<Payment> payments = paymentRepository.findAll();
         List<PaymentReportDto> paymentReportDtos = new ArrayList<PaymentReportDto>();
         for(int i = 0; i< payments.size();i++){
+
             PaymentReportDto newPaymentReport = new PaymentReportDto();
             newPaymentReport.setId(payments.get(i).getId());
             newPaymentReport.setEmployeeName(payments.get(i).getTurn().getEmployee().getFirstName());
             newPaymentReport.setDatetime(payments.get(i).getTurn().getBooking().getChosenTimeSlot().format(formatter));
-            newPaymentReport.setPaymentMethod(payments.get(i).getPaymentMethod());
-            newPaymentReport.setTotalPrice(payments.get(i).getTotalPrice());
+            String method = payments.get(i).getPaymentMethod()=="cash"?"CASH":"MOMO wallet";
+            newPaymentReport.setPaymentMethod(method);
+            String totalPrice = String.format("%,d",(int) payments.get(i).getTotalPrice()) +" vnđ";
+            newPaymentReport.setTotalPrice(totalPrice);
             paymentReportDtos.add(newPaymentReport);
         }
         //Load file and compile it

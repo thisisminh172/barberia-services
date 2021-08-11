@@ -33,4 +33,9 @@ public class PaymentService {
     public Payment save(Payment payment){
         return paymentRepository.save(payment);
     }
+
+    // FIND BY TURN ID
+    public List<Payment> findByTurnId(long turnId){
+        return paymentRepository.findAllByTurnId(turnId);
+    }
 }

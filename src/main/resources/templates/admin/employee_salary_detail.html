@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layouts/admin-layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Payments</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading" style="font-size:30px;">
+                            Staff's full name: <span th:text="${employee.lastName}+', '+${employee.firstName}"></span>
+                        </header>
+
+                        <table class="table table-striped table-advance table-hover">
+                            <tbody>
+                            <tr>
+                                <th><i class=""></i># Payment code</th>
+                                <th><i class=""></i># Booking number</th>
+                                <th><i class=""></i> Booking time</th>
+                                <th><i class=""></i> Payment method</th>
+                                <th><i class=""></i> Total</th>
+                            </tr>
+                            <tr th:each="payment:${listOfEmployeePayments}">
+                                <td th:text="${payment.id}"></td>
+<!--                                <td th:text="${payment.turn.employee.lastName}+' '+${payment.turn.employee.firstName}"></td>-->
+<!--                                <td th:text="${payment.turn.employee.phoneNumber}"></td>-->
+                                <td th:text="${payment.turn.booking.id}"></td>
+                                <td th:text="${#temporals.format(payment.turn.booking.chosenTimeSlot, 'dd-MM-yyyy')}+', '+${#temporals.hour(payment.turn.booking.chosenTimeSlot)} +' giờ '+ ${#temporals.minute(payment.turn.booking.chosenTimeSlot)}+' phút'"></td>
+                                <td th:text="${payment.paymentMethod}=='cash'?'CASH':'MOMO WALLET'"></td>
+                                <td th:text="${#numbers.formatDecimal(payment.totalPrice,0,'COMMA',0,'POINT')}+' VNĐ'"></td>
+
+<!--                                <td>-->
+<!--                                    <div class="btn-group">-->
+<!--                                        <a class="btn btn-primary" th:href="@{'/admin/payment-list/'+${payment.id}}">Details</a>-->
+<!--                                    </div>-->
+<!--                                </td>-->
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <div class="col-lg-8">
+                            <h3 class="mb-3"><strong>Payments of from</strong></h3>
+                            <strong style="font-size:20px;" th:text="${#temporals.format(startMonth, 'dd-MM-yyyy')}+' to ' + ${#temporals.format(endMonth, 'dd-MM-yyyy')}"></strong>
+                        </div>
+                        <div class="col-lg-4">
+                            <h3 class="mb-3"><strong>TOTAL PAYMENT</strong></h3>
+                            <strong class="text-info" style="font-size:20px;" th:text="${#numbers.formatDecimal(totalAllPayment,0,'COMMA',0,'POINT')}+' VNĐ'">120k</strong>
+                        </div>
+                        <div class="col-lg-8"></div>
+                        <div class="col-lg-4">
+                            <h3 class="mb-3"><strong>Salon taken %</strong></h3>
+                            <strong class="text-danger" style="font-size:20px;">40%</strong>
+                        </div>
+                        <div class="col-lg-8"></div>
+                        <div class="col-lg-4">
+                            <h3 class="mb-3"><strong>TOTAL MAKE (x 60%)</strong></h3>
+                            <strong class="text-warning" style="font-size:20px;" th:text="${#numbers.formatDecimal(totalMake,0,'COMMA',0,'POINT')}+' VNĐ'">120k</strong>
+                        </div>
+                        <div class="col-lg-8"></div>
+                        <div class="col-lg-4">
+                            <h3 class="mb-3"><strong>BASE SALARY</strong></h3>
+                            <strong class="text-primary" style="font-size:20px;" th:text="${#numbers.formatDecimal(employee.salary,0,'COMMA',0,'POINT')}+' VNĐ'">120k</strong>
+                        </div>
+                        <div class="col-lg-6"></div>
+                        <div th:if="${employee.salary} > ${totalMake}" class="col-lg-6">
+                            <h3 class="mb-3"><strong>FINAL SALARY</strong></h3>
+                            <small>Base salary is greater than total make</small>
+                            <strong class="text-success" style="font-size:20px;" th:text="${#numbers.formatDecimal(employee.salary,0,'COMMA',0,'POINT')}+' VNĐ'">120k</strong>
+                        </div>
+                        <div th:if="${employee.salary} < ${totalMake}" class="col-lg-6">
+                            <h3 class="mb-3"><strong>FINAL SALARY</strong></h3>
+                            <small>Base salary is less than total make</small>
+                            <strong class="text-success" style="font-size:20px;" th:text="${#numbers.formatDecimal(totalMake,0,'COMMA',0,'POINT')}+' VNĐ'">120k</strong>
+                        </div>
+                        <div class="col-lg-4">
+                            <a th:href="@{/admin/employees/salary}"><h4 class="mb-3"><strong>Go back</strong></h4></a>
+                        </div>
+                        <div class="col-lg-8"></div>
+<!--                        <div class="col-lg-6">-->
+<!--                            <a th:href="@{/admin/report/html}"><h4 class="mb-3"><strong>Export report file HTML</strong></h4></a>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <a th:href="@{/admin/report/pdf}"><h4 class="mb-3"><strong>Export report file PDF</strong></h4></a>-->
+<!--                        </div>-->
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+</body>
+</html>
