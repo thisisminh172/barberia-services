@@ -331,54 +331,54 @@
                         <span class="menu-arrow arrow_carrot-right"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" th:href="@{/admin/salon}"><span>Thông tin</span></a></li>
-                        <li><a class="" th:href="@{/admin/salon/update-form}"><span>Cập nhật</span></a></li>
+                        <li><a class="" th:href="@{/admin/salon}"><span>Details</span></a></li>
+                        <li><a class="" th:href="@{/admin/salon/update-form}"><span>Update</span></a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
                     <a class="" href="javascript:;">
                         <i class="icon_piechart"></i>
-                        <span class="text-success font-weight-bold">DS lịch hẹn</span>
+                        <span class="text-success font-weight-bold">BOOKING</span>
                         <span class="menu-arrow arrow_carrot-right"></span>
                     </a>
                     <ul class="sub">
                         <li><a class="font-weight-bold" th:href="@{/admin/walk-in}"><span class="font-weight-bold">WALK-IN</span></a></li>
-                        <li><a class="" th:href="@{/admin/check-in-bookings}"><span>Đã check-in</span></a></li>
-                        <li><a class="" th:href="@{/admin/serving-page}"><span>Đang phục vụ</span></a></li>
-                        <li><a class="" th:href="@{/admin/online-bookings}"><span>Hẹn online</span></a></li>
-                        <li><a class="" th:href="@{/admin/payment-list}"><span>DS đã thanh toán</span></a></li>
-                        <li><a class="" th:href="@{/admin/booking/cancel-list}"><span>DS đã bị hủy</span></a></li>
+                        <li><a class="" th:href="@{/admin/check-in-bookings}"><span>Waiting list</span></a></li>
+                        <li><a class="" th:href="@{/admin/serving-page}"><span>On Serving</span></a></li>
+                        <li><a class="" th:href="@{/admin/online-bookings}"><span>Online bookings</span></a></li>
+                        <li><a class="" th:href="@{/admin/payment-list}"><span>Payment list</span></a></li>
+                        <li><a class="" th:href="@{/admin/booking/cancel-list}"><span>Cancel booking</span></a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
                         <i class="icon_desktop"></i>
-                        <span>Nhân viên</span>
+                        <span>Employees</span>
                         <span class="menu-arrow arrow_carrot-right"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" th:href="@{/admin/employees}">Danh sách nhân viên</a></li>
-<!--                        <li><a class="" th:href="@{/admin/turns}">Lượt của nhân viên</a></li>-->
+                        <li><a class="" th:href="@{/admin/employees}">Employee List</a></li>
+                        <li><a class="" th:href="@{/admin/employees/salary}">Calculate Salary</a></li>
 
                     </ul>
                 </li>
                 <li>
                     <a class="" th:href="@{/admin/customer}">
-                        <i class="icon_genius"></i>
-                        <span>DS khách hàng đăng ký</span>
+
+                        <span>Registered Customer</span>
                     </a>
                 </li>
                 <li>
                     <a class="" th:href="@{/admin/feedback}">
-                        <i class="icon_genius"></i>
-                        <span>Phản hồi khách hàng</span>
+
+                        <span>Customer feedback</span>
                     </a>
                 </li>
 
                 <li sec:authorize="hasRole('ADMIN')">
                     <a class="" th:href="@{/admin/services}">
-                        <i class="icon_piechart"></i>
-                        <span>Dịch vụ</span>
+
+                        <span>Services Management</span>
 
                     </a>
 
@@ -386,8 +386,8 @@
 
                 <li class="" sec:authorize="hasRole('ADMIN')">
                     <a th:href="@{/admin/hair-style}" class="">
-                        <i class="icon_table"></i>
-                        <span>Kiểu tóc</span>
+
+                        <span>Hair-style Management</span>
 
                     </a>
 

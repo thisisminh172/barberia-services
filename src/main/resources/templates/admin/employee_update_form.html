@@ -32,38 +32,38 @@
                                 <input type="hidden" name="id" th:value="${employee.id}" class="form-control">
 
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Tên gọi</label>
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Nick name</label>
                                     <div class="col-sm-10">
                                         <input type="text" th:value="${employee.nickName}" name="nickName" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Họ</label>
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Last Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="lastName" th:value="${employee.lastName}" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Tên đệm & Tên</label>
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Middle name & first name</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" required name="firstName" th:value="${employee.firstName}" >
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Hình ảnh đang sử dụng</label>
+                                    <label class="col-sm-2 control-label">Thumbnail is using</label>
                                     <div class="col-sm-10">
                                         <img th:src="${employee.thumbnailUrl}" style="width:500px; height:750px;" alt="">
                                         <input type="hidden" class="form-control" name="thumbnailUrl" th:value="${employee.thumbnailUrl}" >
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Hình ảnh mới</label>
+                                    <label class="col-sm-2 control-label">New thumbnail</label>
                                     <div class="col-sm-10">
                                         <input type="file" class="form-control" name="file" >
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Số điện thoại</label>
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Phone number</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" pattern="(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}" name="phoneNumber" title="Số điện thoại không đúng định dạng" required th:value="${employee.phoneNumber}" >
                                     </div>
@@ -71,7 +71,7 @@
 
 
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Chức vụ</label>
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Role</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="role">
                                             <option th:each="r:${roleList}" th:value="${r}" th:text="${r}"></option>
@@ -86,27 +86,34 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Mật khẩu</label>
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Password</label>
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" title="Chứa ít nhất một số thứ tự, một chữ viết hoa và một chữ viết thường, ít nhất 8 ký tự" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" th:required="required" th:value="${employee.password}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Địa chỉ nhà</label>
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Home address</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="homeAddress" th:value="${employee.homeAddress}" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Ngày sinh</label>
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Date of birth</label>
                                     <div class="col-sm-10">
 
                                         <input type="date" class="form-control" name="dateOfBirth" th:value="${#temporals.format(employee.dateOfBirth,'yyyy-MM-dd')}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Đang hoạt động</label>
+                                    <label class="col-sm-2 control-label">(<span style="color:red;">*</span>)Salary (ex: 4500000)</label>
+                                    <div class="col-sm-10">
+
+                                        <input type="number" class="form-control" name="salary" pattern="[0-9]+" title="Please enter numbers only" th:value="${employee.salary}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Working now</label>
                                     <div class="col-sm-10">
 
                                         <input style="width: 20px" type="checkbox" class="checkbox form-control" th:checked="${employee.isActive()}" name="active">
@@ -114,22 +121,22 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Nhận online booking</label>
+                                    <label class="col-sm-2 control-label">Is online booking available</label>
                                     <div class="col-sm-10">
 
                                         <input style="width: 20px" type="checkbox" class="checkbox form-control" th:checked="${employee.isOnlineBookingAvailable()}" name="onlineBookingAvailable">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Giới tính</label>
+                                    <label class="col-sm-2 control-label">Sex</label>
                                     <div class="col-sm-10">
 
                                         <div class="radios">
                                             <label class="label_radio" for="radio-01">
-                                                <input name="gender" th:checked="${employee.getGender()}=='male'" value="male" id="radio-01" type="radio"/> Nam
+                                                <input name="gender" th:checked="${employee.getGender()}=='male'" value="male" id="radio-01" type="radio"/> Male
                                             </label>
                                             <label class="label_radio" for="radio-02">
-                                                <input name="gender" th:checked="${employee.getGender()}=='female'" value="female" id="radio-02" type="radio"/> Nữ
+                                                <input name="gender" th:checked="${employee.getGender()}=='female'" value="female" id="radio-02" type="radio"/> Female
                                             </label>
                                         </div>
                                     </div>
@@ -138,8 +145,8 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <button class="btn btn-primary" type="submit">CẬP NHẬT</button>
-                                        <a class="btn btn-default" th:href="@{/admin/employees}">HỦY</a>
+                                        <button class="btn btn-primary" type="submit">UPDATE</button>
+                                        <a class="btn btn-default" th:href="@{/admin/employees}">CANCEL</a>
                                     </div>
                                 </div>
                             </form>

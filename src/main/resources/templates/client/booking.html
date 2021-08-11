@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="title--heading">
-                                <h1>Đặt hẹn</h1>
+                                <h1>Let schedule our meeting</h1>
                             </div>
                             <div class="clearfix"></div>
 
@@ -56,8 +56,8 @@
             <div class="container">
                 <div class="section-title row text-center">
                     <div class="col-md-8 offset-md-2">
-                        <small>ĐẶT LỊCH GIỮ CHỖ CHỈ 30 GIÂY, CHỈ CẦN SỐ ĐIỆN THOẠI</small>
-                        <h3>Thông tin đặt lịch</h3>
+                        <small>KEEP YOUR SIT IN JUST 30 SECONDS, ONLY WITH PHONE NUMBER, CANCEL ANYTIME</small>
+                        <h3>BOOKING INFORMATION</h3>
                     </div>
                 </div><!-- end title -->
 
@@ -69,24 +69,24 @@
                             <form th:action="@{/booking/process-booking}" method="post">
                                 <fieldset class="row row-fluid">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <h2 class="font-weight-bold">Tên salon</h2>
+                                        <h2 class="font-weight-bold">Salon name</h2>
                                         <p th:text="${salon.salonName}"></p>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <h2 class="font-weight-bold">Địa chỉ salon</h2>
+                                        <h2 class="font-weight-bold">Salon address</h2>
                                         <p th:text="${salon.address}"></p>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <h2 class="font-weight-bold">Số điện thoại của bạn</h2>
+                                        <h2 class="font-weight-bold">Your phone number</h2>
                                         <p th:text="${customer.phoneNumber}"></p>
                                     </div>
                                     <input type="hidden" name="salonId" th:value="${salon.id}">
                                     <input type="hidden" name="customerId" th:value="${customer.id}">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <h2 class="font-weight-bold">Chọn dịch vụ tại salon</h2>
+                                        <h2 class="font-weight-bold">Pick your services</h2>
                                         <div class="overflow-box">
                                             <div class="services-container">
-                                                <h3 class="text-center">Đánh dấu dịch vụ</h3>
+                                                <h3 class="text-center">Check me</h3>
                                                 <th:block th:each="s:${services}">
                                                     <input type="checkbox" name="serviceItems" title="Chọn ít nhất một dịch vụ để đặt hẹn" class="big-checkbox" th:id="${s.id}"  th:value="${s.id}"/>&nbsp;&nbsp;
                                                     <label th:text="${s.serviceName}+' (-'+${s.getPriceFormat()}+'K-)'" th:for="${s.id}" class="hover-text"></label></br>
@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <h2 class="font-weight-bold">Chọn thời gian</h2>
+                                        <h2 class="font-weight-bold">Pick your free time</h2>
                                         <table class="table time-table">
                                             <thead>
                                             <tr>
@@ -138,14 +138,13 @@
                                     </div>
 
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <h2 class="">Anh đi cắt cùng nhiều người ? (nếu khung giờ không đủ thợ cho cả
-                                            nhóm salon sẽ gọi xác nhận lại)</h2>
+                                        <h2 class="">You come with others ? (If we do not have enough hairdressers, we will let you know)</h2>
                                         <textarea class="form-control" name="description" id="description" rows="6"
-                                                  placeholder="VD: Anh đi 3 người/ Anh đi cùng con"></textarea>
+                                                  placeholder="Ex: I come with 3 people/ I come with my kids"></textarea>
                                     </div>
                                     <div class="form-btn text-center">
                                         <button type="submit" value="SEND" id="checkBtn"
-                                                class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Hoàn Tất Đặt Lịch
+                                                class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Finish your booking
                                         </button>
                                     </div>
                                 </fieldset>
@@ -162,13 +161,13 @@
                 <div class="footer-distributed">
                     <div class="footer-left">
                         <p class="footer-links">
-                            <a th:href="@{/home}">Trang chủ</a>
-                            <a th:href="@{/service}">Dịch vụ</a>
-                            <a th:href="@{/contact}">Liên hệ</a>
-                            <a th:href="@{/booking}">Đặt lịch</a>
+                            <a th:href="@{/home}">Home</a>
+                            <a th:href="@{/service}">Services</a>
+                            <a th:href="@{/contact}">Contact</a>
+                            <a th:href="@{/booking}">Booking</a>
                         </p>
                         <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">StyleBarber</a>
-                            Design By : <a href="https://html.design/">html design</a></p>
+                            Design By : <a href="https://html.design/">Group 1</a></p>
                     </div>
                 </div>
             </div><!-- end container -->

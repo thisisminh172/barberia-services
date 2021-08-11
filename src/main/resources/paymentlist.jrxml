@@ -33,7 +33,7 @@
                     <textElement textAlignment="Right">
                         <font size="14" isBold="false"/>
                     </textElement>
-                    <text><![CDATA[590 Cách Mạng Tháng Tám, Phường 11, Quận 3, Thành phố Hồ Chí Minh]]></text>
+                    <text><![CDATA[590 Cach Mang Thang Tam, 11 Ward, 3 District, Ho Chi Minh city]]></text>
                 </staticText>
                 <staticText>
                     <reportElement x="300" y="10" width="278" height="37" forecolor="#FFFFFF" uuid="a042e65c-8c49-4c16-8d8b-abd3475fbc15"/>
@@ -69,7 +69,7 @@
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[Tên nhân viên]]></text>
+                <text><![CDATA[Employee name]]></text>
             </staticText>
             <staticText>
                 <reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="04bfd82d-036e-40cd-83d2-1093a15d751d">
@@ -78,7 +78,7 @@
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[Thời gian]]></text>
+                <text><![CDATA[Time]]></text>
             </staticText>
             <staticText>
                 <reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9e4efa95-1a6e-4152-8229-2d1949188e4a">
@@ -87,7 +87,7 @@
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[Phương thức]]></text>
+                <text><![CDATA[Payment method]]></text>
             </staticText>
             <staticText>
                 <reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="4a2e7074-6a46-430d-a6b7-e222100c5d61">
@@ -96,7 +96,7 @@
                 <textElement textAlignment="Center">
                     <font size="14" isBold="true"/>
                 </textElement>
-                <text><![CDATA[Hóa đơn]]></text>
+                <text><![CDATA[Total bill]]></text>
             </staticText>
         </band>
     </columnHeader>

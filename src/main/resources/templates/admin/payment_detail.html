@@ -5,7 +5,7 @@
       layout:decorate="layouts/admin-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Thông tin chi tiết hóa đơn thanh toán</title>
+    <title>Payment information</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -13,10 +13,10 @@
         <section class="wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa-file-text-o"></i> Thông tin chi tiết</h3>
+                    <h3 class="page-header"><i class="fa fa-file-text-o"></i> PAYMENT DETAILS</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a th:href="@{/admin/home}">Home</a></li>
-                        <li><i class="icon_document_alt"></i>Thông tin</li>
+                        <li><i class="icon_document_alt"></i>Details</li>
                     </ol>
                 </div>
             </div>
@@ -24,55 +24,55 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Thông tin chi tiết hóa đơn
+                            Details of payment
                         </header>
                         <div class="panel-body">
                             <form class="form-horizontal" action="">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Mã hóa đơn</label>
+                                    <label class="col-sm-2 control-label">Payment code</label>
                                     <div class="col-sm-10">
                                         <p th:text="${payment.id}"></p>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Số điện thoại khách hàng</label>
+                                    <label class="col-sm-2 control-label">Customer phone number</label>
                                     <div class="col-sm-10">
                                         <p th:text="${payment.turn.booking.customer.phoneNumber}"></p>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Tên nhân viên</label>
+                                    <label class="col-sm-2 control-label">Staff's full name</label>
                                     <div class="col-sm-10">
                                         <p th:text="${payment.turn.employee.lastName}+' '+${payment.turn.employee.firstName}"></p>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Số điện thoại nhân viên phụ trách</label>
+                                    <label class="col-sm-2 control-label">Staff's phone number</label>
                                     <div class="col-sm-10">
                                         <p th:text="${payment.turn.employee.phoneNumber}"></p>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Mã lịch hẹn</label>
+                                    <label class="col-sm-2 control-label">Booking code</label>
                                     <div class="col-sm-10">
                                         <p th:text="${payment.turn.booking.id}"></p>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Phương thức thanh toán</label>
+                                    <label class="col-sm-2 control-label">Payment method</label>
                                     <div class="col-sm-10">
-                                        <p th:text="${payment.paymentMethod}=='cash'?'Tiền mặt':'Ví điện tử MoMo'"></p>
+                                        <p th:text="${payment.paymentMethod}=='cash'?'CASH':'MOMO WALLET'"></p>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Thời gian lịch hẹn</label>
+                                    <label class="col-sm-2 control-label">Booking time</label>
                                     <div class="col-sm-10">
                                         <p th:text="${#temporals.format(payment.turn.booking.chosenTimeSlot, 'dd-MM-yyyy')}+', '+${#temporals.hour(payment.turn.booking.chosenTimeSlot)} +' giờ '+ ${#temporals.minute(payment.turn.booking.chosenTimeSlot)}+' phút'"></p>
                                     </div>
 
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Dịch vụ</label>
+                                    <label class="col-sm-2 control-label">Services</label>
                                     <div class="col-sm-10">
 <!--                                        <p th:text="${customer.password}"></p>-->
                                         <ul>
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Tổng hóa đơn</label>
+                                    <label class="col-sm-2 control-label">Total bill</label>
                                     <div class="col-sm-10">
                                         <p th:text="${#numbers.formatDecimal(payment.totalPrice,0,'COMMA',0,'POINT')}+' VNĐ'"></p>
                                     </div>
@@ -90,7 +90,7 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <a class="btn btn-default" th:href="@{/admin/payment-list}">Quay lại</a>
+                                        <a class="btn btn-default" th:href="@{/admin/payment-list}">GO BACK</a>
                                     </div>
                                 </div>
                             </form>

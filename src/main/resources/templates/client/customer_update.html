@@ -5,7 +5,7 @@
       layout:decorate="layouts/client-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Cập nhật thông tin cá nhân</title>
+    <title>Update your information</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -21,7 +21,7 @@
                             </div>
 
                             <div class="title--heading">
-                                <h1>Cập nhật</h1>
+                                <h1>Update</h1>
                             </div>
                             <div class="clearfix"></div>
 
@@ -38,7 +38,7 @@
                 <div class="section-title row text-center">
                     <div class="col-md-8 offset-md-2">
 
-                        <h3>Cập nhật thông tin</h3>
+                        <h3>Update your info</h3>
                     </div>
                 </div><!-- end title -->
 
@@ -50,25 +50,25 @@
 
                                 <fieldset class="row row-fluid">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <label>(<span style="color:red;">*</span>) Số điện thoại</label>
+                                        <label>(<span style="color:red;">*</span>) Phone number</label>
                                         <input type="hidden" name="id" th:value="${customer.id}">
                                         <input type="text" name="phoneNumber" th:value="${customer.phoneNumber}" pattern="(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}" title="Không được để trống số điện thoại" required class="form-control" placeholder="Số điện thoại của bạn">
                                     </div>
 
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <label>(<span style="color:red;">*</span>) Mật khẩu</label>
+                                        <label>(<span style="color:red;">*</span>) Password</label>
                                         <input type="password"  name="password" th:value="${customer.password}" pattern="[0-9]{6}" class="form-control" minlength="6" maxlength="6" title="Nhập mật khẩu (6 chữ số)" required placeholder="Mật khẩu...(6 chữ số)">
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <label>Tên gọi của bạn</label>
-                                        <input type="text" name="nickName" th:value="${customer.nickName}" class="form-control" placeholder="Tên gọi của bạn...">
+                                        <label>Your nick name</label>
+                                        <input type="text" name="nickName" th:value="${customer.nickName}" class="form-control" placeholder="How do you want to be call...">
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <label>Địa chỉ email</label>
-                                        <input type="text" name="email" th:value="${customer.email}" class="form-control" placeholder="địa chỉ email....">
+                                        <label>Your email address</label>
+                                        <input type="text" name="email" th:value="${customer.email}" class="form-control" placeholder="How we can reach you....">
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                        <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Cập nhật</button>
+                                        <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Update</button>
                                     </div>
                                 </fieldset>
                             </form>
@@ -90,12 +90,12 @@
                 <div class="footer-distributed">
                     <div class="footer-left">
                         <p class="footer-links">
-                            <a th:href="@{/home}">Trang chủ</a>
-                            <a th:href="@{/service}">Dịch vụ</a>
-                            <a th:href="@{/contact}">Liên hệ</a>
-                            <a th:href="@{/booking}">Đặt lịch</a>
+                            <a th:href="@{/home}">Home</a>
+                            <a th:href="@{/service}">Services</a>
+                            <a th:href="@{/contact}">Contact</a>
+                            <a th:href="@{/booking}">Booking</a>
                         </p>
-                        <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">StyleBarber</a> Design By : <a href="https://html.design/">html design</a></p>
+                        <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">StyleBarber</a> Design By : <a href="https://html.design/">Group 1</a></p>
                     </div>
                 </div>
             </div><!-- end container -->

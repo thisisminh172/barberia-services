@@ -5,7 +5,7 @@
       layout:decorate="layouts/admin-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Sắp xếp nhân viên</title>
+    <title>Select hairdresser</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -13,10 +13,10 @@
         <section class="wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa-file-text-o"></i> Sắp xếp nhân viên với cuộc hẹn</h3>
+                    <h3 class="page-header"><i class="fa fa-file-text-o"></i> SELECT HAIRDRESSER</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a th:href="@{/admin/home}">Home</a></li>
-                        <li><i class="icon_document_alt"></i>Sắp xếp</li>
+                        <li><i class="icon_document_alt"></i>Arrange</li>
 
                     </ol>
                 </div>
@@ -25,31 +25,31 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Sắp xếp nhân viên với cuộc hẹn
+                            Select hairdresser
                         </header>
                         <div class="panel-body">
                             <form class="form-horizontal " th:action="@{/admin/check-in-booking/update-staff}" method="post">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label font-weight-bold">Mã đặt hẹn</label>
+                                    <label class="col-sm-2 control-label font-weight-bold">Booking code</label>
                                     <div class="col-sm-10">
                                         <p class="form-control-static" th:text="${bookingTemp.id}"></p>
                                         <input type="hidden" class="form-control" name="bookingId"  th:value="${bookingTemp.id}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label">Số điện thoại khách hàng</label>
+                                    <label class="col-lg-2 control-label">Customer phone number</label>
                                     <div class="col-lg-10">
                                         <p class="form-control-static" th:text="${bookingTemp.customer.phoneNumber}">address</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label">Thời gian đặt hẹn</label>
+                                    <label class="col-lg-2 control-label">Booking time</label>
                                     <div class="col-lg-10">
                                         <p class="form-control-static" th:text="${#temporals.format(bookingTemp.chosenTimeSlot, 'dd-MM-yyyy')}  +', '+${#temporals.hour(bookingTemp.chosenTimeSlot)} +' giờ '+ ${#temporals.minute(bookingTemp.chosenTimeSlot)}+' phút'"></p>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label">CHỌN NHÂN VIÊN</label>
+                                    <label class="col-lg-2 control-label">CHOOSE THE HAIRDRESSER</label>
                                     <div class="col-lg-10">
                                         <select class="form-control" name="employeeId">
                                             <option th:each="s:${staffs}" th:value="${s.id}" th:text="${s.lastName}+' '+${s.firstName}"></option>
@@ -61,8 +61,8 @@
 
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <button class="btn btn-primary" type="submit">Hoàn tất sắp xếp</button>
-                                        <a class="btn btn-default" th:href="@{/admin/check-in-bookings}">Hủy</a>
+                                        <button class="btn btn-primary" type="submit">Finish arrangement</button>
+                                        <a class="btn btn-default" th:href="@{/admin/check-in-bookings}">Cancel</a>
                                     </div>
                                 </div>
                             </form>

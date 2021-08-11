@@ -18,7 +18,7 @@ public class Employee {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "nick_name",length = 100)
+    @Column(name = "nick_name", length = 100)
     private String nickName;
     @Column(name = "phone_number", length = 100)
     private String phoneNumber;
@@ -40,6 +40,8 @@ public class Employee {
     private String email;
     @Column(name = "home_address", length = 200)
     private String homeAddress;
+    @Column(name = "salary")
+    private double salary;
     @Column(name = "date_of_birth")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
@@ -55,7 +57,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String nickName, String phoneNumber, String password, String firstName, String lastName, String role, String gender, boolean active,String thumbnailUrl, String email, String homeAddress, LocalDate dateOfBirth, boolean onlineBookingAvailable, Salon salon, List<Booking> bookings) {
+    public Employee(Long id, String nickName, String phoneNumber, String password, String firstName, String lastName, String role, String gender, boolean active, String thumbnailUrl, String email, String homeAddress, double salary, LocalDate dateOfBirth, boolean onlineBookingAvailable, Salon salon, List<Booking> bookings) {
         this.id = id;
         this.nickName = nickName;
         this.phoneNumber = phoneNumber;
@@ -68,6 +70,7 @@ public class Employee {
         this.thumbnailUrl = thumbnailUrl;
         this.email = email;
         this.homeAddress = homeAddress;
+        this.salary = salary;
         this.dateOfBirth = dateOfBirth;
         this.onlineBookingAvailable = onlineBookingAvailable;
         this.salon = salon;
@@ -139,7 +142,6 @@ public class Employee {
     }
 
 
-
     public String getEmail() {
         return email;
     }
@@ -154,6 +156,14 @@ public class Employee {
 
     public void setHomeAddress(String homeAddress) {
         this.homeAddress = homeAddress;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     public LocalDate getDateOfBirth() {

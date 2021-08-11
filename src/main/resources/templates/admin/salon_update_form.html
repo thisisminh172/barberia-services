@@ -13,10 +13,10 @@
         <section class="wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa-file-text-o"></i> Cập nhật salon</h3>
+                    <h3 class="page-header"><i class="fa fa-file-text-o"></i> Update salon</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a th:href="@{/admin/home}">Home</a></li>
-                        <li><i class="fa fa-file-text-o"></i>Cập nhật</li>
+                        <li><i class="fa fa-file-text-o"></i>Update</li>
                     </ol>
                 </div>
             </div>
@@ -24,19 +24,19 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Cập nhật SALON
+                            Update SALON
                         </header>
                         <div class="panel-body">
                             <form class="form-horizontal" th:action="@{/admin/salon/update}" method="put"  th:object="${salon}">
                                 <input type="hidden" th:field="*{id}" class="form-control">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Tên Salon</label>
+                                    <label class="col-sm-2 control-label">Salon Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" th:field="*{salonName}"  class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Địa chỉ</label>
+                                    <label class="col-sm-2 control-label">Location address</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" th:field="*{address}">
                                     </div>
@@ -48,13 +48,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Số điện thoại</label>
+                                    <label class="col-sm-2 control-label">Phone number</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" th:field="*{phoneNumber}" >
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Mở cửa lúc</label>
+                                    <label class="col-sm-2 control-label">Open at</label>
                                     <div class="col-sm-10">
 <!--                                        <select class="form-control" th:field="*{openedHour}">-->
 <!--                                            <option th:value="${salon.openedHour}" th:text="${salon.openedHour}" selected></option>-->
@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Đóng cửa lúc</label>
+                                    <label class="col-sm-2 control-label">Close at</label>
                                     <div class="col-sm-10">
 <!--                                        <select class="form-control" th:field="*{closedHour}">-->
 <!--                                            <option th:value="${salon.closedHour}" th:text="${salon.closedHour}" selected></option>-->
@@ -75,32 +75,32 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Số phút cho một time-slot</label>
+                                    <label class="col-sm-2 control-label">Number of minute in one time slot</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" th:field="*{minuteInOneTimeSlot}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Số lượt trong một time-slot</label>
+                                    <label class="col-sm-2 control-label">Number of turns in one time slot</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" th:field="*{numberOfTurnInOneTimeSlot}">
-                                        <span class="help-block text-danger">Không được vượt quá số lượng nhân viên</span>
+                                        <span class="help-block text-danger">This number must not excess the number of hairdressers</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Mở đặt lịch online</label>
+                                    <label class="col-sm-2 control-label">Online booking allow</label>
                                     <div class="col-sm-10">
                                         <input style="width: 20px" type="checkbox" class="checkbox form-control" th:checked="${salon.isAvailableForOnlineBooking()}" th:field="*{availableForOnlineBooking}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">MỞ CỬA</label>
+                                    <label class="col-sm-2 control-label">IS OPENING</label>
                                     <div class="col-sm-10">
                                         <input style="width: 20px" type="checkbox" class="checkbox form-control" th:checked="${salon.isOpened()}" th:field="*{opened}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Đậu xe hơi</label>
+                                    <label class="col-sm-2 control-label">IS CAR PARKING AVAILABLE</label>
                                     <div class="col-sm-10">
                                         <input style="width: 20px" type="checkbox" class="checkbox form-control" th:checked="${salon.isCarParkingAvailable()}" th:field="*{carParkingAvailable}">
                                     </div>
@@ -150,8 +150,8 @@
 <!--                                </div>-->
                                 <div class="form-group">
                                     <div class="col-lg-offset-2 col-lg-10">
-                                        <button class="btn btn-primary" type="submit">CẬP NHẬT</button>
-                                        <a class="btn btn-default" th:href="@{/admin/salon}">HỦY</a>
+                                        <button class="btn btn-primary" type="submit">UPDATE SALON STATUS</button>
+                                        <a class="btn btn-default" th:href="@{/admin/salon}">CANCEL</a>
                                     </div>
                                 </div>
                             </form>

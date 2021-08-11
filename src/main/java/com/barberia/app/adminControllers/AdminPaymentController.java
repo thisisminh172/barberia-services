@@ -46,7 +46,7 @@ public class AdminPaymentController {
 //        return reportService.exportReport(format);
         String path = reportService.exportReport(format);
         MessageDto messageDto = new MessageDto();
-        messageDto.setMessage("Đã tạo thành công report: "+path);
+        messageDto.setMessage("Successfully export report: "+path);
         messageDto.setAvailable(true);
         redirectAttributes.addFlashAttribute("messageDto",messageDto);
         return "redirect:/admin/payment-list";

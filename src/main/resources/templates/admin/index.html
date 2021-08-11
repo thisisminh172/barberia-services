@@ -36,7 +36,7 @@
                                      th:text="${#numbers.formatDecimal(totalAllPayment,0,'COMMA',0,'POINT')}+' VNĐ'">
                                     4,362,000 vnđ
                                 </div>
-                                <div class="title">Tổng hóa đơn</div>
+                                <div class="title">Total payments</div>
                             </div>
                         </div>
 
@@ -53,8 +53,8 @@
                                 <div class="col-xs-9">
                                     <div style="font-size:30px;" class="count" th:text="${numberOfOnlineBookings}">39
                                     </div>
-                                    <div class="title">Lịch hẹn online</div>
-                                    <div class="">(Click vào để tới danh sách)</div>
+                                    <div class="title">ONLINE BOOKING</div>
+                                    <div class="">(Click me)</div>
                                 </div>
                             </div>
                         </a>
@@ -69,7 +69,7 @@
                                                      aria-hidden="true"></i></div>
                             <div class="col-xs-9">
                                 <div style="font-size:24px;" class="count" th:text="${numberOfPayments}">190</div>
-                                <div class="title">Hóa đơn đã thanh toán</div>
+                                <div class="title">NUMBER OF PAYMENTS</div>
                             </div>
                         </div>
 
@@ -84,7 +84,7 @@
                                                      aria-hidden="true"></i></div>
                             <div class="col-xs-9">
                                 <div style="font-size:24px;" class="count" th:text="${numberOfEmployees}">8</div>
-                                <div class="title">Số nhân viên</div>
+                                <div class="title">NUMBER OF EMPLOYEES</div>
                             </div>
                         </div>
 
@@ -100,7 +100,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa-home"></i> THÔNG TIN SALON</h3>
+                    <h3 class="page-header"><i class="fa fa-home"></i> SALON STATUS</h3>
                 </div>
             </div>
 
@@ -111,8 +111,7 @@
                         <div class="row">
                             <div class="col-xs-4"><i class="fa fa-play"></i></div>
                             <div class="col-xs-7">
-                                <div class="count" th:text="${salon.opened}?'Đang hoạt động':'Tạm dừng'">Đang hoạt
-                                    động
+                                <div class="count" th:text="${salon.opened}?'Đang hoạt động':'Tạm dừng'">OPENING
                                 </div>
                             </div>
                         </div>
@@ -131,8 +130,8 @@
                             <div class="col-xs-4"><i class="fa fa-play"></i></div>
                             <div class="col-xs-7">
                                 <div class="count"
-                                     th:text="${salon.availableForOnlineBooking}?'Đang mở đặt hẹn online':'Đang tắt đặt hẹn online'">
-                                    Mở đặt hẹn online
+                                     th:text="${salon.availableForOnlineBooking}?'Online appoinment is on':'Online appoinment is off'">
+                                    Online appoinment is on
                                 </div>
                             </div>
                         </div>
@@ -149,7 +148,7 @@
                             <div class="col-xs-7">
                                 <div class="count">
                                     <div class="count">8:00 - 20:00</div>
-                                    <div class="title">Thời gian mở cửa</div>
+                                    <div class="title">OPEN HOURS</div>
                                 </div>
                             </div>
                         </div>
@@ -166,7 +165,7 @@
                             <div class="col-xs-4"><i class="fa fa-play"></i></div>
                             <div class="col-xs-7">
                                 <div class="count" th:text="${numberOfStaff}">4</div>
-                                <div class="title">Số thợ cắt tóc</div>
+                                <div class="title">Number of hairdressers</div>
                             </div>
                         </div>
 
@@ -188,7 +187,7 @@
                 <div class="col-lg-9 col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h2><i class="fa fa-flag-o red"></i><strong>Số lượt mỗi thợ cắt tóc</strong></h2>
+                            <h2><i class="fa fa-flag-o red"></i><strong>Number of each staffs</strong></h2>
 
                         </div>
                         <div class="panel-body">
@@ -196,10 +195,10 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Tên nhân viên</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Số lượt đã phụ trách</th>
-                                    <th>Gửi email cho nhân viên</th>
+                                    <th>Staff name</th>
+                                    <th>Phone number</th>
+                                    <th>Number of turns</th>
+                                    <th>Send email</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -210,7 +209,7 @@
                                     <td th:text="${e.numberOfTurns}"></td>
                                     <td>
                                         <div class="btn-group">
-                                            <a class="btn btn-info" th:href="@{'/admin/employees/sendmail/'+${e.employee.id}}" title="Gửi email nhân viên" id="detailsButton"><i class="icon_document_alt"></i>Gửi email</a>
+                                            <a class="btn btn-info" th:href="@{'/admin/employees/sendmail/'+${e.employee.id}}" title="Send email" id="detailsButton"><i class="icon_document_alt"></i>Send email</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -241,7 +240,7 @@
                         <div class="panel-body progress-panel">
                             <div class="row">
                                 <div class="col-lg-8 task-progress pull-left">
-                                    <h1>Lịch hẹn sắp xếp theo ngày</h1>
+                                    <h1>Booking order </h1>
                                 </div>
                                 <div class="col-lg-4">
 
@@ -252,9 +251,9 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Số điện thoại khách hàng</th>
-                                <th>Thời gian đặt hẹn</th>
-                                <th>Tình trạng check-in</th>
+                                <th>Customer's phone number</th>
+                                <th>Booking time</th>
+                                <th>Status</th>
 
                             </tr>
                             </thead>

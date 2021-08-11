@@ -21,7 +21,7 @@
                                 </div>
 
                                 <div class="title--heading">
-                                    <h1>Liên hệ</h1>
+                                    <h1>Contact</h1>
                                 </div>
                                 <div class="clearfix"></div>
 
@@ -37,8 +37,8 @@
                 <div class="container">
                     <div class="section-title row text-center">
                         <div class="col-md-8 offset-md-2">
-                            <small>BẠN CÓ THỂ GỬI THẮC MẮC ĐẾN CHÚNG TÔI</small>
-                            <h3>LIÊN HỆ VỚI CHÚNG TÔI</h3>
+                            <small>YOU CAN SEND YOUR QUESTION TO US</small>
+                            <h3>LET US KNOW YOUR FEELING</h3>
                         </div>
                     </div><!-- end title -->
 
@@ -48,24 +48,24 @@
                                 <div id="message"></div>
                                 <form class="row" th:action="@{/contact}" method="post">
                                     <div th:if="${message}" class="alert alert-success">
-                                        <strong>Thành công!</strong> Tin nhắn của bạn đã được gửi đi thành công, chúng tôi sẽ hồi âm sớm nhất.
+                                        <strong>Success!</strong> Your message have been send to us, we will reply after reaching it.
                                     </div>
                                     <fieldset class="row row-fluid">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <span style="color:red;">*</span><input type="text" name="fullName" id="fullName" title="Không được để trống" required class="form-control" placeholder="Họ và Tên đầy đủ">
+                                            <span style="color:red;">*</span><input type="text" name="fullName" id="fullName" title="Không được để trống" required class="form-control" placeholder="Your full name...">
                                         </div>
 
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <span style="color:red;">*</span><input type="email" name="email" id="email" class="form-control" title="Không được để trống" required placeholder="Địa chỉ email">
+                                            <span style="color:red;">*</span><input type="email" name="email" id="email" class="form-control" title="Không được để trống" required placeholder="Your email address...">
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <span style="color:red;">*</span><input type="text" name="phoneNumber" id="phoneNumber" title="Không được để trống" required class="form-control" placeholder="Số điện thoại của bạn">
+                                            <span style="color:red;">*</span><input type="text" name="phoneNumber" id="phoneNumber" title="Không được để trống" required class="form-control" placeholder="Your phone number...">
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <span style="color:red;">*</span><textarea class="form-control" name="comment" required title="Để lại lời nhắn của bạn" id="comments" rows="6" placeholder="Thắc mắc của bạn"></textarea>
+                                            <span style="color:red;">*</span><textarea class="form-control" name="comment" required title="Để lại lời nhắn của bạn" id="comments" rows="6" placeholder="Your feeling..."></textarea>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                            <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Gửi đi</button>
+                                            <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block subt">Send this</button>
                                         </div>
                                     </fieldset>
                                 </form>
@@ -87,12 +87,12 @@
                     <div class="footer-distributed">
                         <div class="footer-left">
                             <p class="footer-links">
-                                <a th:href="@{/home}">Trang chủ</a>
-                                <a th:href="@{/service}">Dịch vụ</a>
-                                <a th:href="@{/contact}">Liên hệ</a>
-                                <a th:href="@{/booking}">Đặt lịch</a>
+                                <a th:href="@{/home}">Home</a>
+                                <a th:href="@{/service}">Service</a>
+                                <a th:href="@{/contact}">Contact</a>
+                                <a th:href="@{/booking}">Booking</a>
                             </p>
-                            <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">StyleBarber</a> Design By : <a href="https://html.design/">html design</a></p>
+                            <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">StyleBarber</a> Design By : <a href="https://html.design/">Group 1</a></p>
                         </div>
                     </div>
                 </div><!-- end container -->
