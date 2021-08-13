@@ -94,7 +94,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Thêm Nhân Viên Mới</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">New employee</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -103,27 +103,27 @@
                     <form th:action="@{/admin/employees}" method="post" th:object="${employee}" enctype="multipart/form-data">
 
                         <div class="form-group">
-                            <label class="col-form-label">(<span style="color:red;">*</span>)Tên gọi:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Nick name:</label>
                             <input type="text" class="form-control" title="Không được để trống" th:field="*{nickName}" required>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">(<span style="color:red;">*</span>)Họ:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Last name:</label>
                             <input type="text" class="form-control" title="Không được để trống" th:field="*{lastName}" required>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">(<span style="color:red;">*</span>)Tên:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)First name:</label>
                             <input type="text" class="form-control" title="Không được để trống" th:field="*{firstName}" required>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">(<span style="color:red;">*</span>)Hình nhân viên:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Avatar:</label>
                             <input type="file" class="form-control" title="Không được để trống" name="file" required>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">(<span style="color:red;">*</span>)Số điện thoại :</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Phone number :</label>
                             <input type="text" class="form-control" pattern="(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}" required title="Số điện thoại không đúng định dạng" th:field="*{phoneNumber}">
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">(<span style="color:red;">*</span>)Chức vụ:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Role:</label>
 
                             <select class="form-control" th:field="*{role}">
                                 <option th:each="r:${roleList}" th:value="${r}" th:text="${r}"></option>
@@ -134,38 +134,38 @@
                             <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required title="Email không đúng định dạng" th:field="*{email}">
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">(<span style="color:red;">*</span>)Mật khẩu:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Password:</label>
                             <input type="password" class="form-control" required title="Chứa ít nhất một số thứ tự, một chữ viết hoa và một chữ viết thường, ít nhất 8 ký tự" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" th:field="*{password}">
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">(<span style="color:red;">*</span>)Xác nhận mật khẩu:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Confirmed Password:</label>
                             <input type="password" class="form-control" required title="Chứa ít nhất một số thứ tự, một chữ viết hoa và một chữ viết thường, ít nhất 8 ký tự" name="confirmedPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">(<span style="color:red;">*</span>)Địa chỉ nhà:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Addredd:</label>
                             <input type="text" class="form-control" th:field="*{homeAddress}">
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">(<span style="color:red;">*</span>)Ngày sinh:</label>
+                            <label class="col-form-label">(<span style="color:red;">*</span>)Date Of Birth:</label>
                             <input type="date" class="form-control" th:field="*{dateOfBirth}" required>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Hoạt động:</label>
+                            <label class="col-form-label">Working:</label>
                             <input type="checkbox" class="form-check-input" th:field="*{active}"/>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Nhận online booking:</label>
+                            <label class="col-form-label">Online booking available:</label>
                             <input type="checkbox" class="form-check-input" th:field="*{onlineBookingAvailable}"
                                    checked>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-form-label">Giới tính:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="col-form-label">Sex:</label>&nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="radio" class="form-check-input" required checked="checked" th:field="*{gender}" value="male"> Nam&nbsp;
                             <input type="radio" class="form-check-input" required th:field="*{gender}" value="female"> Nữ
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Thêm mới</button>
+                            <button type="submit" class="btn btn-primary">Insert new</button>
                         </div>
                     </form>
                 </div>

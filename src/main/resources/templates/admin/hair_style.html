@@ -5,7 +5,7 @@
       layout:decorate="layouts/admin-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Danh sách kiểu tóc</title>
+    <title>Hair style</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -14,27 +14,27 @@
         <section class="wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Danh sách kiểu tóc </h3>
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Hair style </h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a th:href="@{/admin}">Home</a></li>
-                        <li><i class="fa fa-bars"></i>Danh sách kiểu tóc</li>
+                        <li><i class="fa fa-bars"></i>Hair style</li>
                     </ol>
                 </div>
             </div>
             <!-- page start-->
-            <h1>Danh sách kiểu tóc</h1>
+            <h1>Hair style</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo">Thêm kiểu tóc mới
+                    data-whatever="@mdo">New Hair style
             </button>
 
             <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Ảnh</th>
-                    <th>Tiêu đề</th>
-                    <th>Bài viết</th>
-                    <th>Tác vụ</th>
+                    <th>Thumbnail</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,10 +47,10 @@
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-primary" th:href="@{'/admin/hair-style/'+${hs.id}}"
-                               id="editButton" title="Cập nhật kiểu tóc"><i class="icon_pencil-edit"></i>Cập nhật</a>
+                               id="editButton" title="Cập nhật kiểu tóc"><i class="icon_pencil-edit"></i>Update</a>
                             <!--                            <a class="btn btn-info" title="Chi tiết nhân viên" id="detailsButton"><i class="icon_document_alt"></i></a>-->
                             <a class="btn btn-danger" th:href="@{'/admin/hair-style/delete/'+${hs.id}}"
-                               id="deactiveButton" title="xóa"><i class="icon_close_alt2"></i>Xóa</a>
+                               id="deactiveButton" title="xóa"><i class="icon_close_alt2"></i>Delete</a>
                         </div>
                     </td>
                 </tr>

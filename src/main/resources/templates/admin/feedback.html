@@ -5,7 +5,7 @@
       layout:decorate="layouts/admin-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Phản hồi của khách</title>
+    <title>Customer Feedback</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -14,28 +14,28 @@
         <section class="wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Phản hồi của khách </h3>
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Customer Feedback </h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a th:href="@{/admin}">Home</a></li>
-                        <li><i class="fa fa-bars"></i>Phản hồi</li>
+                        <li><i class="fa fa-bars"></i>Feedback</li>
                     </ol>
                 </div>
             </div>
             <!-- page start-->
-            <h1>Danh sách feedback</h1>
+            <h1>Feedback</h1>
             <div th:if="${message}" class="alert alert-success">
-                <strong>Thành công!</strong> Gửi email cho khách hàng thành công.
+                <strong>Success!</strong> Email has sent!
             </div>
             <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Tên khách hàng</th>
-                    <th>Email khách hàng</th>
-                    <th>Số điện thoại</th>
+                    <th>Customer name</th>
+                    <th>Email</th>
+                    <th>Phone number</th>
                     <th>Comment</th>
-                    <th>Tình trạng</th>
-                    <th>Tác vụ</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,12 +45,12 @@
                     <td th:text="${fb.email}"></td>
                     <td th:text="${fb.phoneNumber}"></td>
                     <td th:text="${fb.comment}"></td>
-                    <td th:text="${fb.send}?'Đã phản hồi':'Chưa phản hồi'"></td>
+                    <td th:text="${fb.send}?'Replied':'Read'"></td>
                     <!--                    <p th:text="${#strings.abbreviate(s.description,25)}"></p>-->
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-primary" th:href="@{'/admin/feedback/'+${fb.id}}"
-                               id="editButton" title="Cập nhật kiểu tóc"><i class="icon_pencil-edit"></i>Gửi phản hồi</a>
+                               id="editButton" title="Cập nhật kiểu tóc"><i class="icon_pencil-edit"></i>Send email</a>
                             <!--                            <a class="btn btn-info" title="Chi tiết nhân viên" id="detailsButton"><i class="icon_document_alt"></i></a>-->
                         </div>
                     </td>

@@ -5,7 +5,7 @@
       layout:decorate="layouts/admin-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Dịch vụ</title>
+    <title>Services</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -17,27 +17,26 @@
                     <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-                        <li><i class="fa fa-bars"></i>Pages</li>
-                        <li><i class="fa fa-square-o"></i>Pages</li>
+                        <li><i class="fa fa-bars"></i>Services</li>
                     </ol>
                 </div>
             </div>
             <!-- page start-->
             <h1>Danh sách dịch vụ</h1>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-whatever="@mdo">Thêm dịch vụ mới</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-whatever="@mdo">New service</button>
 
             <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Ảnh</th>
-                    <th>Tên dịch vụ</th>
-                    <th>Giá gốc</th>
-                    <th>Giá ưu đãi</th>
-                    <th>Đang khuyến mãi</th>
-                    <th>Thời gian thực hiện</th>
-                    <th>Đang có tại tiệm</th>
-                    <th>Tác vụ</th>
+                    <th>Thumbnail</th>
+                    <th>Service Name</th>
+                    <th>Original Price</th>
+                    <th>Discount Price</th>
+                    <th>Is Discount</th>
+                    <th>Time Consume</th>
+                    <th>Is Available</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,14 +46,14 @@
                     <td style="width:150px" th:text="${service.serviceName}"></td>
                     <td th:text="${service.originalPrice}+'K'"></td>
                     <td th:text="${service.discountPrice}+'K'"></td>
-                    <td th:text="${service.discount}?'ĐANG KHUYẾN MÃI':'HẾT KHUYẾN MÃI'"></td>
-                    <td th:text="${service.timeConsume}+' phút'"></td>
-                    <td th:text="${service.available}?'ĐANG CÓ':'KHÔNG CÓ'"></td>
+                    <td th:text="${service.discount}?'Discount':'Not Available'"></td>
+                    <td th:text="${service.timeConsume}+' minutes'"></td>
+                    <td th:text="${service.available}?'Available':'Unavailable'"></td>
                     <td>
                         <div class="btn-group">
-                            <a class="btn btn-primary" th:href="@{/admin/services/findById/(id=${service.id})}" id="editButton"><i class="icon_pencil-edit"></i>Cập nhật</a>
+                            <a class="btn btn-primary" th:href="@{/admin/services/findById/(id=${service.id})}" id="editButton"><i class="icon_pencil-edit"></i>Update</a>
 <!--                            <a class="btn btn-info" id="detailsButton"><i class="icon_document_alt"></i></a>-->
-                            <a class="btn btn-danger" th:href="@{/admin/services/deactive/(id=${service.id})}" id="deleteButton"><i class="icon_close_alt2"></i>Hủy bỏ</a>
+                            <a class="btn btn-danger" th:href="@{/admin/services/deactive/(id=${service.id})}" id="deleteButton"><i class="icon_close_alt2"></i>Delete</a>
                         </div>
                     </td>
                 </tr>
@@ -83,7 +82,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="">Thêm dịch vụ mới</h5>
+                    <h5 class="modal-title" id="">New Service</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -91,44 +90,44 @@
                 <div class="modal-body">
                     <form th:action="@{/admin/services/addNew}"  method="post" th:object="${service}" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="" class="col-form-label">Tên dịch vụ:</label>
+                            <label for="" class="col-form-label">Service Name:</label>
                             <input type="text" class="form-control" th:field="*{serviceName}">
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-form-label">Giá gốc:</label>
+                            <label for="" class="col-form-label">Original Price:</label>
                             <input type="text" class="form-control" th:field="*{originalPrice}" required>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-form-label">Giá ưu đãi:</label>
+                            <label for="" class="col-form-label">Discount Price:</label>
                             <input type="text" class="form-control" th:field="*{discountPrice}" required>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-form-label">Thời gian thực hiện(phút):</label>
+                            <label for="" class="col-form-label">Time consume(minutes):</label>
                             <input type="text" class="form-control" th:field="*{timeConsume}" required>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-form-label">Mô tả:</label>
+                            <label for="" class="col-form-label">Description:</label>
                             <input type="text" class="form-control" th:field="*{description}" required>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-form-label">Hình thumbnail:</label>
+                            <label for="" class="col-form-label">Thumbnail:</label>
                             <input type="file" name="file" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-form-label">Giảm giá:</label>
+                            <label for="" class="col-form-label">Discount:</label>
                             <input type="checkbox" class="form-check-input" th:field="*{discount}">
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-form-label">Có tại tiệm:</label>
+                            <label for="" class="col-form-label">Available:</label>
                             <input type="checkbox" class="form-check-input" th:field="*{available}">
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Thêm mới</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                 </div>
             </div>

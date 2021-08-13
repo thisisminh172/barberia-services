@@ -5,7 +5,7 @@
       layout:decorate="layouts/admin-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Danh sách khách hàng đã đăng ký</title>
+    <title>Registered Customer</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -14,15 +14,15 @@
         <section class="wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Danh sách khách hàng </h3>
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Customers </h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a th:href="@{/admin}">Home</a></li>
-                        <li><i class="fa fa-bars"></i>Danh sách</li>
+                        <li><i class="fa fa-bars"></i>List</li>
                     </ol>
                 </div>
             </div>
             <!-- page start-->
-            <h1>Danh sách khách hàng</h1>
+            <h1>Cutomer List</h1>
 <!--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"-->
 <!--                    data-whatever="@mdo">Thêm kiểu tóc mới-->
 <!--            </button>-->
@@ -31,11 +31,11 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Tên khách hàng</th>
-                    <th>Số điện thoại</th>
+                    <th>Customer name</th>
+                    <th>Phone number</th>
                     <th>Email</th>
-                    <th>Tình trạng</th>
-                    <th>Tác vụ</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,12 +44,12 @@
                     <td th:text="${customer.nickName}"></td>
                     <td th:text="${customer.phoneNumber}"></td>
                     <td th:text="${customer.email}"></td>
-                    <td th:text="${customer.membership}?'Khách hàng đã đăng ký':'Số điện thoại chưa đăng ký'"></td>
+                    <td th:text="${customer.membership}?'Registered':'Not Registered'"></td>
                     <!--                    <p th:text="${#strings.abbreviate(s.description,25)}"></p>-->
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-primary" th:href="@{'/admin/customer/'+${customer.id}}"
-                               id="editButton" title="Thông tin chi tiết"><i class="icon_pencil-edit"></i>Thông tin chi tiết</a>
+                               id="editButton" title="Thông tin chi tiết"><i class="icon_pencil-edit"></i>Details</a>
                             <!--                            <a class="btn btn-info" title="Chi tiết nhân viên" id="detailsButton"><i class="icon_document_alt"></i></a>-->
                         </div>
                     </td>

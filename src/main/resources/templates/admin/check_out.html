@@ -5,7 +5,7 @@
       layout:decorate="layouts/admin-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Tiến hành thanh toán</title>
+    <title>Check out</title>
 
 </head>
 <body>
@@ -15,38 +15,38 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 order-md-1">
-                        <h3 class="mb-3 font-weight-bold"><strong>Thông tin lượt khách hàng</strong></h3>
+                        <h3 class="mb-3 font-weight-bold"><strong>Customer Turn</strong></h3>
                         <form class="needs-validation" th:action="@{/admin/confirm-check-out-page}" method="post" novalidate>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label>Tên khách hàng</label>
+                                    <label>Customer's name</label>
 <!--                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>-->
                                     <p th:text="${booking.customer.nickName}"></p>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label>Số điện thoại khách hàng</label>
+                                    <label>Customer's phone number</label>
 <!--                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>-->
                                     <p th:text="${booking.customer.phoneNumber}"></p>
                                 </div>
                             </div>
 
                             <div class="mb-3">
-                                <label>Thời gian lịch hẹn</label>
+                                <label>Booking time</label>
                                 <div class="input-group">
 <!--                                    <input type="text" class="form-control" id="username" placeholder="" required>-->
                                     <p th:text="${#temporals.format(booking.chosenTimeSlot, 'dd-MM-yyyy')}  +', '+${#temporals.hour(booking.chosenTimeSlot)} +' giờ '+ ${#temporals.minute(booking.chosenTimeSlot)}+' phút'"></p>
                                 </div>
                             </div>
                             <hr class="mb-4">
-                            <h3 class="mb-3"><strong>Thông tin nhân viên phụ trách</strong></h3>
+                            <h3 class="mb-3"><strong>Employee</strong></h3>
                             <div class="mb-3">
-                                <label>Tên nhân viên</label>
+                                <label>Employee's name</label>
 <!--                                <input type="email" class="form-control" id="email" placeholder="">-->
                                     <p th:text="${employee.lastName}+' '+${employee.firstName}"></p>
                             </div>
 
                             <div class="mb-3">
-                                <label>Số điện thoại nhân viên</label>
+                                <label>Employee's phone number</label>
 <!--                                <input type="text" class="form-control" id="address" placeholder="" required>-->
                                 <p th:text="${employee.phoneNumber}"></p>
                             </div>
@@ -56,35 +56,35 @@
 <!--                                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">-->
 <!--                            </div>-->
                             <hr class="mb-4">
-                            <h3 class="mb-3"><strong>TỔNG HÓA ĐƠN</strong></h3>
+                            <h3 class="mb-3"><strong>Total bill</strong></h3>
                             <strong class="text-success" style="font-size:30px;" th:text="${#numbers.formatDecimal(totalPrice,0,'COMMA',0,'POINT')}+' VND'">120k</strong>
                             <input type="hidden" name="totalPrice" th:value="${totalPrice}">
                             <input type="hidden" name="turnId" th:value="${turnId}">
                             <hr class="mb-4">
 
 
-                            <h3 class="mb-3"><strong>Phương thức thanh toán</strong></h3>
+                            <h3 class="mb-3"><strong>Payment method</strong></h3>
 
                             <div class="d-block my-3">
                                 <div class="custom-control custom-radio">
                                     <input id="credit" name="paymentMethod" value="cash" type="radio" class="custom-control-input" checked required>
-                                    <label class="custom-control-label" for="credit" style="color:#006837; font-weight: bold; margin-left:15px; margin-bottom:10px;">Tiền mặt <span><img style="width:30px;" th:src="@{/admin/img/icons/cash_logo.png}" alt="cash logo"></span></label>
+                                    <label class="custom-control-label" for="credit" style="color:#006837; font-weight: bold; margin-left:15px; margin-bottom:10px;">Cash <span><img style="width:30px;" th:src="@{/admin/img/icons/cash_logo.png}" alt="cash logo"></span></label>
                                 </div>
                                 <div class="custom-control custom-radio">
                                     <input id="debit" name="paymentMethod" value="ewallet" type="radio" class="custom-control-input" required>
-                                    <label class="custom-control-label" style="color:#b84183; font-weight: bold; margin-left:15px; margin-bottom:10px;" for="debit">Ví điện tử MoMo <span><img style="width:30px;" th:src="@{/admin/img/icons/momo_logo.png}" alt="momo logo"></span></label>
+                                    <label class="custom-control-label" style="color:#b84183; font-weight: bold; margin-left:15px; margin-bottom:10px;" for="debit">MoMo wallet <span><img style="width:30px;" th:src="@{/admin/img/icons/momo_logo.png}" alt="momo logo"></span></label>
 
                                 </div>
                             </div>
 
                             <hr class="mb-4">
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">Tiếp tục thanh toán</button>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue</button>
                         </form>
                     </div>
                     <div class="col-md-4 order-md-2 mb-4">
                         <h3 class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="font-weight-bold"><strong>Dịch vụ của khách hàng</strong></span>
-                            <span class="badge badge-secondary badge-pill">3</span>
+                            <span class="font-weight-bold"><strong>Services</strong></span>
+<!--                            <span class="badge badge-secondary badge-pill">3</span>-->
                         </h3>
                         <ul class="list-group mb-3">
                             <li class="list-group-item d-flex justify-content-between lh-condensed" th:each="bd:${bookingDetails}">
@@ -96,9 +96,9 @@
                             </li>
 
                             <li class="list-group-item d-flex justify-content-between">
-                                <span><strong>Tổng hóa đơn </strong>(x1000vnd)</span></br>
+                                <span><strong>Total bill </strong>(x1000vnđ)</span></br>
 <!--                                <strong class="text-success" th:text="${totalPrice}+'VND'">120k</strong>-->
-                                <strong class="text-success" style="font-size:25px;" th:text="${#numbers.formatDecimal(totalPrice,0,'COMMA',0,'POINT')}+' VND'">120k</strong>
+                                <strong class="text-success" style="font-size:25px;" th:text="${#numbers.formatDecimal(totalPrice,0,'COMMA',0,'POINT')}+' VNĐ'">120k</strong>
                             </li>
                         </ul>
 
