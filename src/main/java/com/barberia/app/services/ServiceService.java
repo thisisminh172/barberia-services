@@ -31,4 +31,7 @@ public class ServiceService {
     public com.barberia.app.models.Service save(com.barberia.app.models.Service service){
         return serviceRepository.save(service);
     }
+    public List<com.barberia.app.models.Service> findAllByAvailable(boolean available){
+        return serviceRepository.findAllByAvailable(available);
+    }
 }

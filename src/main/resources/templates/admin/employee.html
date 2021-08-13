@@ -5,7 +5,7 @@
       layout:decorate="layouts/admin-layout">
 <head>
     <meta charset="UTF-8">
-    <title>Danh sách nhân viên</title>
+    <title>Employee list</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -14,34 +14,34 @@
         <section class="wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Nhân viên Barberia</h3>
+                    <h3 class="page-header"><i class="fa fa fa-bars"></i> Barberia's employee</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-                        <li><i class="fa fa-bars"></i>Danh sách nhân viên</li>
+                        <li><i class="fa fa-bars"></i>Employee list</li>
                     </ol>
                 </div>
             </div>
             <!-- page start-->
-            <h1>Danh sách nhân viên</h1>
+            <h1>Employee list</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo">Thêm nhân viên mới
+                    data-whatever="@mdo">New employee
             </button>
             <div th:if="${message}" class="alert alert-success">
-                <strong>Thành công!</strong> Gửi email cho nhân viên.
+                <strong>Success!</strong> Email is sent!
             </div>
             <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Ảnh</th>
-                    <th>Họ</th>
-                    <th>Tên</th>
-                    <th>Điện Thoại</th>
-                    <th>Địa chỉ</th>
+                    <th>Thumbnail</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Phone number</th>
+                    <th>Address</th>
                     <th>Email</th>
-                    <th>Chức vụ</th>
-                    <th>Hoạt động</th>
-                    <th>Tác vụ</th>
+                    <th>Role</th>
+                    <th>Is Working</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,15 +54,15 @@
                     <td th:text="${employee.homeAddress}"></td>
                     <td th:text="${employee.email}"></td>
                     <td th:if="${employee.role}=='ROLE_ADMIN'"><span style="color:#e74c3c;font-weight:bold;">ADMIN</span></td>
-                    <td th:if="${employee.role}=='ROLE_STAFF'"><span style="color:#2ecc71;font-weight:bold;">Nhân viên</span></td>
-                    <td th:if="${employee.role}=='ROLE_MANAGER'"><span style="color:#2980b9;font-weight:bold;">Quản lý</span></td>
-                    <td th:if="${employee.role}=='ROLE_VISITOR'"><span style="color:#9b59b6;font-weight:bold;">Chưa xác nhận</span></td>
+                    <td th:if="${employee.role}=='ROLE_STAFF'"><span style="color:#2ecc71;font-weight:bold;">Hairdresser</span></td>
+                    <td th:if="${employee.role}=='ROLE_MANAGER'"><span style="color:#2980b9;font-weight:bold;">Manager</span></td>
+                    <td th:if="${employee.role}=='ROLE_VISITOR'"><span style="color:#9b59b6;font-weight:bold;">Visitor</span></td>
                     <td th:text="${employee.isActive}?'ĐANG HOẠT ĐỘNG':'NGƯNG LÀM'"></td>
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-primary" th:href="@{/admin/employees/findById/(id=${employee.id})}"
-                               id="editButton" title="Cập nhật nhân viên"><i class="icon_pencil-edit"></i>Chỉnh sửa</a>
-                            <a class="btn btn-info" th:href="@{'/admin/employees/sendmail/'+${employee.id}}" title="Gửi email nhân viên" id="detailsButton"><i class="icon_document_alt"></i>Gửi email</a>
+                               id="editButton" title="Cập nhật nhân viên"><i class="icon_pencil-edit"></i>Edit</a>
+                            <a class="btn btn-info" th:href="@{'/admin/employees/sendmail/'+${employee.id}}" title="Gửi email nhân viên" id="detailsButton"><i class="icon_document_alt"></i>Send email</a>
                             <a class="btn btn-danger" th:href="@{/admin/employees/deactive/(id=${employee.id})}"
                                id="deactiveButton" title="Ngưng làm việc"><i class="icon_close_alt2"></i></a>
                         </div>

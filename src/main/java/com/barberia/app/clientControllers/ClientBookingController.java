@@ -42,7 +42,7 @@ public class ClientBookingController {
             return "redirect:/";
         }
         Salon salon = salonService.findById(1l).get();
-        List<Service> services = serviceService.findAll();
+        List<Service> services = serviceService.findAllByAvailable(true);
         int totalTimeSlot = MyFunction.countTotalTimeSlot(salon.getOpenedHour(), salon.getClosedHour(), salon.getMinuteInOneTimeSlot());
         int minuteInOneTimeSlot = salon.getMinuteInOneTimeSlot();
         LocalTime startTime = salon.getOpenedHour();
