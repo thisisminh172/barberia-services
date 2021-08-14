@@ -220,6 +220,11 @@ public class AdminBookingController {
 
     @GetMapping("/admin/booking/cancel-list")
     public String goCancelBookingPage(Model model){
+        MessageDto messageDto =(MessageDto) model.getAttribute("messageDto");
+        if(messageDto != null){
+            model.addAttribute("message", messageDto.getMessage());
+            model.addAttribute("available", messageDto.isAvailable());
+        }
         List<Booking> bookings = bookingService.findByStatus("cancel");
         model.addAttribute("bookings",bookings);
         return "admin/cancel_booking";
@@ -235,6 +240,17 @@ public class AdminBookingController {
 //        redirectAttributes.addFlashAttribute("messageDto",messageDto);
 //        return "redirect:/admin/payment-list";
 //    }
+
+    @GetMapping("/admin/report/cancelbooking/{format}")
+    public String generateCancelBookingReport(@PathVariable String format, RedirectAttributes redirectAttributes) throws FileNotFoundException, JRException {
+//        return reportService.exportReport(format);
+        String path = reportService.exportCancelBookingReport(format);
+        MessageDto messageDto = new MessageDto();
+        messageDto.setMessage("Successfully export report: "+path);
+        messageDto.setAvailable(true);
+        redirectAttributes.addFlashAttribute("messageDto",messageDto);
+        return "redirect:/admin/booking/cancel-list";
+    }
 
 
 

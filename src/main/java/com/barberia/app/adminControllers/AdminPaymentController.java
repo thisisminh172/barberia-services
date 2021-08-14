@@ -44,7 +44,7 @@ public class AdminPaymentController {
     @GetMapping("/admin/report/{format}")
     public String generateReport(@PathVariable String format, RedirectAttributes redirectAttributes) throws FileNotFoundException, JRException {
 //        return reportService.exportReport(format);
-        String path = reportService.exportReport(format);
+        String path = reportService.exportPaymentReport(format);
         MessageDto messageDto = new MessageDto();
         messageDto.setMessage("Successfully export report: "+path);
         messageDto.setAvailable(true);

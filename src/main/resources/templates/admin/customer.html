@@ -26,7 +26,9 @@
 <!--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"-->
 <!--                    data-whatever="@mdo">Thêm kiểu tóc mới-->
 <!--            </button>-->
-
+            <div th:if="${available}" class="alert alert-success">
+                <strong th:text="${message}">Thành công!</strong>
+            </div>
             <table class="table">
                 <thead>
                 <tr>
@@ -58,6 +60,12 @@
                 </tbody>
             </table>
             <!-- page end-->
+            <div class="col-lg-6">
+                <a th:href="@{/admin/report/customer/html}"><h4 class="mb-3"><strong>Export report file HTML</strong></h4></a>
+            </div>
+            <div class="col-lg-6">
+                <a th:href="@{/admin/report/customer/pdf}"><h4 class="mb-3"><strong>Export report file PDF</strong></h4></a>
+            </div>
         </section>
     </section>
     <!--main content end-->

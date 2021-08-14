@@ -26,6 +26,9 @@
             <div th:if="${message}" class="alert alert-success">
                 <strong>Success!</strong> Email has sent!
             </div>
+            <div th:if="${available}" class="alert alert-success">
+                <strong th:text="${message1}">Thành công!</strong>
+            </div>
             <table class="table">
                 <thead>
                 <tr>
@@ -59,6 +62,12 @@
                 </tbody>
             </table>
             <!-- page end-->
+            <div class="col-lg-6">
+                <a th:href="@{/admin/report/feedback/html}"><h4 class="mb-3"><strong>Export report file HTML</strong></h4></a>
+            </div>
+            <div class="col-lg-6">
+                <a th:href="@{/admin/report/feedback/pdf}"><h4 class="mb-3"><strong>Export report file PDF</strong></h4></a>
+            </div>
         </section>
     </section>
     <!--main content end-->
