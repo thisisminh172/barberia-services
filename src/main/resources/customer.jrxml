@@ -30,7 +30,7 @@
             </staticText>
             <image>
                 <reportElement x="0" y="0" width="188" height="90" uuid="d52c34c6-7716-43c8-ade2-f005f8da1365"/>
-                <imageExpression><![CDATA["../barberialogo.PNG"]]></imageExpression>
+                <imageExpression><![CDATA["src\\main\\resources\\barberialogo.PNG"]]></imageExpression>
             </image>
             <staticText>
                 <reportElement x="80" y="120" width="453" height="30" uuid="61b77097-9b7b-4130-b888-367f824d9f22"/>

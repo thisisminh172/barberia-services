@@ -49,7 +49,7 @@ public class ReportService {
             newPaymentReport.setId(payments.get(i).getId());
             newPaymentReport.setEmployeeName(payments.get(i).getTurn().getEmployee().getFirstName());
             newPaymentReport.setDatetime(payments.get(i).getTurn().getBooking().getChosenTimeSlot().format(formatter));
-            String method = payments.get(i).getPaymentMethod()=="cash"?"CASH":"MOMO wallet";
+            String method = payments.get(i).getPaymentMethod().equalsIgnoreCase("cash")?"CASH":"MOMO wallet";
             newPaymentReport.setPaymentMethod(method);
             double totalPrice = payments.get(i).getTotalPrice();
             newPaymentReport.setTotalPrice(totalPrice);
