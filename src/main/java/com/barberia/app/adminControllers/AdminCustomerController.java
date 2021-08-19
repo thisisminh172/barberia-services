@@ -30,7 +30,7 @@ public class AdminCustomerController {
             model.addAttribute("message", messageDto.getMessage());
             model.addAttribute("available", messageDto.isAvailable());
         }
-        List<Customer> customers = customerService.findAll();
+        List<Customer> customers = customerService.findByMembershipTrue();
         model.addAttribute("customers", customers);
         return "admin/customer";
     }

@@ -136,7 +136,7 @@ public class ReportService {
     public String exportCustomerReport(String reportFormat) throws FileNotFoundException, JRException{
         String path = "D:\\project_4\\barberia-services\\reports\\customers";
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-        List<Customer> customers = customerRepository.findAll();
+        List<Customer> customers = customerRepository.findByMembershipTrue();
         List<CustomerReportDto> customerReportDtos = new ArrayList<CustomerReportDto>();
         for (int i = 0; i< customers.size();i++){
             CustomerReportDto customerReportDto = new CustomerReportDto();
